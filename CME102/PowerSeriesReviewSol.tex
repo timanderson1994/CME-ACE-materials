@@ -1,0 +1,360 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{14pt} % Customize the height of the header
+
+
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+\allowdisplaybreaks
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Power Series Review Solutions}
+
+% Kreyszig 5.1 
+
+\begin{enumerate}
+\item \textbf{Convergence of power series:} For the following, find the radius of convergence:
+\begin{enumerate}
+% Kreyszig 5.1 Problem 2
+\item $\sum\limits_{m=0}^\infty(m+1)mx^m$
+\par \textbf{Solution:}
+\par In CME 102, we only teach you the ratio test, so that is the only test you need to worry about applying to test convergence of a power series. Thus, this is the test we will use to test the convergence of all of these series.
+\par For this series, we have:
+\begin{align*}
+\sum_{m=0}^\infty a_m &= \sum\limits_{m=0}^\infty(m+1)mx^m\\
+\intertext{We first need to figure out what each term of the series is as a function of the index:}
+a_m &= (m+1)mx^m\\
+\intertext{Then we can apply the ratio test to find the radius of convergence:}
+\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &= \lim_{m\to \infty} \frac{\left|\left((m+1)+1\right)(m+1)x^{(m+1)}\right|}{\left|(m+1)mx^m\right|}\\ 
+&= \lim_{m\to \infty} |x|\frac{\left|m+2\right|}{\left|m\right|} \\
+&=|x| \lim_{m\to \infty}\frac{\left|m+2\right|}{\left|m\right|} \\
+\lim_{m\to \infty}\frac{\left|m+2\right|}{\left|m\right|} &= 1\\
+\implies\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &= |x|
+\intertext{For convergence, we must have:}
+\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &< 1
+\intertext{So, we have:}
+|x| &< 1 \quad\blacksquare
+\end{align*}
+So, the radius of convergence is $R = 1$. 
+
+% Kreyszig 5.1 Problem 3
+\item $\sum\limits_{m=0}^\infty\frac{(-1)^m}{k^m}x^{2m}$
+\par \textbf{Solution:}
+\begin{align*}
+a_m &= \frac{(-1)^m}{k^m}x^{2m}\\
+\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &= \lim_{m\to \infty} \frac{\left|\frac{(-1)^{m+1}}{k^{m+1}}x^{2(m+1)}\right|}{\left|\frac{(-1)^m}{k^m}x^{2m}\right|}\\
+&= \lim_{m\to \infty} \left|x^2\right| \left|\frac{(-1)^{m+1}}{k^{m+1}}\right| \left|\frac{k^m}{(-1)^m}\right| \\
+&= \left|x^2\right| \lim_{m\to \infty}\frac{1}{|k|}\\
+&= \left|x^2\right| \frac{1}{|k|}\\
+\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &< 1\\
+ \left|x^2\right| \frac{1}{|k|} &< 1 \\
+ |x| &< \sqrt{k} \quad \blacksquare
+\end{align*}
+\par So the radius of convergence is $R = \sqrt{k}$.
+
+% Kreyszig 5.1 Problem 5
+\item $\sum\limits_{m=0}^\infty \left(\frac{2}{3}\right)^m x^{2m}$
+\par \textbf{Solution:}
+\begin{align*}
+a_m &= \left(\frac{2}{3}\right)^m x^{2m}\\
+\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &= \lim_{m\to \infty} \frac{\left|\left(\frac{2}{3}\right)^{m+1}x^{2(m+1)}\right|}{\left|\left(\frac{2}{3}\right)^mx^{2m}\right|}\\
+&= \lim_{m\to \infty} \left|x^2\right| \left|\left(\frac{2}{3}\right)^{m+1}\right| \left|\left(\frac{3}{2}\right)^m\right| \\
+&= \left|x^2\right| \lim_{m\to \infty}\frac{2}{3}\\
+&= \left|x^2\right| \frac{2}{3}\\
+\lim_{m\to \infty} \frac{|a_{m+1}|}{|a_m|} &< 1\\
+\frac{2}{3} \left|x^2\right| &< 1 \\
+ |x| &< \sqrt{\frac{3}{2}}\quad \blacksquare
+\end{align*}
+
+\end{enumerate}
+
+\item \textbf{Series solution of ODEs:} Solve the following using method of power series, and write the solution out to fifth order:
+\begin{enumerate}
+% Kreyszig 5.1 Problem 6
+\item $y'' - y' + xy = 0$
+\par \textbf{Solution:}
+\par We first need to substitute in the expressions for $y''$, $y'$, and $y$ per the power series method:
+\begin{gather*}
+y'' - y' + xy = 0\\
+\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n - \sum_{n=0}^\infty (n+1) a_{n+1} x^n + x \sum_{n=0}^\infty a_n x^n = 0
+\intertext{Now we should merge the $x$ outside the third sum into our $x^n$ terms inside the sum:}
+\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n - \sum_{n=0}^\infty (n+1) a_{n+1} x^n + \sum_{n=0}^\infty a_n x^{n+1} = 0
+\end{gather*}
+From here, we want to reindex the first two sums such that the power of $x$ matches that in the third sum. (\textit{Note:} this is a bit different than given in the course reader, but the result will be the same as you'll see.) We can do this by picking $n = n' +1$. That is, we pick our new index $n'$ such that the powers of $x$ will be the same across all three sums:
+\begin{gather*}
+n = n' + 1\\
+n' = n - 1
+\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n - \sum_{n=0}^\infty (n+1) a_{n+1} x^n + \sum_{n=0}^\infty a_n x^{n+1} = 0\\
+\sum_{n'=-1}^\infty (n'+3)(n'+2)a_{n'+3} x^{n'+1} - \sum_{n'=-1}^\infty (n'+2) a_{n'+2} x^{n'+1} + \sum_{n=0}^\infty a_n x^{n+1} = 0
+\end{gather*}
+You may be uncomfortable that we have negative indices in the sum. Do not fret---what matters is not whether the index $n'$ is negative, but if the number of our coefficients or powers of $x$ are ever negative. In this case, if we plug in the lowest value for our index $n' = -1$, we see that the corresponding coefficient is $a_1$ and power of $x$ is $x^0$. Neither of these are negative, so we are okay. 
+\par From here, we need to make the bounds of the sums match. To do this, we need to pull out the first term of the first two sums. These sums start at $n' = -1$ and the other starts at $n = 0$, but if we pull out the $n' = -1$ term, then the sums will have the same bounds. \textit{Note:} it does not matter what we actually call the index. The difference in names for the index is just a matter of notation. We can merge the first and second sums with the third because even though we've called the indices different names, both are integer indices and are thus effectively the same.
+\begin{gather*}
+\sum_{n'=-1}^\infty (n'+3)(n'+2)a_{n'+3} x^{n'+1} - \sum_{n'=-1}^\infty (n'+2) a_{n'+2} x^{n'+1} + \sum_{n=0}^\infty a_n x^{n+1} = 0\\
+(2)(1)a_{2} x^{0} + \sum_{n'=0}^\infty (n'+3)(n'+2)a_{n'+3} x^{n'+1} - (1)a_{1}x^{0} - \sum_{n'=0}^\infty (n'+2) a_{n'+2} x^{n'+1} + \sum_{n=0}^\infty a_n x^{n+1} = 0
+\intertext{We have the same power of x across all terms, so we can now merge the terms into a single sum:}
+2a_2 + \sum_{n'=0}^\infty (n'+3)(n'+2)a_{n'+3} x^{n'+1} - a_{1} - \sum_{n'=0}^\infty (n'+2) a_{n'+2} x^{n'+1} + \sum_{n=0}^\infty a_n x^{n+1} = 0\\
+2a_2  - a_1+ \sum_{n'=0}^\infty \left[ (n'+3)(n'+2)a_{n'+3} -  (n'+2) a_{n'+2} +  a_{n'} \right] x^{n'+1} = 0\\
+\end{gather*}
+We can then match coefficients across powers of $x$. Matching powers is how we can derive the "lower numbered" coefficients, and how we find the recurrence relation. \textit{Note:} the table in the course reader is doing exactly what we're doing here with matching coefficients, just in a slightly more organized way: 
+\begin{align*}
+x^0:& &2a_2 - a_1 &= 0&\\
+x^n, \;n > 0:& & (n'+3)(n'+2)a_{n'+3} -  (n'+2) a_{n'+2} +  a_{n'} &= 0 &
+\end{align*}
+This idea of matching coefficients across powers of $x$ is exactly the same as we were doing with Laplace transforms. To find the recurrence relation, we need to manipulate the second equation to solve for $a_{n+3}$:
+\begin{gather*}
+(n+3)(n+2)a_{n+3} -  (n+2) a_{n+2} +  a_{n} = 0\\
+a_{n+3} = \frac{a_{n+2}}{n+3} - \frac{a_n}{(n+3)(n+2)}
+\end{gather*}
+To solve for the equation up to the fifth order term, we need to find the first five coefficients. Remember that the coefficients themselves ($a_0$, $a_1$, etc.) are still the same ones in our original assumed power series solution, so we can use the relations for the coefficients derived above to find the coefficients. Since this is a second order ODE, we are given two initial conditions and thus know $a_0$ and $a_1$. Thus, we want to find the other coefficients in terms of $a_0$ and $a_1$:
+\begin{align*}
+2a_2 - a_1 &= 0 \\
+\implies a_2 &= \frac{1}{2}a_1\\
+a_{n+3} &= \frac{a_{n+2}}{n+3} - \frac{a_n}{(n+3)(n+2)}\quad n \geq 0\\
+\intertext{We can reindex this as:}
+a_{n} &= \frac{a_{n-1}}{n} - \frac{a_{n-3}}{(n)(n-1)}\quad n > 2\\
+a_{3} &= \frac{a_{2}}{3} - \frac{a_{0}}{(3)(2)}\\
+&= \frac{\frac{1}{2}a_1}{3} - \frac{a_0}{6}\\
+&= \frac{a_1 - a_0}{6}\\
+a_{4} &= \frac{a_{3}}{4} - \frac{a_{1}}{(4)(3)}\\
+&= \frac{ \frac{a_1 - a_0}{6}}{4} - \frac{a_{1}}{12} \\
+&= \frac{-a_1 - a_0}{24} \\
+a_{5} &= \frac{a_{4}}{5} - \frac{a_{3}}{(5)(4)}\\
+ &= \frac{\frac{-a_1 - a_0}{24} }{5} - \frac{\frac{a_1 - a_0}{6} }{20}\\
+ &= \frac{-a_1}{120} - \frac{a_0}{120} - \frac{a_1}{120} + \frac{a_0}{120}\\
+ &= \frac{-a_1}{60}
+\end{align*}
+Which gives us the final solution:
+\begin{gather*}
+y(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + a_4 x^4 + a_5 x^5 + \cdots\\
+\intertext{Substituting for our coefficients:}
+y(x) = a_0 + a_1x + \frac{1}{2}a_1x^2 + \frac{a_1 - a_0}{6}x^3 - \frac{a_1 + a_0}{24} x^4 - \frac{a_1}{60} x^5 + \cdots\\
+\intertext{...and grouping together the $a_0$ and $a_1$ terms:}
+y(x) = a_0\left(1 - \frac{1}{6}x^3 - \frac{1}{24}x^4 + \cdots \right) + a_1 \left( x + \frac{1}{2}x^2 + \frac{1}{6}x^3 - \frac{1}{24}x^4 - \frac{1}{60}x^5 + \cdots\right)\quad\blacksquare
+\end{gather*}
+
+%% Kreyszig 5.1 Problem 13
+%\item $y'' + (1 + x^2) y = 0$
+
+% Made up...
+\item $y' + x^2y = e^{-x}$
+\par \textbf{Solution:}
+\par When we have an inhomogeneous term in the equation that is not a polynomial, we need to express this term as its Maclaurin series. Recall the series expansion for $f(x) = e^{x} = \sum_{n=0}^\infty \frac{x^n}{n!}$, so $e^{-x} = \sum_{n=0}^\infty \frac{(-1)^nx^n}{n!}$. We can then plug this into our ODE and solve in the same fashion as the previous problem:
+\begin{gather*}
+y' + x^2y = e^{-x} \\
+y' + x^2y = \sum_{n=0}^\infty \frac{(-1)^nx^n}{n!}\\
+\sum_{n=0}^\infty (n+1) a_{n+1} x^n + x^2\sum_{n=0}^\infty a_n x^n = \sum_{n=0}^\infty \frac{(-1)^nx^n}{n!}\\
+\sum_{n=0}^\infty (n+1) a_{n+1} x^n + \sum_{n=0}^\infty a_n x^{n+2} = \sum_{n=0}^\infty \frac{(-1)^nx^n}{n!}\\
+\sum_{n=0}^\infty (n+1) a_{n+1} x^n  - \sum_{n=0}^\infty \frac{(-1)^nx^n}{n!} + \sum_{n=0}^\infty a_n x^{n+2} = 0 \\
+\sum_{n=0}^\infty \left[ (n+1) a_{n+1}  -  \frac{(-1)^n}{n!}\right]x^n + \sum_{n=0}^\infty a_n x^{n+2} = 0 \\
+\sum_{n=0}^\infty \left[ (n+1) a_{n+1}  + \frac{(-1)^{n+1}}{n!}\right]x^n + \sum_{n=0}^\infty a_n x^{n+2} = 0 \\
+\text{Let:}\; n = n' + 2\\
+\sum_{n'=-2}^\infty \left[ (n'+3) a_{n'+3}  + \frac{(-1)^{n'+3}}{(n'+2)!}\right]x^{n'+2} + \sum_{n=0}^\infty a_n x^{n+2} = 0 \\
+\left[(1) a_{1}  + \frac{(-1)^{1}}{(0)!}\right]x^{0} + \left[ (2) a_{2}  + \frac{(-1)^{2}}{(1)!}\right]x^{1} + \sum_{n'=0}^\infty \left[ (n'+3) a_{n'+3}  + \frac{(-1)^{n'+3}}{(n'+2)!}\right]x^{n'+2} + \sum_{n=0}^\infty a_n x^{n+2} = 0 \\
+\left(a_1  -1 \right) + \left( 2 a_2  + 1\right)x + \sum_{n'=0}^\infty \left[ (n'+3) a_{n'+3}  + \frac{(-1)^{n'+3}}{(n'+2)!}+ a_{n'} \right]x^{n'+2} = 0 \\
+\end{gather*}
+Matching coefficients...
+\begin{align*}
+a_1 - 1 &= 0\\
+\implies a_1 &= 1\\
+2a_2 + 1 &= 0\\
+\implies a_2 &= -\frac{1}{2}\\
+(n+3) a_{n+3}  + \frac{(-1)^{n+3}}{(n+2)!}+ a_n &= 0 \\
+a_{n+3} &= - \frac{(-1)^{n+3}}{(n+3)!} - \frac{a_n}{n+3}
+\intertext{Reindex:}
+a_{n} &= -\frac{(-1)^{n}}{(n)!} - \frac{a_{n-3}}{n}, \quad n > 2
+\end{align*}
+Finally, we can write out our coefficients up to $n = 5$:
+\begin{align*}
+a_1 &= 1\\
+a_2 &= -\frac{1}{2}\\
+a_{3} &= -\frac{(-1)^{3}}{(3)!} - \frac{a_{0}}{3}\\
+&= \frac{1}{6} - \frac{a_0}{3}\\
+a_4 &= -\frac{(-1)^{4}}{(4)!} - \frac{a_{1}}{4}\\
+&= -\frac{1}{24} - \frac{1}{4} = -\frac{7}{24} \\
+a_5 &= -\frac{(-1)^{5}}{(5)!} - \frac{a_{2}}{5}\\
+&= \frac{1}{120} + \frac{1}{10} = \frac{13}{120}
+\end{align*}
+then we can write the solution:
+\[
+y(x) = a_0 + x -\frac{1}{2}x^2 +\left (\frac{1}{6} - \frac{a_0}{3}\right)x^3  - \frac{7}{24}x^4 + \frac{13}{120}x^5 + \cdots
+\]
+and grouping terms together:
+\[
+y(x) = a_0\left( 1 - \frac{1}{3}x^3\right) + x -\frac{1}{2}x^2 + \frac{1}{6}x^3 - \frac{7}{24}x^4 + \frac{13}{120}x^5 + \cdots \quad\blacksquare
+\]
+
+\end{enumerate}
+
+\item \textbf{Solve IVPs with Power Series:} Solve the following IVPs using power series. Write the solution up to the fifth order term.
+\begin{enumerate}
+% Kreyszig 5.1 Problem 16
+\item $y' + 4y = 1,\quad y(0) = 1.25$
+\par \textbf{Solution:}
+\begin{gather*}
+y' + 4y = 1\\
+\sum_{n=0}^\infty (n+1) a_{n+1} x^n + 4 \sum_{n=0}^\infty a_n x^n = 1\\
+\sum_{n=0}^\infty\left[ (n+1)a_{n+1} + 4a_n\right] x^n = 1\\
+\intertext{Equating coefficients...}
+a_1 + 4a_0 = 1\\
+a_1 = 1 - 4a_0\\
+(n+1)a_{n+1} + 4a_n = 0, \quad n\geq 1\\
+\implies a_{n+1} = \frac{-4a_n}{n+1}
+\intertext{Reindexing:}
+a_n = \frac{-4a_{n-1}}{n}
+\intertext{Using the recurrence relation, we can solve out for the higher order coefficients:}
+a_2 = \frac{-4a_1}{2} = -2(1-4a_0) = -2 + 8a_0 \\
+a_3 = \frac{-4a_2}{3} = \frac{8}{3} - 32a_0\\
+a_4 = \frac{-4a_3}{4} = -a_3 = -\frac{8}{3} + 32a_0\\
+a_5 = \frac{-4a_4}{5} = \frac{32}{15} - \frac{128}{5}a_0\\
+\end{gather*}
+
+% Kreyszig 5.1 Problem 17
+\item $y'' + 3xy' + 2y = 0,\quad y(0) = 1, \quad y'(0) = 1$
+\par \textbf{Solution:}
+\par We solve IVPs (i.e. problems where $a_0$ and $a_1$ are given) exactly the same way as we do to find general solutions, but this time we actually know all the constants, we can write out a full solution. 
+\begin{gather*}
+y'' + 3xy' + 2y = 0\\
+\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n + 3x \sum_{n=0}^\infty (n+1) a_{n+1} x^n  + 2\sum_{n=0}^\infty a_n x^n = 0\\
+\intertext{Group the first and third sums together (since they have the same power of $x$):}
+\sum_{n=0}^\infty \left[(n+2)(n+1)a_{n+2} +2a_n \right] x^n + \sum_{n=0}^\infty 3(n+1) a_{n+1} x^{n+1}  = 0\\
+\intertext{Shift our indices to make powers of $x$ match between the two sums:}
+\text{Let:}\; n = n' + 1;\\
+\sum_{n'=-1}^\infty \left[(n'+3)(n'+2)a_{n'+3} +2a_{n'+1} \right] x^{n'+1} + \sum_{n=0}^\infty 3(n+1) a_{n+1} x^{n+1}  = 0\\
+\intertext{Bring the first time out of the first sum to make the bounds of the sum match:}
+\left[(2)(1)a_{2} +2a_{0} \right]x^0 + \sum_{n'=0}^\infty \left[(n'+3)(n'+2)a_{n'+3} +2a_{n'+1} \right] x^{n'+1} + \sum_{n=0}^\infty 3(n+1) a_{n+1} x^{n+1}  = 0\\
+\intertext{Combine the sum (since we now have the bounds and power of $x$ matching):}
+\left(2a_2 +2a_0 \right) + \sum_{n=0}^\infty \left[(n+3)(n+2)a_{n+3} +2a_{n+1}  + 3(n+1) a_{n+1} \right] x^{n+1}  = 0\\
+\end{gather*}
+Finally, we can match coefficients by power of $x$ to find our recurrence relation and solve for our coefficients. (\textit{Note:} are given that $a_0 = 1$ and $a_1 = 1$ by the initial conditions.) 
+\begin{gather*}
+2a_2 +2a_0 = 0 \\
+\implies a_2 = - a_0 = -1\\
+(n+3)(n+2)a_{n+3} +2a_{n+1}  + 3(n+1) a_{n+1} = 0,\quad n \geq 0\\
+a_{n+3} = -\frac{2a_{n+1}}{(n+3)(n+2)} - \frac{3(n+1)a_{n+1}}{(n+3)(n+2)}
+\intertext{Reindex:}
+a_{n} = -\frac{2a_{n-2}}{(n)(n-1)} - \frac{3(n-2)a_{n-2}}{(n)(n-1)} = -\left( \frac{2}{(n)(n+1)} + \frac{3}{(n)(n-1)} \right)a_{n-2} \quad n > 2\\
+a_3 = -\left( \frac{2}{(3)(2)} + \frac{3(1)}{(3)(2)} \right)a_1 = -\frac{5}{6}
+a_4 = -\left( \frac{2}{(4)(3)} + \frac{3(2)}{(4)(3)} \right)a_{2} = -\frac{2}{3}a_2 = \frac{2}{3}\\
+a_5 = -\left( \frac{2}{(5)(4)} + \frac{3(3)}{(5)(4)} \right)a_{3} = -\frac{11}{20}a_3 = \frac{11}{24}
+\end{gather*}
+From this we can assembler our final solution up to fifth order:
+\[
+y(x) = 1 + x -x^2 - \frac{5}{6}x^3 + \frac{2}{3}x^4 + \frac{11}{24}x^5 + \cdots
+\]
+
+% Kreyszig 5.1 Problem 19
+\item $(x-2)y' = xy,\quad y(0) = 4$
+\par \textbf{Solution:}
+\begin{gather*}
+(x-2)y' = xy\\
+(x-2)y' - xy = 0\\
+(x-2)\sum_{n=0}^\infty (n+1)a_{n+1}x^n - x \sum_{n=0}^\infty a_nx^n = 0\\
+x\sum_{n=0}^\infty (n+1)a_{n+1}x^n-2\sum_{n=0}^\infty (n+1)a_{n+1}x^n - x \sum_{n=0}^\infty a_nx^n = 0\\
+\sum_{n=0}^\infty (n+1)a_{n+1}x^{n+1}-2\sum_{n=0}^\infty (n+1)a_{n+1}x^n - \sum_{n=0}^\infty a_nx^{n+1} = 0\\
+\sum_{n=0}^\infty \left[ (n+1)a_{n+1} -  a_n\right]x^{n+1} -2\sum_{n=0}^\infty (n+1)a_{n+1}x^n  = 0\\
+\text{In the second sum, let:}\; n = n' + 1\\
+\sum_{n=0}^\infty \left[ (n+1)a_{n+1} -  a_n\right]x^{n+1} -2\sum_{n'=-1}^\infty (n'+2)a_{n'+2}x^{n'+1}  = 0\\
+-2 a_1 + \sum_{n=0}^\infty \left[ (n+1)a_{n+1} -  a_n -2 (n+2)a_{n+2}\right]x^{n+1} = 0\\
+\end{gather*}
+Finally, we can find the recurrence relation and solve for the coefficients:
+\begin{gather*}
+(n+1)a_{n+1} -  a_n -2 (n+2)a_{n+2} = \\
+a_{n+2} = \frac{(n+1)a_{n+1}}{2(n+2)} - \frac{a_n}{2(n+2)} \\
+a_{n} = \frac{(n-1)a_{n-1}}{2n} - \frac{a_{n-2}}{2n}
+\end{gather*}
+\begin{align*}
+a_0 &= 4\\
+-2a_1 &= 0 \implies a_1 = 0\\
+a_{2} &= \frac{(1)a_{1}}{2(2)} - \frac{a_{0}}{2(2)} = -1\\
+a_3 &= \frac{(2)a_{2}}{2(3)} - \frac{a_{1}}{2(3)} = -\frac{1}{3}\\
+a_4 &= \frac{(3)a_{3}}{2(4)} - \frac{a_{2}}{2(4)} = -\frac{1}{8} +\frac{1}{8} = 0\\
+a_5 &= \frac{(4)a_{4}}{2(5)} - \frac{a_{3}}{2(5)} = \frac{1}{30}
+\end{align*}
+and we can write out our solution:
+\[
+y(x) = 4 - x^2 - \frac{1}{3}x^3 + \frac{1}{30}x^5\quad\blacksquare
+\]
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+\end{document}

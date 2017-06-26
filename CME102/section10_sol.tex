@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{14pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%---------------------------------------------------------------------------------------a-
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Week 10 Section Solutions}
+\par If not otherwise specified, solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+
+\begin{enumerate}
+\item \textbf{Conceptual things:}  For each of the following, give a short, snappy explanation or definition.
+\begin{enumerate}
+\item Spanning vector/basis vector \newline
+\textbf{Solution} Vectors that we can take a linear combination of to get any vector in a given vector space. We are usually concerned with 2-D space (a.k.a. $x$-$y$ space), and we can form any vector/point in $x$-$y$ space by taking a linear combination of the unit vectors in the $x$ and $y$ directions (the unit vectors lying along the axes). 
+
+\item Basis function\newline
+\textbf{Solution} Functions from which you can take a linear combination and form any other function in the space. In our purposes, we are usually concerned with functions in $x$-$y$ space.
+
+\item Power series (a.k.a. Taylor series)\newline
+\textbf{Solution} An expansion of a function into a linear combination of powers of $x$. This is possible for any function since the powers of $x$ are a spanning basis for functions in $x$-$y$ space.
+
+\item Series solution\newline
+\textbf{Solution} A solution to an ODE that is given in the form of a linear combination of integer powers of x and, if possible, a recurrence relation between the coefficients.
+
+\end{enumerate}
+
+
+\item \textbf{Example problems:}  Solve the following using a power series solution. 
+
+\begin{enumerate}
+\item $y' + y = x$ \newline
+\textbf{Solution} \newline Assume:\newline
+$$ y(x) =  \sum\limits_{n=0}^\infty a_n x^n$$
+Plugging into the ODE:
+$$\sum\limits_{n=0}^\infty (n+1) a_n x^n + \sum\limits_{n=0}^\infty a_n x^n = x$$
+$$\sum\limits_{n=0}^\infty \big [ (n+1) a_{n+1} + a_n \big] x^n = x$$
+Matching coefficients we get:
+$$ a_1 = -a_0$$
+$$ a_2 = \frac{1-a_1}{2}$$
+And we get the recurrence relation:
+$$a_{n+1} = \frac{-a_n}{n+1},\quad n > 2$$
+
+\item $y'' - xy = 0$ \newline
+This equation is known as the Airy Equation, and its solutions (known as Airy functions) have many important applications in optics and quantum mechanics. \newline
+\textbf{Solution} \newline Assume:
+$$ y(x) =  \sum\limits_{n=0}^\infty a_n x^n$$
+Plugging into the ODE:
+$$ \sum\limits_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n - x\sum\limits_{n=0}^\infty a_n x^{n} = 0$$
+$$ \sum\limits_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n - \sum\limits_{n=0}^\infty a_n x^{n+1} = 0$$
+Pulling out the 0th term in the first summation and reindexing the second:
+$$ 2a_2 + \sum\limits_{n=1}^\infty (n+2)(n+1)a_{n+2}x^n - \sum\limits_{n=1}^\infty a_{n-1} x^{n} = 0$$
+$$ 2a_2 + \sum\limits_{n=1}^\infty \big [(n+2)(n+1)a_{n+2} - a_{n-1} \big] x^{n} = 0$$
+From which we can finally get the relations:
+$$a_2 = 0$$
+$$a_{n+2} = \frac{a_{n-1}}{(n+1)(n+2)}$$
+
+\item $y'' - y' + x^2y = 0$
+\par \textbf{Solution}
+\begin{gather*}
+y''- y' +  x^2 y   = 0\\
+\intertext{Substituting in our power series expansions:}
+\left(\sum\limits_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n\right) - \left(\sum\limits_{n=0}^\infty (n+1) a_{n+1} x^n \right) 
++ x^2 \left( \sum\limits_{n=0}^\infty a_n x^n \right) = 0\\
+\sum\limits_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n - \sum\limits_{n=0}^\infty (n+1) a_{n+1} x^n + \sum\limits_{n=0}^\infty a_n x^{n+2} = 0\\
+\sum\limits_{n=0}^\infty \left[(n+2)(n+1)a_{n+2} - (n+1) a_{n+1} \right] x^n + \sum\limits_{n=0}^\infty a_n x^{n+2} = 0\\
+\intertext{For the first sum, let $n' = n - 2$. We can then reindex as:}
+\sum\limits_{n'=-2}^\infty \left[(n'+4)(n'+3)a_{n'+4} - (n'+3) a_{n'+3} \right] x^{n'+2} + \sum\limits_{n=0}^\infty a_n x^{n+2} = 0\\
+\intertext{Now, pull the first two terms out of the first sum to make sure the bounds of our sum align:}
+\left[2a_{2} - a_{1} \right] + \left[6a_{3} - 2 a_{2} \right] x
++ \sum\limits_{n'=0}^\infty \left[(n'+4)(n'+3)a_{n'+4} - (n'+3) a_{n'+3} \right] x^{n'+2} + \sum\limits_{n=0}^\infty a_n x^{n+2} = 0\\
+\intertext{Combine the sums:}
+\left[2a_{2} - a_{1} \right] + \left[6a_{3} - 2 a_{2} \right] x
++ \sum\limits_{n'=0}^\infty \left[(n'+4)(n'+3)a_{n'+4} - (n'+3) a_{n'+3}  +  a_n \right] x^{n'+2} = 0\\
+\end{gather*}
+
+Matching coefficients then gives us the relationships:
+\begin{align*}
+a_2 &= \frac{1}{2}a_1\\
+a_3 &= \frac{2}{6} a_2 = \frac{1}{6}a_1\\
+(n'+4)(n'+3)&a_{n'+4} - (n'+3) a_{n'+3}  +  a_n = 0\\
+\implies a_{n + 4} &= \frac{a_{n+3}}{n+4} - \frac{a_n}{(n+4)(n+3)}\\
+\intertext{Or we can reindex this as:}
+a_{n} &= \frac{a_{n-1}}{n} - \frac{a_{n-4}}{n(n-1)}
+\end{align*}
+which gives our recurrence relation.
+
+\par Finally, we can write out our solution to 5th order as:
+\begin{align*}
+y(x) &= a_0 + a_1x + a_2x^2 + a_3x^3 + a_4 x^4 + a_5 x^5 + \cdots\\
+ &= a_0 + a_1x + \frac{1}{2}a_1x^2 + \frac{1}{6}a_1x^3 +\left( \frac{a_{3}}{4} - \frac{a_{0}}{4(3)} \right)x^4 +
+ \left( \frac{a_{4}}{5} - \frac{a_{1}}{5(4)} \right)x^5 + \cdots\\
+  &= a_0 + a_1x + \frac{1}{2}a_1x^2 + \frac{1}{6}a_1x^3 +\left( \frac{a_1}{24} - \frac{a_{0}}{12} \right)x^4 +
+ \left( \frac{\frac{a_1}{24} - \frac{a_{0}}{12} }{5} - \frac{a_1}{20} \right)x^5 + \cdots \\
+   &= a_0 + a_1x + \frac{1}{2}a_1x^2 + \frac{1}{6}a_1x^3 +\left( \frac{a_1}{24} - \frac{a_{0}}{12} \right)x^4 +
+ \left( \frac{a_1}{120} - \frac{a_{0}}{60} - \frac{a_1}{20} \right)x^5 + \cdots \\
+    &= a_0 + a_1x + \frac{1}{2}a_1x^2 + \frac{1}{6}a_1x^3 +\left( \frac{a_1}{24} - \frac{a_{0}}{12} \right)x^4 -
+ \left( \frac{a_1}{24} + \frac{a_{0}}{60} \right)x^5 + \cdots \quad\blacksquare
+\end{align*}
+
+\end{enumerate}
+
+\item \textbf{Power series in action}  For the following ODE:
+$$y'' + y = 0 \hspace{0.3in} y(0) = 1  \hspace{0.3in} y'(0) = 2$$
+\begin{enumerate}
+
+\item Solve this ODE using methods from earlier in the quarter. What method did you pick? \newline
+\textbf{Solution} \newline
+You could use several methods to solve this including direct integration or assuming a solution of the form $y(x) = e^{\lambda x}$ and plugging in or even Laplace transform. The solution is $$ y(x) = c_1 sin(x) + c_2 cos(x)$$
+Applying initial conditions gives $c_1 = 2 and c_2 = 1$, so $$y(x) = 2sin(x) + cos(x)$$
+
+\item Solve this ODE using the method of power series. \newline
+\textbf{Solution} \newline
+Assume:
+$$ y(x) =  \sum\limits_{n=0}^\infty a_n x^n$$
+Plugging into the ODE and reindexing:
+$$  \sum\limits_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n + \sum\limits_{n=0}^\infty a_n x^{n} = 0$$
+$$  \sum\limits_{n=0}^\infty \big [ (n+2)(n+1)a_{n+2} +a_n \big ] x^{n} = 0$$
+$$ (n+2)(n+1)a_{n+2} +a_n = 0$$
+So the recurrence relation is:
+$$a_{n+2} = \frac{-a_n}{(n+2)(n+1)}$$
+But by definition we have:
+$$a_0 = y(0) = 1 \hspace{0.3in} a_1 = y'(0)  = 2$$
+We can split these into relations for odd and even n. For any integer $k$, $(2k+1)$ is always odd and $2k$ is always even, so we can write:
+$$y(x) = \sum\limits_{n=0}^\infty \frac{2(-1)^n}{(2n+1)!}x^{2n+1} + \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n} $$
+
+
+\item Recall the Taylor expansions for sine and cosine:
+$$sin(x) = \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1} \hspace{0.5in} cos(x) = \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n}$$
+Substitute these into your solution from part (a) and explain how this corresponds with your answer in part (b).\newline
+\textbf{Solution} \newline
+Pulling the constant out of the first summation in (b) gives:
+$$y(x) = 2\sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1} + \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n} $$
+and substituting for the Taylor expansions given above we have:
+$$y(x) = 2sin(x) + cos(x) $$
+which is our original solution.
+\par
+This problem shows that power series will always yield a correct solution if a solution does in fact exist, but the method is often more cumbersome and the solution less interpretable than with other methods.
+
+\end{enumerate}
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

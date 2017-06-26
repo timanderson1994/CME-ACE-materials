@@ -1,0 +1,135 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{14pt} % Customize the height of the header
+
+
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+\allowdisplaybreaks
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Power Series Review Problems}
+
+% Kreyszig 5.1 
+
+\begin{enumerate}
+\item \textbf{Convergence of power series:} For the following, find the radius of convergence:
+\begin{enumerate}
+% Kreyszig 5.1 Problem 2
+\item $\sum\limits_{m=0}^\infty(m+1)mx^m$
+
+% Kreyszig 5.1 Problem 3
+\item $\sum\limits_{m=0}^\infty\frac{(-1)^m}{k^m}x^{2m}$
+
+% Kreyszig 5.1 Problem 5
+\item $\sum\limits_{m=0}^\infty \left(\frac{2}{3}\right)^m x^{2m}$
+
+\end{enumerate}
+
+\item \textbf{Series solution of ODEs:} Solve the following using method of power series, and write the solution out to fifth order:
+\begin{enumerate}
+% Kreyszig 5.1 Problem 6
+\item $y'' - y' + xy = 0$
+
+% Kreyszig 5.1 Problem 13
+\item $y'' + (1 + x^2) y = 0$
+
+% Made up...
+\item $y' + x^2y = e^{-x}$
+
+\end{enumerate}
+
+\item \textbf{Solve IVPs with Power Series:} Solve the following IVPs using power series. Write the solution up to the fifth order term.
+\begin{enumerate}
+% Kreyszig 5.1 Problem 16
+\item $y' + 4y = 1,\quad y(0) = 1.25$
+
+% Kreyszig 5.1 Problem 17
+\item $y'' + 3xy' + 2y = 0,\quad y(0) = 1, \quad y'(0) = 1$
+
+% Kreyszig 5.1 Problem 19
+\item $(x-2)y' = xy,\quad y(0) = 4$
+
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+\end{document}

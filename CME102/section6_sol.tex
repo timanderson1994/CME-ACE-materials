@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Week 6 Section Problems}
+\par If not otherwise specified, solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+
+\begin{enumerate}
+\item For the following ODEs, if possible give the method we would use to solve them and why. \textit{Note:} it is not necessary to solve these, simply give the steps you would hypothetically use to solve the ODE. 
+\begin{enumerate}
+\item $x^2 y'' + xy' + 2y = cos(x)$ \par
+\textbf{Solution:} Variation of parameters (Cauchy-Euler equation to get the basis of the homogeneous solution).
+
+\item $(y'')^2 + y = cos(x)$\par 
+\textbf{Solution:} Cannot be solved analytically, or at least with methods covered in this class. We move on.
+
+\item $y'' + 2y' + y = cos(x)$ \par
+\textbf{Solution:} Undetermined coefficients. Variation of parameters would also work, but you should not use it since undetermined coefficients is much more efficient at solving this kind of equation.
+
+\item $y'' + 2y' + y = cos^2(x)$ \par
+\textbf{Solution:} Variation of parameters or undetermined coefficients (if you split up the right hand side using trig identities).
+
+\end{enumerate}
+\item $y'' - 4y' +4y = e^{2x}$ \par
+\textbf{Solution} \newline
+For the homogeneous solution: 
+$$\lambda ^2 - 4\lambda +4 = 0$$
+$\lambda = 2$, $y_h(x) = e^{2x}(c_1 + c_2x)$ \newline
+We can then use undetermined coefficients to solve this ODE. However, note that the RHS term has the same exponent as the homogeneous solution, so we need to assume an answer of the form $y_p(x) = Ax^2e^{2x}$:
+$$ 2Ae^{2 x} (2 x^2+4 x+1) - 2 Ae^{2 x} x (x+1) + 4Ax^2e^{2x} = e^{2x}$$
+Matching coefficients, we find $ A = \frac{1}{2}$ so the full final solution is:
+$$y(x) = e^{2x}(c_1 + c_2x) + \frac{1}{2}x^2e^{2x}$$
+
+\item $y'' + 2y = sec(\sqrt{2}x)$ \par
+\textbf{Solution} \newline
+The homogeneous solution is giving by: $y(x) = c_1sin(\sqrt{2}x) + c_2cos(\sqrt{2}x)$. We then need to use variation of parameters to find the particular solution: 
+$$W = y_1y_2' - y_2y_1' = \sqrt{2}$$
+$$y_p(x) = -\frac{\sqrt{2}}{2}cos(\sqrt{2}x) \int sec(\sqrt{2}x)sin(\sqrt{2}x)dx + \frac{\sqrt{2}}{2}sin(\sqrt{2}x) \int sec(\sqrt{2}x)cos(\sqrt{2}x)dx$$
+$$y_p(x) = -\frac{\sqrt{2}}{2}cos(\sqrt{2}x) \int tan(\sqrt{2}x)dx + \frac{\sqrt{2}}{2}sin(\sqrt{2}x) \int dx$$
+$$y_p(x) = \frac{1}{2}cos(\sqrt{2}x) ln(|cos(\sqrt{2}x)|)+ \frac{\sqrt{2}}{2}x(sin(\sqrt{2}x)) $$
+$$y(x) = c_1sin(\sqrt{2}x) + c_2cos(\sqrt{2}x) + \frac{1}{2}cos(\sqrt{2}x) ln(|cos(\sqrt{2}x)|)+ \frac{\sqrt{2}}{2}x(sin(\sqrt{2}x)) $$
+
+
+\item Improved Euler, also known as Heun's Method, has equations given by: 
+$$y' = f(t, y(t))$$
+$$y_{i+1/2} = y_i + hf(t_i,y_i)$$
+$$y_{i+1} = y_i + \frac{h}{2}[f(t_i,y_i) + f(t_{i+1},y_{i+1/2})]$$ 
+Derive the amplification factor for the general equation $y' = \lambda y$. Using this, could you give the local accuracy for this method? \par
+\textbf{Solution} \newline
+$$y_{i+1} = y_i + \frac{h}{2}[f(t_i,y_i) + f(t_{i+1},\tilde{y}_{i+1})] = y_i + \frac{h}{2}[\lambda y_i + \lambda y_i + h\lambda^2 y_i]$$
+$$y_{i+1} = \bigg(1 + h\lambda + \frac{h^2\lambda^2}{2}\bigg)y_i$$
+$$\sigma(h) = 1 + h\lambda + \frac{h^2\lambda^2}{2}$$
+\par The method would be 3rd order accurate locally since the amplification factor matches the Taylor expansion of $y(x_i+h)$ up to the 3rd order term.
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

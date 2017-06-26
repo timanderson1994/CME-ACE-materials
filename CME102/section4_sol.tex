@@ -1,0 +1,175 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\usepackage{mcode}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+
+\section*{Week 4 Section Problems}
+\par Solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+
+\begin{enumerate}
+
+\item For the following ODEs, give its type (i.e. linear/nonlinear, order, homogeneous/inhomogeneous) and, if possible, solve the ODE.
+\begin{enumerate}
+\item $\frac{1}{2}y'' + y' + y = 0$ \par
+\textbf{Solution} \newline
+This is a second order linear constantly coefficients homogeneous ODE. \par 
+Solving the characteristic polynomial:
+$$\frac{1}{2}\lambda ^2 + \lambda + 1 = 0 $$
+$$ \lambda = \frac{-1 \pm \sqrt{1 - 4*1/2}}{2*1/2} =  -1 \pm \imath$$
+$$y(x) = e^{-x}(c_1 sin(x) + c_2 cos(x))$$
+
+\item $(y')^2 - y = 0$ \newline
+\textbf{Solution} \newline
+First-order nonlinear homogeneous ODE. \par
+$$ (y')^2 = y$$
+$$\frac{dy}{\sqrt{y}} = dx$$
+$$2\sqrt{y} = x + c$$
+$$y(x) = \frac{1}{4}(x + c)^2$$
+
+\item $xy' + y = x^2$ \par
+\textbf{Solution} \newline
+First order linear inhomogeneous ODE.
+$$y(x) = e^{-\int \frac{1}{x} dx}\bigg(\int e^{\int \frac{1}{x} dx} x dx + c \bigg)$$
+$$y(x) = \frac{x^2}{3} + \frac{C}{x}$$
+\end{enumerate}
+\item \textbf{Existence and uniqueness:} For the following ODE, give the region $R_1$ where the solution exists, and the region $R_2$ where the solution is unique. 
+$$ y' + \sqrt{y} ln(x) = 5$$
+$$y(5) = 2$$
+\textbf{Solution} \newline
+For existence, recall the first part of the existence and uniqueness theorem. It states that if there is a region $R_1$ containing $y_0$ within which $f(x,y)$ is continuous, then the solution is unique. For this problem, we have:
+$$ y' = f(x,y) = 5 - \sqrt{y}ln(|x|)$$
+So, $f(x,y)$ is continuous for $x \in \mathcal{V} = \{x | x \in \mathbb{R}, x \neq 0\}$ and $y \in \mathcal{W} = \{ y | y \geq 0 \}$. We must have $y_0$ within our region $R_1$. $y_0 = (5,2)$, so the region where the function is continuous is then:
+$$ R_1 = (x,y) \in \mathcal{Z} = \{x | x > 0 \} \times \{ y | y \geq 0 \}$$
+For uniqueness, we need $ \partial f / \partial y $ continuous over some region $R_2 \subseteq R_1$:
+$$\frac{\partial f}{\partial y} = \frac{-ln(|x|)}{2\sqrt{y}}$$
+which is continuous for $x \neq 0$ and $y > 0$. So we can define 
+$$ R_2 = (x,y) \in \mathcal{Z'} = \{x | x > 0 \} \times \{ y | y > 0 \}$$
+which is clearly a subset of $R_1$.
+
+
+\item \textbf{Numerical Stability:} Give the amplification factor and maximum step size for the following numerical methods for the model ODE $y' = \lambda y$, assuming that $\lambda < 0$.
+\begin{enumerate}
+\item Forward Euler \par
+\textbf{Solution} \newline
+We can derive the amplification factor beginning with the definition of the numerical method:
+$$y_{n+1} = y_n + hy'_n$$
+$$y'_n = \lambda y_n$$
+$$y_{n+1} = y_n + h\lambda y_n$$
+$$y_{n+1} = (1 + h\lambda)y_n = (1 + h \lambda)^{n+1} y_0$$
+So we have the amplification factor $\sigma(h) = 1 + h \lambda$. For stability, we need $|\sigma(h)|\leq 1$:
+$$\sigma(h) \geq -1$$
+$$1 + h\lambda \geq -1 $$
+$$h_{max} = \frac{2}{|\lambda|}$$
+
+\item Backward Euler\par
+\textbf{Solution} \newline
+$$y_{n+1} = y_n + hy'_{n+1} = y_n + h\lambda y_{n+1} $$
+$$y_{n+1} = \frac{1}{1 - h\lambda} y_n$$
+$$|\sigma(h)| = \bigg|\frac{1}{1 - h\lambda}\bigg| \leq 1 $$
+which is valid for all h since $\lambda < 0$, so Backward Euler is \textit{unconditionally stable}.
+\end{enumerate}
+
+\item \textbf{ODEs and Eigenvalues:} Transform the following second order ODEs into a system of first order ODEs, solve for the eigenvalues of the resulting matrices, and relate these to the solution to the ODE. 
+\begin{enumerate}
+\item $y'' - y = 0$ \par
+\textbf{Solution} \newline
+\par Substitute $v = y'$. This gives the system:
+$$\left[ \begin{array}{c}
+y' \\
+v' \end{array} \right] = 
+\left[
+\begin{array}{cc} 0 & 1 \\ 1 & 0 \end{array} \right]
+\left[ \begin{array}{c}
+y \\
+v \end{array} \right]$$
+\par This matrix has eigenvalues $\lambda_1 = 1$ and $\lambda_2 = -1$. \par Real parts of the eigenvalues correspond to the exponential part of a solution. This ODE has solution $y(x) = c_1 e^x + c_2 e^{-x}$, so the exponential behavior of the system is apparent.
+
+\item $y'' + y = 0$\par
+
+\textbf{Solution} \newline
+\par Substitute $v = y'$. 
+$$\left[ \begin{array}{c}
+y' \\
+v' \end{array} \right] = 
+\left[
+\begin{array}{cc} 0 & 1 \\ -1 & 0 \end{array} \right]
+\left[ \begin{array}{c}
+y \\
+v \end{array} \right]$$
+\par This matrix has eigenvalues $\lambda_1 = \imath$ and $\lambda_2 = -\imath$. \par Imaginary terms in the eigenvalue means there will be oscillatory terms in the solution. This follows from Euler's identity ($e^{\imath \pi} + 1 = 0$). This ODE has solution $y(x) = c_1 sin(x) + c_2 cos(x)$, which indeed has oscillatory terms. \par \textbf{Remark:} Consider how this corresponds to stability of a dynamical system. The imaginary part has no effect on stability; only the real part affects stability since this determines whether the system is exponentially growing or decaying in time.
+
+
+\item $y'' + 2y' + y = 0$\par
+
+\textbf{Solution} \newline
+\par Substitute $v = y'$. 
+$$\left[ \begin{array}{c}
+y' \\
+v' \end{array} \right] = 
+\left[
+\begin{array}{cc} 0 & 1 \\ -1 & -2 \end{array} \right]
+\left[ \begin{array}{c}
+y \\
+v \end{array} \right]$$
+\par This matrix has eigenvalue $\lambda = 1$ (a \textit{repeated eigenvalue}). A repeated eigenvalue means that the solution takes the form $y(x) = e^{-x}(c_1 + c_2x)$, which we could also verify by directly solving the homogeneous equation. 
+
+\end{enumerate}
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

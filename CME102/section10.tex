@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{14pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%---------------------------------------------------------------------------------------a-
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Week 10 Section Problems}
+\par If not otherwise specified, solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+
+\begin{enumerate}
+
+\item \textbf{Conceptual things:}  For each of the following, give a short, snappy explanation or definition.
+\begin{enumerate}
+\item Spanning vector/basis vector 
+\item Basis function
+
+\item Power series (a.k.a. Taylor series)
+
+\item Series solution
+
+\end{enumerate}
+
+\item \textbf{Example problems:}  Solve the following using a power series solution. 
+
+\begin{enumerate}
+\item $y' + y = x$
+
+\item $y'' - xy = 0$ \newline
+This equation is known as the Airy Equation, and its solutions (known as Airy functions) have many important applications in optics and quantum mechanics. 
+
+% Kreyszig 5.1 #11
+\item $y'' - y' + x^2y = 0$
+
+
+\end{enumerate}
+
+\item \textbf{Power series in action:}  For the following ODE:
+$$y'' + y = 0 \hspace{0.3in} y(0) = 1  \hspace{0.3in} y'(0) = 2$$
+\begin{enumerate}
+
+\item Solve this ODE using methods from earlier in the quarter. What method did you pick?
+\item Solve this ODE using the method of power series. 
+\item Recall the Taylor expansions for sine and cosine:
+$$sin(x) = \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1} \hspace{0.5in} cos(x) = \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n}$$
+Substitute these into your solution from part (a) and explain how this corresponds with your answer in part (b).\end{enumerate}
+
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

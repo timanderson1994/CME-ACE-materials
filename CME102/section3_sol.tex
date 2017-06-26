@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+
+\section*{Week 3 Section Solutions}
+\par Solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+
+\begin{enumerate}
+\item \textbf{Linear First Order ODEs:} Solve the following linear first order ODEs using either the formula derived in class or variation of parameters. 
+\begin{enumerate}
+\item $xy' + y = x$, $y(1) = 1$ \newline
+\textbf{Solution} \newline
+Recall from class that an ODE of the form $y' + p(x)y = q(x)$ has solution: $$y(x) = e^{-\int p(x) dx}\bigg (\int e^{\int p(x) dx} q(x) dx + C \bigg)$$
+Applying this to these problems:
+$$y' + \frac{1}{x} y = 1$$
+$$y(x) = e^{-\int \frac{1}{x} dx}\bigg (\int e^{\int \frac{1}{x} dx} (1) dx + C \bigg)$$
+$$y(x) = \frac{1}{x} \bigg (\int x dx + C \bigg)$$
+$$y(x) = \frac{1}{x} \big(\frac{x^2}{2} + C\big)$$
+$$y(x) = \frac{x}{2} + \frac{C}{x}$$
+Applying the initial condition:
+$$y(1) = \frac{1}{2} + \frac{C}{(1)} = 1$$
+$$ C = \frac{1}{2}$$
+$$y(x) = \frac{x}{2} + \frac{1}{2x}$$
+
+\item $xy' + y = sin(x)$, $y(1) = 0$ \newline
+\textbf{Solution} \newline
+$$y' + \frac{1}{x}y = \frac{sin(x)}{x}$$
+$$y(x) = e^{-\int \frac{1}{x} dx}\bigg (\int e^{\int \frac{1}{x} dx} \big(\frac{sin(x)}{x}\big) dx + C \bigg)$$
+$$y(x) = \frac{1}{x} \bigg (\int  sin(x) dx + C \bigg)$$
+$$y(x) = -\frac{cos(x)}{x} + \frac{C}{x} $$
+$$y(1) = 0 = -\frac{cos(1)}{(1)} + \frac{C}{(1)}$$
+$$ C = cos(1)$$
+$$ y(x) = -\frac{cos(x)}{x} + \frac{cos(1)}{x} $$
+
+
+\item $\frac{1}{2} y' + y = e^x$, $y(0) = 0$ \newline
+\textbf{Solution} \newline
+$$y' + 2y = 2e^x$$
+$$y(x) = e^{-\int 2 dx}\bigg (\int e^{\int 2 dx} \big(2e^x\big) dx + C \bigg)$$
+$$y(x) = e^{-2x}\bigg (\int 2e^{2x} e^x dx + C \bigg)$$
+$$y(x) = e^{-2x}\bigg (\frac{2}{3}e^{3x} + C \bigg)$$
+$$y(x) = \frac{2}{3}e^{x} + Ce^{-2x}$$
+$$y(0) = 0 = \frac{2}{3} + C$$
+$$C = -\frac{2}{3}$$
+$$y(x) = \frac{2}{3}e^{x} - \frac{2}{3}e^{-2x}$$
+
+\end{enumerate}
+
+\item \textbf{Numerical Accuracy:} Show the following.
+\begin{enumerate}
+\item Forward Euler is globally first-order accurate. \newline
+\textbf{Solution} \newline
+The Forward Euler method is defined by:
+$$\frac{y_{n+1} - y_n}{h} = \tilde{y}'_n$$
+$$\tilde{y}_{n+1} = y_n + hy_n'$$
+$$y(x_{n+1}) = y(x_n + h) = y(x_n) + hy'(x_n) + \frac{1}{2}h^2 y''(x_n) + O(h^3)$$
+$$y_{n+1} - \tilde{y}_{n+1} = h^2 y''_n + O(h^3)$$
+So, Forward Euler is $O(h^2)$ locally. To find global error, we multiply by $n$. Recall that $n = 1/h$, so $O(h^2) \times n = O(h^2)/h = O(h)$.
+
+\item Backward Euler is locally second-order accurate.\newline
+\textbf{Solution} \newline
+The Backward Euler method is defined by:
+$$\frac{y_{n+1} - y_n}{h} =y'_{n+1}$$
+$$y_{n+1} = y_n + h\lambda y_{n+1}$$
+$$y_{n+1} = \frac{y_n}{1-h\lambda}$$
+Using the taylor expansion
+$$\frac{1}{1-x} = 1 + x + x^2 + x^3 + O(x^4)$$
+we have
+$$ y_{n+1} = y_n(1 + h\lambda + h^2\lambda^2 + h^3\lambda^3 + O(h^4))$$
+For the actual solution $y(x)$, we can expand $y(x_{n+1})$ as:
+$$y(x_{n+1}) = y(x_n + h) = y_n + hy'(x_n) + \frac{h^2}{2} y''(x_n) + O(h^3)$$
+and applying the ODE we have:
+$$y(x_{n+1}) = y(x_n + h) = y_n + h\lambda y_n + \frac{h^2 \lambda^2 }{2}y_n + O(h^3)$$
+Then subtracting these, we have the final accuracy
+$$y_{n+1} - y(x_{n+1}) = \frac{h^2\lambda^2}{2} y_n + O(h^3)$$
+So, Backward Euler is $O(h^2)$ locally. 
+
+\end{enumerate}
+
+\item \textbf{Systems of Linear Equations:} Put the following systems of equations into matrix-vector form. State whether each has a unique solution. 
+\begin{enumerate}
+\item $$ 4x + 5y + 6z = 2$$
+$$x + 7z = 5$$
+$$8y + 2z = 0$$
+\textbf{Solution} \newline
+\par We want to arrange equations in the form $A\vec{x} = b$, where $A$ is a $m\times n$ matrix, $\vec{x}$ is a $n\times 1$ column vector, and $b$ is a $m\times 1$ row vector. Arranging in this form, we have:
+
+$$\left[ \begin{array}{ccc}
+4 & 5 & 6 \\
+1 & 0 & 7 \\
+0 & 8 & 2 \end{array} \right]
+\left[\begin{array}{c}
+x  \\
+y  \\
+z  \end{array} \right] =
+\left[\begin{array}{c}
+2  \\
+5  \\
+0  \end{array} \right]$$
+
+\par This will have a unique solution since we have three linearly independent equations and three unknowns. More mathematically, if the \textit{rank} of the matrix is equation to the number of unknowns, then the solution will be unique.
+
+\item
+$$ 3 y_1 + 2 y_2 + 5y_3 = 2$$
+$$ y_3 + y_2 = 7$$
+\textbf{Solution} \newline
+$$\left[ \begin{array}{ccc}
+3 & 2 & 5 \\
+0 & 1 & 1 \end{array} \right]
+\left[\begin{array}{c}
+y_1  \\
+y_2 \\
+y_3  \end{array} \right] =
+\left[\begin{array}{c}
+2  \\
+7  \end{array} \right]$$
+
+\par There are only two equations for three unknowns, so the system is \textit{underdetermined} and therefore has infinitely many solutions. \newline
+
+\par \textbf{Remark:} It is important to be able to characterize if a given system is unique to underdetermined. Specifically, if a system has infinitely many solutions, then we need to be aware of which solutions can be present, and how we can further constrain a system to produce to the solution we desire. 
+\par For ODEs, the order is the number of degrees of freedom and the initial/boundary conditions are what constrain or "pin down" our solution. By doing this, we can pick the desired solution by picking the appropriate constraints on the system. Remember that the constants of integration are determined by the initial conditions, and that these constants determine the solution. By picking the constants, we are able to pick the final solution. 
+
+\end{enumerate}
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

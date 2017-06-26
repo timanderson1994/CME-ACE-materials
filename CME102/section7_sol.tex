@@ -1,0 +1,268 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage[]{mcode} %MATLAB code
+
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1.25in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{14pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Week 7 Section Problems}
+\par If not otherwise specified, solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+\begin{enumerate}
+\item \textbf{Solve} $y'' + 3y' + 2.25y = -10e^{-1.5x}$, $y(0) = 1$, $y'(0) = 0$ \par
+\textbf{Solution} \newline
+Characteristic polynomial:
+$$\lambda^2 + 3\lambda + 2.25 = 0 $$
+$$(\lambda + 1.5)^2 = 0$$
+$$\lambda = -1.5$$
+so the homogeneous solution is 
+$$ y_h = e^{-1.5x}(c_1+c_2x)$$
+We can then use undetermined coefficients to find the particular solution. Assume a solution of the form $y_p = Ax^2e^{-1.5x}$:
+$$Ae^{-1.5x}(6x - 4.5x^2 + 2.25 x^2 - 6x + 2) + Ax^2e^{-1.5x} = -10e^{-1.5x}$$
+$$A = -5$$
+$$y_p = -5x^2e^{-1.5x}$$
+$$y(x) = e^{-1.5x}(c_1+c_2x) -5x^2e^{-1.5x}$$
+\begin{center} $c_1 = 1$, $c_2 = 1.5$ \end{center}
+$$y(x) = e^{-1.5x}(1 + 1.5x -5x^2)$$
+
+\item \textbf{Solve} $y'' + 4y = sec(2x) $, $y(0) = 0$, $y'(0) = 1$\par
+\textbf{Solution} \newline
+The homogeneous solution is giving by: $y(x) = c_1sin(2x) + c_2cos(2x)$. We then need to use variation of parameters to find the particular solution: 
+$$W = y_1y_2' - y_2y_1' = 2$$
+$$y_p(x) = -\frac{1}{2}cos(2x) \int sec(2x)sin(2x)dx + \frac{1}{2}sin(2x) \int sec(2x)cos(2x)dx$$
+$$y_p(x) = -\frac{1}{2}cos(2x) \int tan(2x)dx + \frac{1}{2}sin(2x) \int dx$$
+$$y_p(x) = \frac{1}{4}cos(2x) ln(|cos(2x)|)+ \frac{1}{2}x(sin(2x)) $$
+$$y(x) = c_1sin(2x) + c_2cos(2x) + \frac{1}{2}cos(2x) ln(|cos(2x)|)+ \frac{1}{2}x(sin(2x)) $$
+\begin{center} $c_1 = \frac{1}{2}$, $c_2 = 0$ \newline \end{center}
+$$y(x) = \frac{1}{2}sin(2x) + \frac{1}{2}cos(2x) ln(|cos(2x)|)+ \frac{1}{2}x(sin(2x)) $$
+
+
+\item \textbf{Generalized RK2} The generalized formula for RK2 is given by:
+$$k_1 = hf(t_n,y_n)$$
+$$k_2 = hf(t_n + \alpha h, y_n + \alpha k_1)$$
+$$y_{n+1} = y_n + (1 - \frac{1}{2\alpha})k_1 + \frac{1}{2\alpha}k_2$$
+where $\alpha$ is a free parameter and $\alpha \in (0,1]$. For the model equation $y' = \lambda y$, derive the amplification factor $\sigma (h,\alpha)$ and maximum step size $h_{max} (\alpha)$. For what value of $\alpha$ is $h_{max}$ maximized? (\textit{Hint}: there may not be a maximum or minimum to this function.) \par
+\textbf{Solution} 
+$$y_{n+1} = y_n + (1-\frac{1}{2\alpha})h\lambda y_n + \frac{h\lambda}{2\alpha}(y_n + \alpha h \lambda y_n)    $$
+$$y_{n+1} = y_n + h\lambda y_n + \frac{h^2\lambda^2}{2}y_n $$
+We see that the amplification factor---and thus the maximum step size---is not dependent on $\alpha$ for the model problem. However, if were we dealing with a different problem, the $\alpha$ factor would be an important tuning parameter for minimizing the error given the dynamics of the problem. 
+
+\item \textbf{Direct Method} Consider the following boundary value problem:
+$$y'' - 2y' + y = x^2,\qquad y(0) = 0, \qquad y(1) = 1$$
+\begin{enumerate}
+\item Solve the BVP analytically. \newline
+\textbf{Solution:} We solve identically to how we solve IVP's, except in this case we solve for the constants using boundary values instead of initial values.
+\begin{align*}
+y'' - 2y' + y &= x^2\\
+\intertext{Using the characteristic equation to solve for the homogeneous solution:}
+\lambda^2 - 2\lambda + 1 &= 0\\
+\lambda &= 1\\
+y_h &= (c_1 + c_2x)e^{\lambda x}
+\intertext{and using undetermined coefficients to solve for the particular solution:}
+y_p &= A x^2 + Bx + C\\
+y_p' &= 2Ax + B\\
+y_p'' &= 2A\\
+(2A) - 2(2Ax + B) &+ Ax^2 + Bx + C = x^2\\
+Ax^2 + (-4A + B)x& + (2A - 2B + C) = x^2\\
+A &= 1 \\
+-4A + B &=0 \rightarrow B = 4\\
+2A - 2B + C &=0 \rightarrow C = 6\\
+y_p &= x^2 + 4x + 6\\
+y(x) &= (c_1 + c_2x)e^x + x^2 + 4x + 6\\
+y(0) = 0 &= c_1+6\\
+c_1 &= -6\\
+y(1) = 1 &= -6e^{1} + c_2 e^1 + 1 + 4 + 6\\
+c_2 &= -10e^{-1} + 6\\
+y(x) &= (-10e^{-1} + 6)xe^{x} +x^2 + 4x + 6\quad \blacksquare
+\end{align*}
+
+\item Classify the boundary conditions \newline
+\textbf{Solution:} both boundary conditions are Type I (Dirichlet).
+\item Set up the recursive equation for an interior node using second order central differencing schemes. 
+\begin{align*}
+y'' - 2y' + y &= x^2\\
+\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} - 2\frac{y_{i+1} - y_{i-1}}{2h} + y_i &= x_i^2\\
+y_{i+1} - 2y_i + y_{i-1}- h(y_{i+1} - y_{i-1}) + h^2y_i &= h^2x_i^2\\
+(1-h)y_{i+1} + (h^2-2)y_i+ (1+h)y_{i-1} &= h^2x_i^2\\
+\intertext{And using that $h = 0.2$ for $N=6$ nodes:}
+0.8y_{i+1} -1.96y_i+ 1.2y_{i-1} &= 0.04x_i^2
+\end{align*}
+\item Set up the matrix equation $A\vec x = b$ for $N = 6$ nodes.  \newline
+\textbf{Solution:}
+\begin{align*}
+0.8y_{i+1} -1.96y_i+ 1.2y_{i-1} &= 0.04x_i^2\\
+\intertext{Evaluating for each node:}
+0.8y_{3} -1.96y_2+ 1.2y_{1} &= 0.04x_2^2\\
+0.8y_{4} -1.96y_3+ 1.2y_{2} &= 0.04x_3^2\\
+0.8y_{5} -1.96y_4+ 1.2y_{3} &= 0.04x_4^2\\
+0.8y_{6} -1.96y_5+ 1.2y_{4} &= 0.04x_5^2 \\
+\intertext{Plugging in for the right hand side values:}
+0.8y_{3} -1.96y_2+ 1.2y_{1} &= 0.04(0.2)^2 = 0.0016\\
+0.8y_{4} -1.96y_3+ 1.2y_{2} &= 0.04(0.4)^2 = 0.0064\\
+0.8y_{5} -1.96y_4+ 1.2y_{3} &= 0.04(0.6)^2 = 0.0144\\
+0.8y_{6} -1.96y_5+ 1.2y_{4} &= 0.04(0.8)^2 = 0.0256 \\
+\intertext{Then plugging in for the boundary conditions:}
+0.8y_{3} -1.96y_2+ 1.2(0) &=0.0016\\
+0.8y_{3} -1.96y_2&=0.0016\\
+0.8(1) -1.96y_5+ 1.2y_{4} &= 0.0256 \\
+ -1.96y_5+ 1.2y_{4} &= -0.7744 \\
+\intertext{And finally putting into a matrix-vector form:}
+\left[ \begin{array}{cccc}
+-1.96 & 0.8 & 0 & 0 \\
+ 1.2 &-1.96 &0.8 &0 \\
+ 0&1.2 &-1.96 &0.8 \\
+0 &0 &1.2 &-1.96 \\ 
+\end{array}
+\right] 
+\left[ \begin{array}{c}
+y_2 \\ y_3 \\ y_4 \\ y_5 \end{array} \right]
+&= \left[\begin{array}{c} 0.0016 \\ 0.0064 \\ 0.0144 \\ 0.7744 \end{array} \right]
+\end{align*}
+\item Complete the previous parts, except with the right boundary condition now changed to $y'(1) = 1$. (\textit{Hint:} very little will change for this part.) \newline
+\textbf{Solution:}
+\par For the analytical solution:
+\begin{align*}
+y(x) &= (c_1 + c_2x)e^x + x^2 + 4x + 6\\
+y(0) = 0 &= c_1+6\\
+c_2 &= -6\\
+y'(x) &= -6e^x + c_2e^x + c_2xe^x + 2x + 4\\
+y'(1) = 1 &= -6e^1 2c_2 e^1 + 2 + 4\\
+c_2&= \frac{-5}{2}e^{-1} + 6\\
+y(x) &=\left (-\frac{5}{2}e^{-1} + 6\right)xe^{x} +x^2 + 4x + 6\quad \blacksquare
+\end{align*}
+
+\par Left boundary is a Type I (Dirichlet) boundary condition, right boundary is a Type II (Neumann) boundary condition. 
+\par Recursive equation for interior nodes remains the same: 
+$$0.8y_{i+1} -1.96y_i+ 1.2y_{i-1} = 0.04x_i^2$$
+The matrix remains largely unchanged, except the node at $i=6$ is now a degree of freedom, so there is an additional equation in the matrix. The right boundary equation is given by:
+$$0.8y_{7} -1.96y_6+ 1.2y_{5} = 0.04(1)^2$$
+We must reformulate the Neumann BC, then plug this into our recursive to eliminate the ghost point:
+\begin{align*}
+y'(1) &= 1 \\
+\frac{y_7 - y_5}{2h} &= 1 \\
+y_7 = 2h + y_5 \\
+0.8y_{7} -1.96y_6+ 1.2y_{5} &= 0.04\\
+0.8(2h + y_5) -1.96y_6+ 1.2y_{5} &= 0.04\\
+0.8(0.2 + y_5) -1.96y_6+ 1.2y_{5} &= 0.04\\
+0.16 + 0.8y_5 -1.96y_6+ 1.2y_{5} &= 0.04\\
+-1.96y_6 + 2 y_5 &= -0.12
+\end{align*}
+
+This gives the final matrix equation as:
+$$\left[ \begin{array}{ccccc}
+-1.96 & 0.8 & 0 & 0 &0 \\
+ 1.2 &-1.96 &0.8 &0 &0\\
+ 0&1.2 &-1.96 &0.8 &0\\
+0 &0 &1.2 &-1.96 &0.8\\
+0&0&0&2&-1.96 
+\end{array}
+\right] 
+\left[ \begin{array}{c}
+y_2 \\ y_3 \\ y_4 \\ y_5 \\y_6\end{array} \right]
+= \left[\begin{array}{c} 0.0016 \\ 0.0064 \\ 0.0144 \\ 0.0256 \\ -0.12\end{array} \right] $$
+\end{enumerate}
+
+%\item \textbf{An example from Civil Engineering:} The equation governing the flexure of a rigid body such as a column or beam (or tectonic plate, as a matter of fact), is given by: $$ E \frac{d^4u}{dx^4} + F\frac{d^2u}{dx^2} = q $$
+%where $E$ is the flexural rigidity, $F$ is the axial compressive force, and $q$ is the intensity of the distributed lateral load.
+%For this equation, do the following:
+%\begin{enumerate}
+%\item Classify this ODE (order, linear/nonlinear, homogeneous/inhomogeneous) \par
+%\textbf{Solution:} Fourth order, linear, inhomogeneous ODE.
+%\item Describe a method you could possibly use to solve this ODE. \textbf{Do not} solve the ODE. \par
+%\textbf{Solution:} Undetermined coefficients would be the best way to derive an analytical solution for this ODE (and indeed, it is quite straight forward to do so). 
+%\item Write a MATLAB function to implement this system that accepts $E$, $F$, $q$, $u$, and $t$ as arguments. Be sure to pay attention to the order in which you input your $u$ and $t$ arguments. \par
+%\textbf{Solution}
+%
+%\begin{lstlisting} 
+%function yp = f(t,u,E,F,q)
+%	yp = zeros(4,1);
+%	yp(1) = u(2);
+%	yp(2) = u(3);
+%	yp(3) = u(4);
+%	yp(4) = -(F/E)*yp(2) + q;
+%end
+%\end{lstlisting}
+%
+%\item You are given a function \begin{verbatim} [T Y] = RK2(@(t,y) f, tspan, y0, h) \end{verbatim} where \texttt{f} is your function, \texttt{tspan} is a two element row-vector specifying the interval for which you want to solve the ODE, \texttt{y0} is a column vector containing your initial conditions, and \texttt{h} is your step size, T is a row vector containing the times at which the problem is solved, and Y is a matrix where each row is the solution vector for one variable. You are also told that the initial conditions for the above ODE are $y(0) = y'(0)=y''(0) = 0$ and $y^{(3)}=1$. \par
+%You want to solve this problem for $t \in [0, 5]$. Suppose that you run some simulations and find that the maximum step size $h$ for this interval is $h = 10^{-4}$. Write a short MATLAB script that implements Runge-Kutta 2 with the function you are given, and plots $x$ vs. $u$ and $x$ vs. $u''$ with a legend.
+%
+%\begin{lstlisting} 
+%y0 = [0 0 0 1]';
+%[T Y] = RK2(@(t,y) f(t,y,E,F,q), [0 5], y0, h)
+%plot(T,Y(1,:),T,Y(3,:),'LineWidth',2); 
+%legend('u','second derivative')
+%
+%\end{lstlisting}
+%
+%\item You run the above script, and it takes around 10 minutes to run. This is unacceptable given how small the problem is. Describe \textbf{two} ways we could make this run faster. 
+%
+%\textit{Hint:} consider how many flops (\textbf{fl}oating point \textbf{op}eration\textbf{s}) we are using with this method versus others, and also how we could make $h_{max}$ larger. \par
+%\textbf{Solution:} RK2 is a fully-explicit numerical scheme, so it will always have a maximum time step. There are a few different ways we can speed this up:
+%\begin{enumerate}
+%\item Use a method that requires less flops. For example, we could use Forward Euler instead of RK2, since Forward Euler requires much few flops. However, the maximum step size will probably also shrink, so it is necessary to evaluate this trade off.
+%\item Use an implicit method that does not have a maximum step size (e.g. trapezoidal method). This will allow us to take much larger time steps. However, if we do this then we will lose accuracy as the step size grows. Implicit methods also usually require the solution of nonlinear or large systems of linear equations, so the number of flops will quickly balloon with an implicit method.
+%\item Opposite of (i): we could use an explicit method that will allow us to take a larger time step. For some problems, we may be able to lower the run time by taking a larger time step with a more stable explicit scheme (e.g. RK4). In other cases though, this may increase the runtime, since RK4 requires many more flops per time step than does RK2.
+%\end{enumerate}
+%Overall, picking the right numerical method for a problem is a matter of evaluating tradeoffs in the numerics based on the characteristics of the problem. Much of engineering numerical analysis and computational simulation research is devoted to dealing with these tradeoffs and developing methods to improve the overall outcomes. 
+%\end{enumerate}
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

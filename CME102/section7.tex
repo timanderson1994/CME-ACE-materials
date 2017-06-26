@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage[]{mcode} %MATLAB code
+
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1.25in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{14pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Week 7 Section Problems}
+\par If not otherwise specified, solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+\begin{enumerate}
+\item \textbf{Solve} $y'' + 3y' + 2.25y = -10e^{-1.5x}$, $y(0) = 1$, $y'(0) = 0$ 
+
+\item \textbf{Solve} $y'' + 4y = sec(2x) $, $y(0) = 0$, $y'(0) = 1$
+
+\item \textbf{Direct Method} Consider the following boundary value problem:
+$$y'' - 2y' + y = x^2,\qquad y(0) = 0, \qquad y(1) = 1$$
+\begin{enumerate}
+\item Solve the BVP analytically.
+\item Classify the boundary conditions
+\item Set up the recursive equation for an interior node using second order central differencing schemes.
+\item Set up the matrix equation $A\vec x = b$ for $N = 6$ nodes. 
+\item Complete the previous parts, except with the right boundary condition now changed to $y'(1) = 1$. (\textit{Hint:} very little will change for this part.)
+\end{enumerate}
+
+
+%\item \textbf{An example from Civil Engineering:} The equation governing the flexure of a rigid body such as a column or beam (or tectonic plate, as a matter of fact), is given by: $$ E \frac{d^4u}{dx^4} + F\frac{d^2u}{dx^2} = q $$
+%where $E$ is the flexural rigidity, $F$ is the axial compressive force, and $q$ is the intensity of the distributed lateral load.
+%For this equation, do the following:
+%\begin{enumerate}
+%\item Classify this ODE (order, linear/nonlinear, homogeneous/inhomogeneous) \par
+%\item Describe a method you could possibly use to solve this ODE. \textbf{Do not} solve the ODE. \par
+%
+%\item Write a MATLAB function to implement this system that accepts $E$, $F$, $q$, $u$, and $t$ as arguments. Be sure to pay attention to the order in which you input your $u$ and $t$ arguments. \par
+%
+%\item You are given a function \begin{verbatim} [T Y] = RK2(@(t,y) f, tspan, y0, h) \end{verbatim} where \texttt{f} is your function, \texttt{tspan} is a two element row-vector specifying the interval for which you want to solve the ODE, \texttt{y0} is a column vector containing your initial conditions, and \texttt{h} is your step size, T is a row vector containing the times at which the problem is solved, and Y is a matrix where each row is the solution vector for one variable. You are also told that the initial conditions for the above ODE are $y(0) = y'(0)=y''(0) = 0$ and $y^{(3)}=1$. \par
+%You want to solve this problem for $t \in [0, 5]$. Suppose that you run some simulations and find that the maximum step size $h$ for this interval is $h = 10^{-4}$. Write a short MATLAB script that implements Runge-Kutta 2 with the function you are given, and plots $x$ vs. $u$ and $x$ vs. $u''$ with a legend.
+%
+%
+%\item You run the above script, and it takes around 10 minutes to run. This is unacceptable given how small the problem is. Describe \textbf{two} ways we could make this run faster. 
+%
+%\textit{Hint:} consider how many flops (\textbf{fl}oating point \textbf{op}eration\textbf{s}) we are using with this method versus others, and also how we could make $h_{max}$ larger. 
+%\end{enumerate}
+
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

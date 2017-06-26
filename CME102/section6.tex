@@ -1,0 +1,96 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Week 6 Section Problems}
+\par If not otherwise specified, solve the following problems. If initial conditions are given, solve for all constants of integration. It is okay to leave answers in implicit form or with unsolved integrals. 
+
+\begin{enumerate}
+\item For the following ODEs, give the method we would use to solve them and why. \textit{Note:} it is not necessary to solve these, simply give the steps you would hypothetically use to solve the ODE. 
+\begin{enumerate}
+\item $x^2 y'' + xy' + 2y = cos(x)$ \par
+
+\item $(y'')^2 + y = cos(x)$\par 
+
+\item $y'' + 2y' + y = cos(x)$ \par
+
+\item $y'' + 2y' + y = cos^2(x)$ \par
+
+\end{enumerate}
+\item $y'' - 4y' +4y = e^{2x}$ 
+
+\item $y'' + 2y = sec(\sqrt{2}x)$ 
+
+
+\item Improved Euler, also known as Heun's Method, has equations given by: 
+$$y' = f(t, y(t))$$
+$$y_{i+1/2} = y_i + hf(t_i,y_i)$$
+$$y_{i+1} = y_i + \frac{h}{2}[f(t_i,y_i) + f(t_{i+1},y_{i+1/2})]$$ 
+Derive the amplification factor for the general equation $y' = \lambda y$. Using this, could you give the local accuracy for this method?
+
+\item \textbf{Generalized RK2} The generalized formula for RK2 is given by:
+$$k_1 = hf(t_n,y_n)$$
+$$k_2 = hf(t_n + \alpha h, y_n + \alpha k_1)$$
+$$y_{n+1} = y_n + (1 - \frac{1}{2\alpha})k_1 + \frac{1}{2\alpha}k_2$$
+where $\alpha$ is a free parameter and $\alpha \in (0,1]$. For the model equation $y' = \lambda y$, derive the amplification factor $\sigma (h,\alpha)$ and maximum step size $h_{max} (\alpha)$. For what value of $\alpha$ is $h_{max}$ maximized? (\textit{Hint}: there may not be a maximum or minimum to this function.) 
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
