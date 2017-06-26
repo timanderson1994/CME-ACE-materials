@@ -1,0 +1,372 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% writeLaTeX Example: A quick guide to LaTeX
+%
+% Source: Dave Richeson (divisbyzero.com), Dickinson College
+% 
+% A one-size-fits-all LaTeX cheat sheet. Kept to two pages, so it 
+% can be printed (double-sided) on one piece of paper
+% 
+% Feel free to distribute this example, but please keep the referral
+% to divisbyzero.com
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,landscape]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow, graphicx}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{parskip, bm}
+
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.25in,left=.25in,right=.25in,bottom=.25in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex}% plus -.5ex minus -.2ex}%
+                                {0.5ex}% plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1ex}% plus -.5ex minus -.2ex}%
+                                {0.5ex}% plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex}% plus -.5ex minus -.2ex}%
+                                {1ex}% plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+
+
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin= 0.5cm}
+\setlist[enumerate]{noitemsep, topsep=0pt, leftmargin= 0.5cm}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\def\mystrut(#1,#2){\vrule height #1pt depth #2pt width 0pt}
+
+\allowdisplaybreaks[4]
+\let \ds \displaystyle
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+
+\begin{center}
+     \Large{\textbf{CME 100 ACE -- Final Exam Reference Sheet}} \\
+\end{center}
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+% \section{Vector Algebra}
+
+
+\section{Dot Product}
+\par $\vec v \cdot \vec w = v_1w_1 + v_2 w_2 + v_3 w_3 = |\vec v | \; | \vec w | \cos \theta$
+\par \textbf{Projection vectors:} the projection of $\vec w$ onto $\vec v$:
+\[ \text{proj}_{\vec v} \vec w = \frac{ \vec w \cdot \vec v}{|\vec v|} \frac{ \vec v}{|\vec v|} \]
+
+\section{Cross Product}
+\begin{gather*} 
+\vec v \times \vec w = \left| \begin{array}{ccc} \vec i & \vec j & \vec k \\
+v_1 & v_2 & v_3 \\
+w_1 & w_2 & w_3 \end{array} \right|\\ = (v_2w_3 - w_2v_3) \vec i - (v_1 w_3 - v_3 w_1) \vec j + (v_1w_2 - w_2v_1) \vec k 
+\end{gather*}
+\par $|\vec v \times \vec w| = | \vec v| \; | \vec w| \sin \theta$
+\par Area of parallelogram ABCD: $Area = |\vec{AB} \times \vec{AD}|$
+\par Area of triangle ABD: $Area = \frac{1}{2} |\vec{AB} \times \vec{AC} |$
+
+
+\section{Lines and Planes}
+\par Parameterization of a line through $P_0$ parallel to vector $\vec v$:
+\[ \ell(t) = P_0 + t \vec v\]
+\par Two vectors/lines are 
+\begin{itemize}
+\item \textbf{Perpendicular (orthogonal)} if their \textit{dot product} is 0
+\item \textbf{Parallel} if their \textit{cross-product} is 0
+\end{itemize}
+\par The plan through point $P_0$ with normal $\vec n$:
+\[ (x - P_{0x}, y - P_{0y}, z - P_{0z})\cdot \vec n = 0\]
+
+\section{Vector-Valued functions}
+For a parameterized curve:
+\[ \vec r = f(t) \vec i + g(t) \vec j + h(t) \vec k \]
+the velocity and acceleration are given by 
+\[ \vec v = \frac{d\vec r}{dt}, \qquad \vec a = \frac{d^2 \vec r}{dt^2} \]
+\par \textbf{Arc length} for a curve parameterized over $t_1 \leq t\leq t_2$ is given by:
+\[ L = \int_{t_1}^{t_2} \sqrt{ \left( \frac{df}{dt}\right)^2+\left( \frac{dg}{dt}\right)^2+\left( \frac{dh}{dt}\right)^2}dt\]
+
+% \section{Velocity and Acceleration Vectors}
+
+
+\section{TNB-frame, Curvature, and Torsion}
+\begin{gather*}
+\vec T =  \frac{ \vec v}{|\vec v|}, \qquad \vec N = \frac{ d\vec T/dt}{|d \vec T/dt|} \\
+\vec B = \vec T \times \vec N, \qquad \kappa = \left| \frac{d \vec T}{ds} \right| = \frac{1}{|\vec v|} \left| \frac{ d\vec T}{dt} \right| = \frac{ | \vec v \times \vec a|}{|\vec v|^3} \\
+\tau = - \frac{d\vec B}{ds} \cdot \vec N = \frac{ \left| \begin{array}{ccc} \dot x & \dot y & \dot z \\
+\ddot x & \ddot y & \ddot z  \\ \dddot x &\dddot y &\dddot z \end{array} \right| }{ |\vec v \times \vec a|^2}
+\end{gather*}
+\par \textbf{Tangential and normal components of acceleration:}
+\begin{gather*}
+\vec a = a_T \vec T + a_N \vec N, \quad a_T = \frac{d}{dt} |\vec v| \\
+a_N = \kappa |\vec v|^2 = \sqrt{ |\vec a|^2 - a_T^2}
+\end{gather*}
+
+\section{Matrix Operations}
+\par \textbf{Vector:} 1D array of values, taken to usually indicate a \textit{column vector}.
+\par \textbf{Matrix:} 2D array of values. $m\times n$ matrix indicates $m$ rows and $n$ columns. Entry $a_{ij}$ is denoted by row number first, then column number. 
+\[\mathbf{A} = \left[ \begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n} \\ 
+a_{21} & \ddots & &\vdots \\
+\vdots & &\ddots & \vdots \\
+a_{m1} & \cdots & \cdots & a_{mn} \end{array} \right] \]
+\par \textit{Note:} it is easiest to think of all matrix/vector objects as matrices, and row/column vectors as matrices with size one along one dimension.
+
+\par \textbf{Transpose:} flip the dimensions and indices of the entries. \textit{Ex.} if $\mathbf{A}$ is $m \times n$ then $\mathbf{A}^T$ is $n \times m$ and $(A^T)_{ij} = a_{ji}$. 
+\par \textbf{Symmetric matrix:} a \textit{square matrix} such that $\mathbf{A} = \mathbf{A}^T$. 
+\par \textbf{Skew-symmetric matrix:} a \textit{square matrix} such that $\mathbf{A}^T = - \mathbf{A}$.
+\par \textbf{Diagonal matrix:} special type of matrix such that only the diagonal elements are non-zero. \textit{Note:} diagonal matrices are always square matrices.
+\[ \mathbf{D} = \left[ \begin{array}{cccc} 
+d_{11} & 0 & \cdots & 0 \\
+0 & d_{22} &  & \vdots \\
+\vdots & & \ddots & \vdots\\
+0 & \cdots & \cdots & d_{nn} \end{array} \right]\]
+
+\par \textbf{Identity matrix:} diagonal matrix where the diagonal entries are all 1. Denoted as $\mathbf{I}$. Satisfies $\mathbf{A} = \mathbf{I}\mathbf{A} = \mathbf{A}\mathbf{I}$. 
+\[ \mathbf{I} = \left[ \begin{array}{cccc} 
+1 & 0 & \cdots & 0 \\
+0 & 1 &  & \vdots \\
+\vdots & & \ddots & \vdots\\
+0 & \cdots & \cdots & 1 \end{array} \right]\]
+\subsection{Matrix Multiplication}
+\par For a matrix-matrix product $\mathbf{C} = \mathbf{AB}$, then
+\[ c_{ij} = a_{i1}b_{1j} + a_{i1}b_{1j} + \cdots + a_{in}b_{nj} = \sum_{k=1}^n a_{ik}b_{kj} \]
+\begin{itemize}
+\item Size along the dimension being multiplied (the \textit{inner dimension}) must match.
+\item Matrix product takes on the \textit{outer dimensions}. \textit{Ex.} if $\mathbf{A}$ is $m \times n$ and $\mathbf{B}$ is $n \times p$, then $\mathbf{C} = \mathbf{AB}$ is $m \times p$. 
+\item Matrix multiplication is \textbf{not} commutative i.e. $\mathbf{AB} \neq \mathbf{BA}$.
+\end{itemize}
+\par \textbf{Vector multiplication:} special case of matrix multiplication where one matrix has size 1 along one of its outer dimensions. 
+\subsection{Matrix Inverse}
+\par \textbf{Matrix inverse:} for a given matrix $\mathbf{A}$, the inverse is the matrix $\mathbf{M}$ such that $\mathbf{MA} = \mathbf{AM} = \mathbf{I}$. 
+\begin{itemize}
+\item Denote the matrix inverse as $\mathbf{A}^{-1}$. 
+\item To show that a given matrix $B$ is the inverse of $\mathbf{A}$, show that $\mathbf{AB} = \mathbf{I}$.
+\end{itemize}
+\par Inverse of $2 \times 2$ matrix:
+\[ \mathbf{A} = \left[\begin{array}{cc} a & b \\ c & d \end{array}\right] \qquad \mathbf{A}^{-1} = \frac{1}{\det \mathbf{A}} \left[ \begin{array}{cc} d & -b \\ -c & a \end{array} \right] \]
+
+\subsection{Determinants}
+\par Determinants only exist for square matrices.
+\par \textbf{$2 \times 2$ Determinant:}
+\[ \mathbf{A} = \left[\begin{array}{cc} a & b \\ c & d \end{array}\right] \qquad
+\det \mathbf{A} = ad - cb \]
+
+\par \textbf{$3 \times 3$ Determinant:} ``add the products of the down-diagonals, subtract the products of the up-diagonals''
+\[ \mathbf{A} = \left[\begin{array}{ccc} a & b & c \\ d & e & f \\
+g & h & i \end{array}\right] \qquad
+\det \mathbf{A} = aei + bfg + cdh - gec - hfa - idb \]
+
+\par \textbf{$4 \times 4$ Determinant:} multiply the first row element by the minor associated with that element, multiply by $-1$ if minor is formed by an even-numbered column. \textit{Ex.:}
+{\tiny 
+\begin{gather*} \det \left| \begin{array}{cccc} a_1 & a_2 & a_3 & a_4 \\
+b_1 & b_2 & b_3 & b_4 \\
+c_1 & c_2 & c_3 & c_4 \\
+d_1 & d_2 & d_3 & d_4 \end{array} \right|  = a_1 \det\left| \begin{array}{ccc} b_2 & b_3 & b_4 \\ c_2 & c_3 & c_4 \\ d_2 & d_3 & d_4 \end{array} \right|
+- a_2 \det\left| \begin{array}{ccc} b_1 & b_3 & b_4 \\ c_1 & c_3 & c_4 \\ d_1 & d_3 & d_4 \end{array} \right| \\ + a_3 \det\left| \begin{array}{ccc} b_1 & b_2 & b_4 \\ c_1 & c_2 & c_4 \\ d_1 & d_2 & d_4 \end{array} \right| - a_4 \det \left| \begin{array}{ccc} b_1 & b_2 & b_3  \\ c_1 & c_2 & c_3 \\ d_1 & d_2 & d_3 \end{array} \right| \end{gather*}
+}
+
+\section*{Multi-variable differentiation}
+\par Gradient: direction of fastest increase in $f$ \& normal to level curve / level surface
+\[ \ds{ \vec{\nabla}f = \frac{\partial f}{\partial x}\vec{i}+\frac{\partial f}{\partial y}\vec{j}+\frac{\partial f}{\partial z}\vec{k} } \]
+\par Directional derivative:  $\vec{\nabla}f\cdot\vec{n}$\quad (in direction of unit vector $\vec{n}$) 
+\par Chain rule:
+\[ \ds{ \frac{df}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}+ \frac{\partial f}{\partial z}\frac{dz}{dt}  = \vec{\nabla}f\cdot\frac{d\vec{r}}{dt} }\] 
+\par Linear approximation: $f(x,y) \approx f(x_0,y_0)+(x-x_0)f_x(x_0,y_0)+ (y-y_0)f_y(x_0,y_0)$, $f(\vec{r}) \approx f(\vec{r}_0)+(\vec{r}-\vec{r}_0)\cdot\vec{\nabla}f(\vec{r}_0)$
+\par Tangent line \& plane to $f(x,y,z)$ at $(x_0,y_0,z_0)$: \[ \vec{\nabla}f(\vec{r}_0)\cdot(\vec{r}-\vec{r}_0)= 0\]
+
+
+\section*{Optimization}
+\subsection{Unconstrained} 
+\par Critical point (``first order condition''): $\vec{\nabla}f = 0 $ 
+\par Saddle point: $f_{xx}f_{yy}-f_{xy}^2 < 0 $ 
+\par Min (``second order condition''): $f_{xx}f_{yy}-f_{xy}^2 > 0, \quad f_{xx} > 0$ 
+\par Max (``second order condition''): $f_{xx}f_{yy}-f_{xy}^2 > 0, \quad f_{xx} < 0$
+\par If $f_{xx}f_{yy}-f_{xy}^2 = 0$, then the extremum is undefined, must use higher order derivative
+\subsection{Constrained}
+\par Problem: minimize or maximize $f(x,y,z)$ subject to $g(x,y,z)=0$
+\par Method 1 (Lagrange multipliers): solve the system 
+\begin{gather*}
+ \vec{\nabla}f= \lambda\vec{\nabla}g  \\
+   g(x,y,z)= 0
+   \end{gather*}
+\par Method 2: use $g(x,y,z)=0$ as parametrized boundary \& find critical points (plug in the constraint to the objective and optimize)
+
+\section*{General coordinate transform}
+Formula: 
+\[ \ds{ \iiint f(x,y,z)dxdydz = \iiint f(u,v,w)|J(u,v,w)|dudvdw }\]
+Jacobian 
+ \[ J(u,v,w) = \ds{\frac{\partial(x,y,z)}{\partial(u,v,w)}} =
+               \left|\begin{array}{ccc}
+               \partial x/\partial u & \partial y/\partial u & \partial z/\partial u \\
+               \partial x/\partial v & \partial y/\partial v & \partial z/\partial v \\
+               \partial x/\partial w & \partial y/\partial w & \partial z/\partial w \end{array}\right|
+              = \ds{\frac{1}{J(x,y,z)}} \]
+Polar coordinates: $x=r\cos\theta,\; y=r\sin\theta,\; J(r,\theta) = r $ 
+\par Cylindrical:  $x=r\cos\theta,\; y=r\sin\theta,\; z=z,\; J(r,\theta,z) = r $
+\par Spherical: $x=\rho\sin\phi\cos\theta,\; y=\rho\sin\phi\sin\theta,\; z=\rho\cos\phi,\; J(\rho,\theta,\phi) = \rho^2\sin\phi $ 
+
+\section*{Area, mass, centroid, moment of inertia}
+Volume, mass: 
+\[ \ds{V = \iiint_Ddxdydz;\quad M = \iiint_D\delta(x,y,z)dxdydz}\]
+Centroid (replace $x$ by $y$ or $z$ for other components):
+\[\ds{ \overline{x} = \frac{1}{M}\iiint_Dx\delta(x,y,z)dxdydz }\]
+Moment of inertia (rotate $x$, $y$ and $z$ for $I_y$ and $I_z$):
+\[ \ds{ I_x = \iiint_D(y^2+z^2)\delta(x,y,z)dxdydz} \]
+
+
+\section*{Line integral along path $\bm{C}$}
+Work line integral: $\ds{W = \int_C \vec{F}\cdot d\vec{r} = \int_CMdx+Ndy+Pdz}$ 
+\par Flux line integral: $\ds{\Phi = \int_C\,Mdy-Ndx }$ 
+\par Conservative $\vec{F}$ conditions:
+\[ M_y = N_x;\ \ M_z = P_x;\ \ N_z = P_y \]
+\par Potential function $\vec{F} = \vec{\nabla}f;\ \ M=f_x;\ \ N=f_y;\ \ P=f_z $
+\par Work using path independence: $W = \int_a^b \vec V \cdot d\vec r = f(b) - f(a)$
+
+\section*{Surface integral}
+Surface $S$ described by $f(x,y,z) = 0$ (zero level set)
+\par Parametrized $S$ (e.g. spherical coordinates):
+\[ \ds{\iint_S\,g(x,y,z)d\sigma = \iint_R\,g(x(u,v),y(u,v),z(u,v))\left|\frac{\partial\vec{r}}{\partial u}\times\frac{\partial\vec{r}}{\partial v}\right|dudv }\]
+ where $R$ is rectangular region in transformed space $(u,v)$. 
+\par Explicit $S$ ($z=f(x,y)$) (rotate partial derivatives if projecting into different plane):
+ \[ \ds{\iint_S\,g(x,y,z)d\sigma = \iint_R\,g(x,y,z)\sqrt{1+\left(\frac{\partial f}{\partial x}\right)^2+\left(\frac{\partial f}{\partial y}\right)^2}dxdy } \]
+Implicit $S$ ($f(x,y,z)=0$):
+  \[\ds{\iint_S\,g(x,y,z)d\sigma = \iint_R\,g(x,y,z)\,\frac{|\vec{\nabla}f|}{|\vec{\nabla}f\cdot\vec{k}|}\,dxdy }\] 
+where $R$ is projection of $S$ on $x$-$y$ plane. 
+\par \textit{Note:} you do not introduce new variables for explicit/implicit surfaces, only in parameterized.
+
+\section*{Green's theorems}
+Circulation-Curl form (for work/circulation):
+\[ \ds{ \oint_C Mdx+Ndy = \iint_R\left(\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}\right)dxdy }\]
+\textit{Note:} if conservative $\vec{F} $, then circulation $= 0$ 
+\par Flux-Divergence form (for flux):
+\[ \ds{ \oint_C Mdy-Ndx = \iint_R\left(\frac{\partial M}{\partial x}+\frac{\partial N}{\partial y}\right)dxdy } \]
+
+\section*{Stokes' \& Divergence theorems}
+Curl definition: $\text{curl }\vec{F} = \vec{\nabla}\times\vec{F} $
+\par Stokes' theorem (for calculating circulation over a closed surface: 
+\[ \ds{ \oint_C \vec{F}\cdot d\vec{r} = \iint_S(\vec{\nabla}\times\vec{F}\cdot\vec{n})\,d\sigma =
+    \iint_R\frac{\vec{\nabla}\times\vec{F}\cdot\vec{\nabla}f}{|\vec{\nabla}f\cdot\vec{k}|}\,dxdy }\]
+where $R$ is projection of $S$ onto $x$-$y$ plane (this transforms a circulation integral about the edge into a surface integral)
+\par Divergence definition: $\text{div }\vec{F} = \vec{\nabla}\cdot\vec{F}$
+\par Divergence theorem (for calculating flux over closed surface):
+ \[ \ds{ \iint_S \vec{F}\cdot\vec{n}\,dS = \iiint_D(\vec{\nabla}\cdot\vec{F})dV }\] 
+where $D$ is the volume enclosed by surface $S$ and $\vec{n}$ is outward normal to surface $S$
+
+
+\section{Trigonometric Identities}
+\par \textbf{Regular trigonometric identities:}
+\begin{gather*}
+\sin^2 x + \cos^2 x = 1, \qquad \tan^2 x + 1 = \sec^2 x\\
+1 + \cot^2 x = \csc^2 x, \sin (2x) = 2 \sin x \cos x\\
+\cos (2x) = \cos^2 x - \sin^2 x = 2 \cos^2 x - 1 = 1 - 2 \sin^2 x\\
+\tan(2x) = \frac{ 2 \tan x}{1 - \tan^2 x}
+\end{gather*}
+\par \textbf{Hyperbolic trigonometric functions:}
+\begin{gather*}
+\sinh x = \frac{ e^x - e^{-x}}{2}, \quad \cosh x = \frac{ e^x + e^{-x}}{2}, \quad \tanh x  = \frac{e^x - e^{-x}}{e^x + e^{-x}} \\
+\cosh^2 x - \sinh^2 x = 1, \quad \tanh^2 x + \text{sech}^2 x = 1 \\
+\coth^2 x - \text{csch}^2 x = 1\\
+\sinh(2x) = 2 \sinh x \cosh x, \quad \cosh(2x) = 2 \cosh^2 x - 1\\
+\tanh(2x) = \frac{ 2 \tanh x}{1 + \tanh^2 x}
+\end{gather*}
+
+\section{Useful Integrals/Derivatives}
+\par \textbf{Trigonometric function derivatives:}
+\begin{gather*}
+\frac{d}{dx} \sin x = \cos x, \; \frac{d}{dx} \cot x = - \csc^2 x , \; \frac{d}{dx}\arcsin x = \frac{1}{\sqrt{1 - x^2}}\\
+\frac{d}{dx}\cot x = - \sin x , \;\frac{d}{dx}\sec x = \sec x \tan x, \; \frac{d}{dx}\arccos x = \frac{ -1}{\sqrt{1 - x^2}}\\
+\frac{d}{dx} \tan x = \sec^2 x , \; \frac{d}{dx} \csc x = - \csc x \cot x, \; \frac{d}{dx}\arctan x = \frac{1}{x^2 +1}
+\end{gather*}
+
+\par \textbf{Trigonometric function integrals:}
+\begin{gather*}
+\int \csc x dx = - \log |\csc x + \cot x| + C \\
+\int \sec x = \log |\sec x + \tan x| + C\\
+\int \tan x dx = - \log|\cos x| + C, \quad \int \cot x dx = \log | \sin x | + C
+\end{gather*}
+\par \textbf{Hyperbolic trig function derivatives:}
+\begin{gather*}
+\frac{d}{dx} \sinh (x) = \cosh (x), \quad \frac{d}{dx}\cosh (x) = \sinh (x)\\
+\frac{d}{dx}\tanh x = 1 - \tanh^2 (x), \quad \frac{d}{dx}\text{csch} (x) = - \text{coth}(x) \; \text{csch}(x) \\
+\frac{d}{dx}\text{sech} (x) = - \tanh x \; \text{sech} (x), \quad
+\frac{d}{dx}\coth x = 1 - \coth^2 (x)
+\end{gather*}
+
+
+\section{MATLAB}
+\par Matrix/vector multiplication: \texttt{A*B}
+\par Dot product: \texttt{dot(u,v)}
+\par Cross product: \texttt{cross(u,v)}
+\par Vector magnitude: \texttt{norm(v)}
+\par Absolute value: \texttt{abs(a)}
+\par Determinant: \texttt{det(A)}
+
+
+\subsection{MATLAB examples}
+\includegraphics[width=\columnwidth]{cheatsheatimgs/ex1.png}
+\includegraphics[width=\columnwidth]{cheatsheatimgs/ex2.png}
+\includegraphics[width=\columnwidth]{cheatsheatimgs/ex3.png}
+
+
+
+%\section{Delimiters}
+%\begin{tabular}{lll}
+%\emph{description} & \emph{command} & \emph{output}\\
+%parentheses &\verb!(x)! & (x)\\
+%brackets &\verb![x]! & [x]\\
+%curly braces& \verb!\{x\}! & \{x\}\\
+%\end{tabular}
+
+
+\end{multicols}
+
+\end{document}

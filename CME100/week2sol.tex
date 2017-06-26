@@ -1,0 +1,273 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 2\ Solutions} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\proj}{proj}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+\setlength{\parskip}{5pt}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill April\ 10,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+
+\section{Unit Vectors}
+\subsection{} Describe conceptually what a unit vector is. 
+\par \textbf{Solution:} A unit vector is a vector with unit magnitude. On a conceptual level, this is the vector equivalent of the number 1, since we can scale a unit vector by a scalar amount to get any vector in that direction. The simplest unit vectors are the $\bm{\vec i}$, $\bm{\vec j}$, and $\bm{\vec k}$ vectors we work with in Cartesian space, but in fact we could use any three \textit{orthogonal} unit vectors in cartesian space to use to decompose a 3-dimensional vector into separate components. 
+\par As an aside, it is obvious that we can decompose any 3-dimensional vector into the $\bm{\vec i}$, $\bm{\vec j}$, and $\bm{\vec k}$ vectors. This means that these three vectors form a \textit{basis} for our space. However, this is not the only basis. Indeed, any three mutually orthogonal unit vectors could be used as a basis for 3-dimensional cartesian space. (You can think of any set of vectors like this being a rotation of the three we typically work with.) Because the $\bm{\vec i}$, $\bm{\vec j}$, and $\bm{\vec k}$ vectors only have one non-zero component in each direction, we refer to these as our \textit{canonical basis} vectors. 
+
+\subsection{} Compute the unit vectors for the following vectors.
+\begin{enumerate}[label=(\alph*)]
+\item $\vec v = \langle 1,1,1 \rangle$
+\par \textbf{Solution:} Remember that the unit vector is simply the original vector \textit{normalized} by its magnitude. Therefore:
+\[ \frac{\vec v}{|\vec v|} = \frac{1}{\sqrt{1^2 + 1^2 + 1^2}} \vec v = \frac{\sqrt{3}}{3} \vec v \quad\blacksquare \]
+
+\item $\vec w = \langle 0,-1,-1 \rangle$
+\par \textbf{Solution:} 
+\[ \frac{ \vec w}{|\vec w|} = \frac{1}{\sqrt{ 0^2 + (-1)^2 + (-1)^2}} \vec w = \frac{\sqrt{2}}{2} \vec w \]
+
+\item $\vec u = \langle 10,8,-7 \rangle$
+\par \textbf{Solution:} 
+\[ \frac{\vec u}{|\vec u|} = \frac{1}{\sqrt{10^2 + 8^2 + (-7)^2}} \vec u = \frac{\sqrt{213}}{213} \vec u \]
+
+\end{enumerate}
+
+\subsection{} The unit vector from point $A = (0,2,3)$ to $B = (1,6,-2)$.
+\par \textbf{Solution:} First find the vector between the two points, calculate the magnitude, then find the unit vector:
+\begin{gather*}
+B - A = \langle 1 - 0, 6-2, -2-3 \rangle = \langle 1, 4, -5 \rangle \\
+|B - A| = \sqrt{1^2 + 4^2 + (-5)^2} = \sqrt{42} \\
+\frac{B - A}{|B - A|} = \frac{\sqrt{42}}{42}\langle 1, 4, -5 \rangle \quad\blacksquare
+\end{gather*}
+
+\subsection{} If $\vec v$ and $\vec w$ are orthogonal, will their unit vectors also be orthogonal? Why? 
+\par \textbf{Solution:} Yes, their associated unit vectors are just $\vec v$ and $\vec w$ scaled by their magnitudes. So the dot product of the unit vector will still be zero:
+\[ \vec v \cdot \vec w = 0 \implies \left( \frac{\vec v}{|\vec v|}  \right) \cdot \left( \frac{\vec w}{|\vec w|}  \right) = \frac{1}{|\vec v||\vec w|}(\vec v \cdot \vec w) = 0 \quad\blacksquare \]
+
+\section{Vector Operations}
+Compute the following.
+\begin{enumerate}[label=(\alph*)]
+\item[] \[ \vec v = \langle 1,2,5 \rangle, \quad \vec w = \langle 3, -4, 2 \rangle \]
+
+\item $2 \vec v  - \vec w$
+\par \textbf{Solution:}
+\[ 2 \vec v  - \vec w = 2 \langle 1,2,5 \rangle - \langle 3, -4, 2 \rangle = \langle 2 - 3,4 - (-4),10 - 2 \rangle = \langle -1,8,8 \rangle \quad\blacksquare \]
+
+\item $(2\vec v) \cdot \vec w$
+\par \textbf{Solution:}
+\[ (2 \vec v)  \cdot \vec w = (2 \langle 1,2,5 \rangle) \cdot( \langle 3, -4, 2 \rangle) = 2 \cdot 3 + 4 \cdot (-4) + 10 \cdot 2 = 42 \quad\blacksquare \]
+
+\item The unit vector of $\vec v \times \vec w$
+\par \textbf{Solution:} first find the cross product, then the magnitude, and finally the unit vector:
+\begin{gather*}
+\vec v \times \vec w = (2 \cdot 2 - (-4)\cdot 5) \vec i - (1 \cdot 2 - 3 \cdot 5) \vec j + (1 \cdot (-4) - 3 \cdot 2) \vec k  = 24 \vec i + 13 \vec j - 10 \vec k \\
+|\vec v \times \vec w| = \sqrt{24^2 + 13^2 + (-10)^2} = \sqrt{845} = 13\sqrt{5} \\
+\frac{\vec v \times \vec w}{|\vec v \times \vec w|} = \frac{\sqrt{5}}{65} \langle 24,13,-10 \rangle\quad \blacksquare
+\end{gather*}
+
+
+\item[] \[ \vec v = \langle 1,0,0 \rangle, \quad \vec w = \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle \]
+
+\item $\vec v \cdot \left( \frac{1}{\sqrt{3}} \vec w \right)$
+\par \textbf{Solution:}
+\[\vec v \cdot \left( \frac{1}{\sqrt{3}} \vec w \right) = \langle 1,0,0 \rangle \cdot \left( \frac{1}{\sqrt{3}} \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle \right) = 1 \cdot 1 + 0 \cdot 1 + 0 \cdot 1 = 1 \quad\blacksquare \]
+
+
+\item $\vec w \cdot \vec w$
+\par \textbf{Solution:}
+\[ \vec w \cdot \vec w = \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle \cdot \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle = 3(\sqrt{3}^2) = 27 \quad\blacksquare \]
+
+\item The angle between $\vec v$ and $\vec w$. 
+\par \textbf{Solution:} The easiest formula is use is $\theta = \cos^{-1} \left( \frac{ \vec v \cdot \vec w}{|\vec v||\vec w|} \right)$.
+\[ \theta = \cos^{-1} \left( \frac{ \vec v \cdot \vec w}{|\vec v||\vec w|} \right) = \cos^{-1} \left( \frac{ \sqrt{3}}{|1||3\sqrt{3}|} \right) | \approx 54.74^\circ\]
+
+
+\end{enumerate}
+
+\section{Projections}
+Compute the following.
+\begin{enumerate}[label=(\alph*)]
+\item[] \[ \vec v = \langle 1,2,5 \rangle, \quad \vec w = \langle 3, -4, 2 \rangle \]
+
+\item $\proj_{\vec v} \vec w$
+\par \textbf{Solution:}
+\[ \proj_{\vec v} \vec w = \frac{ \vec v \cdot \vec w}{|\vec v|} \frac{ \vec v }{|\vec v|} =  
+\frac{ 3 - 8 + 10}{\sqrt{1^2 + 2^2 + 5^2}} \frac{1}{\sqrt{1^2 + 2^2 + 5^2}}\langle 1,2,5 \rangle = 
+\frac{ 5}{\sqrt{30}} \frac{1}{\sqrt{30}}\langle 1,2,5 \rangle  = \frac{1}{6}\langle 1,2,5 \rangle \quad\blacksquare
+\]
+
+\item $\proj_{\vec w} \vec v$
+\par \textbf{Solution:}
+\[ \proj_{\vec w} \vec v = \frac{ \vec v \cdot \vec w}{|\vec w|} \frac{ \vec w }{|\vec w|} =  
+\frac{ 3 - 8 + 10}{\sqrt{3^2 + (-4)^2 + 2^2}} \frac{1}{\sqrt{3^2 + (-4)^2 + 2^2}}\langle 3, -4, 2 \rangle = 
+\frac{ 5}{\sqrt{29}} \frac{1}{\sqrt{29}}\langle 3, -4, 2 \rangle  = \frac{5}{29}\langle 3, -4, 2 \rangle \quad\blacksquare
+\]
+
+\item[] \[ \vec v = \langle 1,0,0 \rangle, \quad \vec w = \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle \]
+
+\item $\proj_{\vec v} \vec w$
+\par \textbf{Solution:}
+\[ \proj_{\vec v} \vec w = \frac{ \vec v \cdot \vec w}{|\vec v|} \frac{ \vec v }{|\vec v|} =  
+\frac{ \sqrt{3} +0 + 0}{\sqrt{1^2 + 0^2 + 0^2}} \frac{1}{\sqrt{1^2 + 0^2 + 0^2}}\langle 1,0,0 \rangle = 
+\frac{ \sqrt{3}}{1}\langle 1,0,0 \rangle  = \langle \sqrt{3},0,0 \rangle \quad\blacksquare
+\]
+
+\item $\proj_{\vec w} \vec v$
+\par \textbf{Solution:}
+\[ \proj_{\vec w} \vec v = \frac{ \vec v \cdot \vec w}{|\vec w|} \frac{ \vec w }{|\vec w|} =  
+\frac{ \sqrt{3} +0 + 0}{\sqrt{\sqrt{3}^2 + \sqrt{3}^2 + \sqrt{3}^2}} \frac{1}{\sqrt{\sqrt{3}^2 + \sqrt{3}^2 + \sqrt{3}^2}} \langle \sqrt{3}, \sqrt{3}, \sqrt{3} \rangle = 
+\frac{ \sqrt{3} }{3} \frac{1}{3} \langle \sqrt{3}, \sqrt{3}, \sqrt{3} \rangle  = \frac{1}{3}\langle 1, 1, 1 \rangle \quad\blacksquare
+\]
+
+\end{enumerate}
+
+\section{Lines and Planes}
+\subsection{} Compute the area enclosed by the parallelogram defined by:
+\[ A(0,0) \quad B(7,3) \quad C(9,8) \quad D(2,5) \]
+\par \textbf{Solution:} Recall that the area of a parallelogram is just the magnitude of the cross product of two of its sides. Here we will pick $AD$ and $AB$ as the sides and find $|AB \times AD|$. 
+\begin{gather*}
+AB = \langle 7,3 \rangle, \quad AD = \langle 2,5 \rangle \\
+AB \times AD = \langle 0, 0,  35 - 6\rangle = \langle 0, 0,  29\rangle \\
+|AB \times AD| = 29 \quad\blacksquare
+\end{gather*}
+
+\subsection{} Compute the area enclosed by the triangle defined by:
+\[ A(0, 0)\quad B(-2,3)\quad C(3, 1) \]
+\par \textbf{Solution:} Similarly, recall that the area of a triangle is half the magnitude of the cross product of two of its sides. Here we will pick $AB$ and $AC$ as the sides and find $|AC \times AB|$. 
+\begin{gather*}
+AC = \langle 3,1 \rangle, \quad AB = \langle -2,3 \rangle \\
+AB \times AD = \langle 0, 0,  9 - (-2)\rangle = \langle 0, 0,  11\rangle \\
+\frac{1}{2} |AB \times AD| = \frac{11}{2} \quad\blacksquare
+\end{gather*}
+
+\subsection{} Find the equation for the line through $(1,2,1)$ in the direction of $\vec v = \langle 0, 1, 0 \rangle$
+\par \textbf{Solution:} we parameterize the line by $ t \in \mathbb{R}$ and construct the line $L = P_0 + t \vec v$.
+\[ L = P_0 + t \vec v = \langle 1,2,1 \rangle + t \langle 0,1,0 \rangle = \langle 1,2  + t,1 \rangle \quad\blacksquare \]
+
+\subsection{} Find the equation for the plane through $(1,2,1)$ with normal $\vec n = \langle -1, 0, 1 \rangle$
+\par \textbf{Solution:} a plane is just a set of points, and we are looking for an equation that defines the set of points $(x,y,z)$ such that $\vec n$ is always orthogonal to a vector formed between these points and our points $P_0 = (1,2,1)$. From this, we can easily re-derive the plane equation:
+\[  0 = \vec n \cdot (\langle x,y,z \rangle - \langle 1,2,1 \rangle) = \langle -1, 0, 1 \rangle \cdot \langle x-1,y-2,z-1 \rangle = -(x-1) + (z-1) = 0 \quad\blacksquare \]
+
+
+\section{Vector-valued functions}
+Compute the velocity and acceleration vectors of the following. In (c), also compute the tangent vector at the given point.
+\begin{enumerate}[label = (\alph*)]
+\item $\vec r (t) = (1 + t) \vec i + \frac{t^2}{\sqrt{2}} \vec j + \frac{t^3}{3} \vec k$
+\par \textbf{Solution:}
+\begin{gather*}
+\vec v(t) = \vec i + \sqrt{2}t \vec j + t^2 \vec k \quad\blacksquare \\
+\vec a(t) = \sqrt{2} \vec j + 2t \vec k \quad\blacksquare
+\end{gather*}
+
+
+\item $\vec r(t) = \sec(t) \vec i + \tan (t) \vec j + t\vec k$
+\par \textbf{Solution:}
+\begin{gather*}
+\vec v(t) =  \tan(x)\sec(x) \vec i + \sec(x)^2 \vec j + \vec k \quad\blacksquare \\
+\vec a(t) = (\sec(x)\tan(x)^2 + \sec(x)^3) \vec i + 2 \tan(x) \sec(x)^2 \vec j  \quad\blacksquare  \\
+\end{gather*}
+
+\item $\vec r(t) =  \ln(t) \vec i+\frac{t - 1}{t + 2} \vec j +t\ln(t) \vec k$, and $t_0 = 1$
+\par \textbf{Solution:}
+\begin{gather*}
+\vec v(t) = \frac{1}{t} \vec i + \frac{3}{(t + 2)^2} \vec j +  (\ln(t) + 1) \vec k \quad\blacksquare \\
+\vec a(t) = \frac{-1}{t^2} \vec i - \frac{6}{(t + 2)^3} \vec j + \frac{1}{t} \vec k \quad\blacksquare 
+\end{gather*}
+
+\end{enumerate}
+
+
+%\section{Partial Derivatives}
+%\subsection{} Compute the following partial derivatives.
+%\begin{enumerate}[label=(\alph*)]
+%\item
+%
+%
+%\item
+%
+%
+%\item
+%
+%
+%\item
+%
+%
+%\end{enumerate}
+%
+%
+%\subsection{Application} Suppose we have a vector $\vec \Delta$ such that 
+%\[ \vec \Delta = \left[ \begin{array}{c} \frac{\partial}{\partial x} \\ \frac{\partial}{\partial y} \\ \frac{\partial}{\partial z} \end{array} \right] \]
+%That is, $\vec \Delta $ when multiplied by a function will produce a vector of the infinitesimal change in that function in each direction at a given point $(x,y,z)$. We call this the \textit{gradient vector}, which you will learn about later in this course. (Why would something like this be useful?)
+
+
+\end{document}

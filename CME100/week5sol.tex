@@ -1,0 +1,242 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 5\ Solutions} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+\setlength{\parskip}{5.5pt}
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill May\ 1,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{Limits of Functions of Several Variables}
+Compute the following limits:
+\begin{enumerate}[label=(\alph*)]
+\item $\lim_{(x,y) \to (0,0)} \frac{e^y \sin x}{x} $
+\par \textbf{Solution:} When computing limits of functions of multiple variables, we have the useful property that if $f(x,y) = g(x)h(y)$ where $g(\cdot)$ and $h(\cdot)$ are continuous, then 
+\[ \lim_{(x,y) \to (x_0, y_0)}f(x,y) = \lim_{x \to x_0} g(x) \lim_{y \to y_0} h(y) \]
+Using this, we can compute this limit:
+\[ \lim_{(x,y) \to (0,0)} \frac{e^y \sin x}{x} = \lim_{x \to 0} \frac{\sin x}{x} \lim_{y \to 0} e^y = (1) (1) = 1 \quad\blacksquare\]
+\textit{Note:} the results for the $x$ limit may not look intuitive at first, but if you apply L'Hopital's rule you will see that the limit is in fact 1. Indeed, this is one of the most important functions in engineering and applied mathematics, and possibly \textit{the} most important function in electrical engineering. 
+
+% TC 14.2 #12
+\item $\lim_{(x,y) \to (\pi/2,0)} \frac{ \cos y + 1}{ y- \sin x} $
+\par \textbf{Solution:} This function is non-separable, but we can still directly evaluate to find the result:
+\[ \lim_{(x,y) \to (\pi/2,0)} \frac{ \cos y + 1}{ y- \sin x}  =  \frac{ \cos (0) + 1}{ (0) - \sin (\pi/2)} = - 2 \quad\blacksquare \]
+
+\end{enumerate}
+
+\section{Partial Derivatives}
+\subsection{} Compute $\partial f / \partial x$ and $\partial f / \partial y$. 
+\begin{enumerate}[label=(\alph*)]
+\item $f(x,y) = \sqrt{x^2 + y^2}$
+\par \textbf{Solution:} Partial derivatives are done in the exact same way as regular derivatives, except with a partial derivative we hold all other variables constant.
+\begin{align*}
+\frac{\partial f}{\partial x} &= \frac{x}{\sqrt{x^2 + y^2}} \\
+\frac{\partial f}{\partial y} &= \frac{y}{\sqrt{x^2 + y^2}} 
+\end{align*}
+
+
+\item $f(x,y) = \frac{x}{x^2 + y^2}$
+\par \textbf{Solution:}
+\begin{align*}
+\frac{\partial f}{\partial x} &= \frac{y^2 - x^2 }{(x^2 + y^2)^2} \\
+\frac{\partial f}{\partial y} &= -\frac{2xy}{(x^2 + y^2)^2} 
+\end{align*}
+
+
+\end{enumerate}
+
+\subsection{Chain rule} Find $dy/dx$ of the following function:
+\[ x^3 - 2y^2+ xy=0 \]
+\par \textbf{Solution:} This is exactly the same as \textit{implicit differentiation} you would have seen in calculus I. 
+\begin{gather*}
+\frac{d}{dx} x^3 - \frac{d}{dx} \left(2y^2\right)+ \frac{d}{dx} (xy)=0 \\
+3x^2 + y + x\frac{dy}{dx} = 0 \\
+\frac{dy}{dx} = -\frac{3x^2 + y}{x} \quad\blacksquare
+\end{gather*}
+
+
+\section{Gradients}
+\subsection{} Compute the gradient of the following functions:
+\begin{enumerate}[label=(\alph*)]
+\item $f(x,y) = \tan^{-1} \frac{\sqrt{x}}{y} $
+\par \textbf{Solution:} In 2D, the gradient is:
+\[ \nabla f = \left[ \begin{array}{c} \frac{\partial f}{\partial x} \\ \frac{ \partial f}{\partial y} \end{array} \right] \]
+or for higher dimensional functions:
+\[ (\nabla f)_i = \frac{\partial f}{\partial x_i} \]
+(The idea of the gradient of functions of high dimensions is very important, especially in optimization theory or describing objects such as tangent planes, as you will see in this class soon.) 
+\par So, we find the gradient as:
+\[ \nabla f = \left[ \begin{array}{c} \frac{1/(2 \sqrt{x}y)}{1 + x/y^2} \\ \frac{-\sqrt{x}/y^2}{1 + x/y^2} \end{array} \right] \]
+
+
+\item $f(x,y) = \frac{x^2}{2} - \frac{y^2}{2}$
+\par \textbf{Solution:}
+\[ \nabla f = \left[ \begin{array}{c} x \\ -y \end{array} \right] \]
+
+
+\item $f(x,y) = \ln(x^2 + y^2) $
+\par \textbf{Solution:}
+\[ \nabla f = \left[ \begin{array}{c} \frac{2x}{x^2 + y^2} \\ \frac{2y}{x^2 + y^2} \end{array} \right] \]
+
+
+\end{enumerate}
+
+% TC 14.5 #14
+\subsection{} Find the directional derivative of $h(x,y) = \tan^{-1} (y/x) + \sqrt{3} \sin^{-1} (xy/2)$ at $P_0(1,1)$ in the direction $\bm{u} = 3\bm{i} - 2 \bm{j}$.
+\par \textbf{Solution:} Recall the formula for a directional derivative:
+\[ \nabla_{\bm{u}} f = \nabla f \cdot \frac{\bm{u}}{|\bm{u}|} = \lim_{h \to 0}\frac{ f(\bm{x} + h \bm{\hat u}) - f(\bm{x})}{h} \]
+Using the first equality, we can compute the directional derivative:
+\begin{align*}
+\bm{\hat u} &= \frac{ \bm{u}}{|\bm{u}|} = \frac{1}{\sqrt{ 3^2 + (-2)^2}} \left( 3\bm{i} - 2 \bm{j} \right) = \frac{3}{\sqrt{13}} \bm{i} - \frac{2}{\sqrt{13}} \bm{j} \\
+\nabla f &= \left[ \begin{array}{c}  y \left( \frac{\sqrt{3}}{\sqrt{4 - x^2y^2}} - \frac{1}{x^2 + y^2} \right)  \\  x \left( \frac{1}{x^2 + y^2} + \frac{\sqrt{3}}{\sqrt{4 - x^2y^2}}  \right)   \end{array} \right] \\
+\nabla f(P_0) &= \left[ \begin{array}{c}  (1) \left( \frac{\sqrt{3}}{\sqrt{4 - (1)^2(1)^2}} - \frac{1}{(1)^2 + (1)^2} \right)  \\  (1) \left( \frac{1}{(1)^2 + (1)^2} + \frac{\sqrt{3}}{\sqrt{4 - (1)^2(1)^2}}  \right)   \end{array} \right] = \left[ \begin{array}{c}  \frac{1}{2} \\ \frac{3}{2}   \end{array} \right] \\
+\nabla f \cdot \bm{\hat u} &= \frac{1}{2} \frac{3}{\sqrt{13}} - \frac{3}{2} \frac{2}{\sqrt{13}} = -\frac{3}{2 \sqrt{13}} \quad \blacksquare 
+\end{align*}
+ 
+
+\section{Unconstrained Optimization}
+\subsection{} Find the extrema and saddle points of the following functions over the region (if given) and state if it is a minimum, maximum, or saddle. 
+\begin{enumerate}[label=(\alph*)]
+% TC 14.7 #4
+\item $f(x,y) = 5xy - 7x^2+3x - 6y +2$
+\par \textbf{Solution:} When finding extrema of functions, we have what are known as \textit{first order conditions} and \textit{second order conditions}. The first order conditions are that the first partials must be zero at an extreme point $(x^*, y^*)$ i.e.
+\[ f_x(x^*,y^*) = f_y(x^*,y^*) = 0 \]
+This establishes that there exists an extremum at $(x^*,y^*)$. To determine what kind of extremum we have, we need to examine the determinant of the Hessian matrix:
+\[ \bm{H} = \left[ \begin{array}{cc} f_{xx} & f_{xy} \\f_{yx} & f_{yy} \end{array} \right] \]
+The second order conditions are: $\det \bm{H} > 0$ and $ f_{xx} < 0$ implies a maximum, $\det \bm{H} > 0$ and $ f_{xx} > 0$ implies a minimum, $\det \bm{H}< 0 $ implies a saddle point, and $\det \bm{H} = 0$ is inconclusive. (What is the significance of $\det \bm{H} = 0$ given what we know about determinants from linear algebra?)
+\par Using this, we can find the extrema of this function:
+\begin{align*}
+\frac{\partial f}{\partial x} &= 5y - 14x + 3\\
+\frac{\partial^2 f}{\partial x^2} &= -14\\
+\frac{\partial^2 f}{\partial x\partial y} &= 5\\
+\frac{\partial f}{\partial y} &= 5x - 6 = 0 \\
+\frac{\partial^2 f}{\partial y^2} &=0
+\end{align*}
+We have
+\[ \det \bm{H} = \frac{\partial^2 f}{\partial x^2}\frac{\partial^2 f}{\partial y^2}- \left(\frac{\partial^2 f}{\partial x\partial y}\right)^2 = -25 < 0 \]
+so we immediately know there must be a saddle point. (The second partials here are constant, so we can compute the type of extremum before we compute the critical point.) Setting the first partials to 0, we find
+\[ x^* = \frac{6}{5}, \quad y^* = \frac{69}{25}  \quad\blacksquare \]
+
+% TC 14.7 #20
+\item $f(x,y) = x^4 +y^4 +4xy$
+\par \textbf{Solution:}
+\begin{align*}
+\frac{\partial f}{\partial x} &= 4x^3 + 4y\\
+\frac{\partial^2 f}{\partial x^2} &= 12x^2\\
+\frac{\partial^2 f}{\partial x\partial y} &= 4\\
+\frac{\partial f}{\partial y} &= 4y^3 + 4x \\
+\frac{\partial^2 f}{\partial y^2} &=12y^2
+\end{align*}
+Setting the first partials equal to zero and dividing the two equations we find:
+\[ \frac{x^3}{y^3} = \frac{y}{x} \implies y^* = \pm x^* \]
+For $y^* = x^*$:
+\begin{align*}
+4x^3 + 4x &= 0 \\
+x^* & = 0  = y^*
+\end{align*}
+For the second case $y^* = -x^*$:
+\begin{align*}
+4x^3 - 4x &= 0 \\
+x^* & = 0, -1, 1\\
+y^* &= 0, 1, -1\\
+\end{align*} 
+So, there are extrema at $(0,0)$, $(1,-1)$, and $(-1,1)$. For the type of extrema, we have:
+\[ \det \bm{H} = \frac{\partial^2 f}{\partial x^2}\frac{\partial^2 f}{\partial y^2}- \left(\frac{\partial^2 f}{\partial x\partial y}\right)^2 = 144x^2 y^2 - 16 \]
+At $(0,0)$, we have $\det \bm{H} = -16 < 0$, so we have a saddle point at $(0,0)$. 
+\par At $(1,-1)$, $\det \bm{H} = 144 - 16 > 0$ and $f_{xx} > 0$, so we have a minimum at $(1,-1)$. 
+\par At $(-1,1)$, $\det \bm{H} = 144 - 16 > 0$ and $f_{xx} > 0$, so we have a minimum at $(-1,1)$. 
+
+\end{enumerate}
+
+% TC 14.7 #39
+\subsection{} Find $a$ and $b$ that maximizes the integral $\int_a^b (24 - 2x - x^2)dx$
+\par \textbf{Solution:} for this problem, you need to use Leibniz's rule. Leibniz's rule is what allows you to take derivatives of an integral. It is stated as:
+\[ \frac{\partial}{\partial z} \int_{a(z)}^{b(z)} f(x,z)dx = f(b(z),z)\frac{\partial b }{\partial z} -  f(a(z),z)\frac{\partial a }{\partial z}  +  \int_{a(z)}^{b(z)} \frac{\partial f}{\partial z}(x,z)dx \]
+
+\par First define the integral as a function of $a$ and $b$:
+\[ I(a,b) = \int_a^b (24 - 2x - x^2)dx\]
+(We are integrating $x$ out of the right hand side, leaving us with a function of $a$ and $b$.) In this problem, we are looking for the $a$ and $b$ that are extreme points of $I(a,b)$. Therefore, we want the $a$ and $b$ that satisfy: 
+\[ \frac{\partial I}{\partial a} = 0, \qquad \frac{\partial I}{\partial b} = 0\]
+We never need to compute the integral---Leibniz's rule gives us the partials directly from the integrand. Using this, we can easily solve for $a$ and $b$:
+\begin{align*}
+\frac{\partial I}{\partial a} &= f(b)\frac{\partial b }{\partial a} -  f(a)\frac{\partial a }{\partial a}  +  \int_{a}^{b} \frac{\partial f}{\partial a}(x)dx \\
+&= - (24 - 2a - a^2) = 0\\
+\implies a &= -6,\; 4 \quad\blacksquare \\
+\frac{\partial I}{\partial b} &= f(b)\frac{\partial b }{\partial b} -  f(a)\frac{\partial a }{\partial b}  +  \int_{a}^{b} \frac{\partial f}{\partial b}(x)dx \\
+&= (24 - 2a - a^2) = 0\\
+\implies b &= -6,\; 4 \quad\blacksquare \\
+\end{align*}
+We necessarily need $b \geq a$, so $a = -6$ and $ b = 4$. 
+
+
+
+\end{document}
+

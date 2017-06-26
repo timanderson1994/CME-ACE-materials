@@ -1,0 +1,220 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 10\ Solutions} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+\setlength{\parskip}{5.5pt}
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill June\ 5,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+% TC 16.4 #6
+\section{Green's Theorem}
+Find the counterclockwise circulation and outward flux of the field
+\[ \bm{F} = (x^2 + 4y)\bm{i} + (x + y^2)\bm{j} \]
+about the square bounded by $x = 0,\;x = 1,\;y = 0,\;y = 1$. 
+\par \textbf{Solution:} With Green's theorem (and Stokes' theorem), there is always the form that represents the physical definition, and the form you use to actually evaluate the integral. The circulation-curl form of Green's theorem is given by:
+
+\[ \oint_C \bm{F} \cdot \bm{T} ds = \oint_C Mdx + Ndy = \iint_R \left( \frac{\partial N}{\partial x} - \frac{ \partial M}{\partial y} \right) dxdy \]
+
+Note that you will \textit{almost always} use the last formula when computing circulation/curl. We can use this form to compute the counterclockwise circulation for this vector field:
+\begin{align*}
+\oint_C \bm{F} \cdot \bm{T} ds &= \iint_R \left( \frac{\partial N}{\partial x} - \frac{ \partial M}{\partial y} \right) dxdy\\
+&= \int_0^1 \int_0^1 (1 - 4) dx dy \\
+&= -3 \int_0^1 \int_0^1 dx dy \\
+&= -3 \quad\blacksquare
+\end{align*}
+
+Similarly for the flux, we have the formula that represents the physical definition and the formula you use to compute the actual value:
+\[ \oint_C \bm{F} \cdot \bm{n} s = \oint_C M dy - Ndx = \iint_R \left( \frac{\partial M}{\partial x} + \frac{ \partial N}{\partial y} \right) dx dy \]
+Using the last form, we can compute the flux:
+\begin{align*}
+\oint_C \bm{F} \cdot \bm{n} s &= \iint_R \left( \frac{\partial M}{\partial x} + \frac{ \partial N}{\partial y} \right) dx dy\\
+&= \int_0^1 \int_0^1 (2x + 2y) dx dy \\
+&= \int_0^1(1 + 2y)dy \\
+&= 2 \quad\blacksquare 
+\end{align*}
+
+\section{Surface Integrals}
+% TC 16.5 #18
+\subsection{} Find the area of the portion of the plane $z = -x$ inside the cylinder $x^2+y^2=4$.
+\par \textbf{Solution:} When computing surface integrals, there are two main challenges: picking the right formula to compute the integral with, then parametrizing the surface. 
+
+\par The surface above is the set of all points such that $z = -x$, so we can write the coordinates for a point on the surface as $(x,y,-x)$, or
+\[ \bm{r} = x \bm{i} + y\bm{j} - x \bm{k} \]
+The 2D projection of the surface in the $xy$ plane is a circle, so we need to convert to polar coordinates:
+\[ \bm{r} = r \cos \theta \bm{i} + r \sin \theta \bm{j} - r \cos \theta \bm{k} \]
+Recall that when we are dealing with a parameterized surface (i.e. the surface is not given implicitly), the area element is given by:
+\[ d \sigma = |\bm{r}_u \times \bm{r}_v| du dv \]
+where the surface has been parameterized by $u$ and $v$. Here, our surface is parameterized by $r$ and $\theta$, so we compute the two vectors as:
+\begin{gather*}
+\bm{r}_r = \cos \theta \bm{i} + \sin \theta \bm{j} - \cos \theta \bm{k} \\
+\bm{r}_\theta = -r\sin \theta \bm{i} + r \cos \theta \bm{j} + r \sin \theta \bm{k} 
+\end{gather*}
+Taking the magnitude of the cross product of these:
+\begin{align*}
+|\bm{r}_r \times \bm{r}_\theta |  &= \sqrt{ (r \sin^2 \theta + r \cos^2 \theta)^2 + (r \sin \theta \cos \theta - r \sin \theta \cos \theta)^2 + (r \cos^2 \theta + r \sin ^2 \theta)^2} \\
+&= \sqrt{ 2r^2}\\
+&= r \sqrt{2}
+\end{align*}
+Now, we can simple integrate over the parameterized variables to find the surface:
+\begin{align*}
+A &= \int_0^{2\pi} \int_0^2 r \sqrt{2}  dr d \theta \\
+&= \sqrt{2} \int_0^{2\pi} 2 d \theta \\
+&= 4 \pi \sqrt{2}\quad\blacksquare 
+\end{align*}
+
+\par \textit{Note:} be sure to devote extra time to fully understanding and practicing surface integrals. They are one of the more important concepts covered in this class, and are also arguably the most difficult topic we cover in CME 100. Other topics like flux and circulation are conceptually hard, but much of the computation boils down to ``plug and chug.'' For surface integrals, there are several different formulas to choose from and parameterizing surfaces can often be very difficult. Be sure to allot a significant amount of study time to these.
+
+% TC 16.6 #2
+\subsection{} Integrate $G(x,y,z) = z$ over the  cylindrical surface $y^2 +z^2 = 4$, $z \geq 0$, $1 \leq x \leq 4$. 
+\par \textbf{Solution:} This problem is a bit tricky because we need to figure out in what way to represent our surface to perform the integral. The surface is clearly parameterized, but the issues is figuring our by which variables. We are dealing with a half cylinder, so the easiest way to represent this is to parameterize the surface by $x$ and $y$, and take $z = \sqrt{4 - y^2}$. So, the points on our surface are represented as:
+\[ \bm{r} = x \bm{i} + y \bm{j} + \sqrt{4 - y^2} \bm{k} \]
+We then compute:
+\begin{align*}
+\bm{r}_x &= \bm{i}\\
+\bm{r}_y &= \bm{j} - \frac{y}{\sqrt{4 - y^2}} \bm{k} \\
+|\bm{r}_x \times \bm{r}_y| &= \sqrt{ 0^2 +\left( -\frac{y}{\sqrt{4 - y^2}}\right)^2 +  1^2} \\
+&= \sqrt{ \frac{y^2}{4 - y^2} + 1}\\
+&= \sqrt{ \frac{ 4}{4 - y^2}} \\
+&= \frac{2}{\sqrt{4 - y^2}} 
+\end{align*}
+Finally, we can compute the surface integral:
+\begin{align*}
+S &= \int_R G(x,y,z) d\sigma \\
+&= \int_1^4 \int_{-2}^2 \sqrt{ 4 - y^2} \frac{2}{\sqrt{4 - y^2}} dy dx \\
+&= 2 \int_1^4 \int_{-2}^2 dy dx\\
+&= 24 \quad\blacksquare
+\end{align*}
+
+
+% TC 16.6 #32
+\section{Flux Integrals}
+Find the flux of
+\[ \mathbf{F}(x,y,z) =  -y \bm{i} + x \bm{j} \]
+over the portion of a sphere of radius $a$ centered at the origin in the first octant in the direction away from the origin.
+\par \textbf{Solution:} The formula for the surface is
+\[ x^2 + y^2 + z^2 = a^2 \]
+So our surface is given implicitly. We therefore need to use the implicit form of the surface integral formula:
+\[ \iint_S G(x,y,z) d\sigma = \iint_R G(x,y,z) \frac{ |\nabla F|}{|\nabla F \cdot \bm{p}|} dA \]
+where $\bm{p}$ is normal to the region $R$ over which we are integrating. We can also express flux as:
+\[ \text{Flux} = \iint_S \bm{F}\cdot \bm{n} d \sigma = \iint_R \left( \bm{F} \cdot \frac{ \pm \nabla g}{|\nabla g|} \right) \frac{ |\nabla g|}{|\nabla g \cdot \bm{p}|} dA \]
+We have
+\[ \nabla g = 2x \bm{i} + 2 y \bm{j} + 2z \bm{k} \]
+and $\bm{p} = \bm{k}$. We can then calculate:
+\[ \bm{F} \cdot \nabla g = -y(2x) + x (2y) = 0 \]
+so we must have right away
+\[ \text{Flux} = 0 \quad\blacksquare \]
+
+\section{Stokes' Theorem}
+% TC 16.7 #2
+\subsection{} Calculate the circulation of 
+\[ \bm{F} = 2 y \bm{i} + 3x \bm{j} - z^2 \bm{k} \]
+about the circle of radius 3 centered at the origin counterclockwise when viewed from above. 
+\par \textbf{Solution:} We state Stokes' theorem as:
+\[ \oint_C \bm{F} \cdot d \bm{r} = \iint_S \nabla \times \bm{F} \cdot \bm{n} d\sigma \]
+Stokes' theorem turns an unwieldy circulation integral into a surface integral. For this problem, we are dealing with a circle in the $xy$ plane, so we have $\bm{n} = \bm{k}$ and $d \sigma = dydx$. To calculate the curl:
+\[ \nabla \times \bm{F} = 0 \bm{i} + 0 \bm{j} + \bm{k}  = \bm{k} \]
+To compute the integral:
+\begin{align*} 
+\text{Circulation} &= \int_0^{2 \pi} \int_0^3 (1) r dr d \theta  \\
+&= \frac{9}{2} \int_0^{2\pi} d\theta \\
+&= 9 \pi \quad\blacksquare 
+\end{align*}
+
+% TC 16.7 #14
+\subsection{} Calculate the flux of the curl of 
+\[ \bm{F} = (y-z)\bm{i} + (z - x)\bm{j} + (x + z) \bm{k} \]
+in the direction of the outward unit normal of the surface $S : \bm{r}(r,\theta) = r \cos(\theta) \bm{i} + r \sin(\theta) \bm{j} + (9 - r^2) \bm{k}$, $ 0 \leq r \leq 3$ and $ 0 \leq \theta \leq 2 \pi$. 
+\par \textbf{Solution:} The surface is parameterized, so we need to use the parameterized surface form of the surface integral. To compute the curl vector:
+\[ \nabla \times \bm{F} = - \bm{i} -2 \bm{j} -2 \bm{k} \]
+We can also compute:
+\begin{align*}
+\bm{r}_r &= \cos (\theta) \bm{i} + \sin (\theta) \bm{j} -2r \bm{k} \\
+\bm{r}_\theta &= -r \sin(\theta) \bm{i} + r \cos (\theta) \bm{j} \\
+\bm{r}_r \times \bm{r}_\theta &= 2r^2 \cos(\theta) \bm{i} + 2r^2 \sin(\theta) \bm{j} + r \bm{k} \\
+%|\bm{r}_r \times \bm{r}_\theta| &= \sqrt{(2r^2 \cos(\theta))^2 + (2r^2 \sin(\theta))^2 + (r\cos^2(\theta) + r \sin^2(\theta))^2 }\\
+%&= r\sqrt{8r^2 + 1}
+\end{align*}
+We can then compute the flux as:
+\begin{align*}
+\text{Flux} &= \int_0^{2 \pi} \int_0^3 \nabla \times \bm{F} \cdot \bm{n} dr d \theta \\
+&= \int_0^{2 \pi} \int_0^3 (-2r^2 \cos(\theta) - 2 r^2 \sin(\theta) - 2r )dr d\theta \\
+&= \int_0^{2 \pi} \left[-\frac{2}{3} r^3\cos(\theta) - \frac{2}{3} r^3 \sin(\theta) - r^2   \right]_0^3 d\theta \\
+&= \int_0^{2\pi}(-18\cos(\theta) - 18\sin(\theta) - 9 ) d\theta \\
+&= \left[-18\sin(\theta) + 18 \cos(\theta) - 9 \theta  \right]_0^{2\pi} \\
+&= -18 \pi \quad\blacksquare 
+\end{align*}
+
+
+
+\end{document}
+

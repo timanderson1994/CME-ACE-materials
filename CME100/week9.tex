@@ -1,0 +1,108 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 9\ Worksheet} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill May\ 29,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{Work}
+\subsection{} Find the work done by the force $\bm{F} = xy\bm{i}+(y-x)\bm{j}$ over the straight line from $(1,1)$ to $(2, 3)$.
+
+\subsection{} Find the work done by the gradient of \[f(x, y) = (x + y)^2\] counterclockwise around the circle $x^2 + y^2 = 4$ from $(2, 0)$ to itself.
+
+\section{Flux \& Circulation}
+Find the flux of the fields:
+\[ \bm{F}_1 = 2x\bm{i} - 3y\bm{j}, \qquad \bm{F}_2 = 2x\bm{i} + (x - y)\bm{j} \]
+about the path:
+\[r(t) = a\cos(t)\bm{i} + a\sin(t)\bm{j},\; 0 \leq t \leq 2 \pi \]
+
+\section{Conservative Fields \& Potential Functions}
+\subsection{} Determine which of the following fields are conservative fields. 
+\begin{enumerate}[label=(\alph*)]
+\item $\bm{F} = y \sin(z)\bm{i} + x \sin(z)\bm{j} + xy \cos(z)\bm{k} $
+
+\item $\bm{F}=-y\bm{i}+x\bm{j}$
+
+\item $\bm{F} = e^x\cos(y)\bm{i} - e^x\sin(y)\bm{j} + z\bm{k}$
+
+\end{enumerate} 
+
+\subsection{} Evaluate the line integral:
+\[ \int_{(-1,-1,-1)}^{(2,2,2)} \frac{2x dx + 2y dy + 2z dz}{x^2 + y^2 + z^2} \]
+
+\subsection{} Evaluate the line integral:
+\[ \int_{(0,2,1)}^{(1,\pi/2,2)} 2 \cos(y) dx + \left( \frac{1}{y} - 2x \sin(y) \right) dy  + \frac{1}{z}dz \]
+
+
+\end{document}
+

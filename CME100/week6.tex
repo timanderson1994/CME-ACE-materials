@@ -1,0 +1,116 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 6\ Worksheet} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill May\ 8,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{Constrained Optimization}
+\subsection{Extrema on a circle} Find the extrema of $f(x,y) = xy$ subject to $x^2 + y^2 = 10$. 
+
+\subsection{Constrained minimum} Find the points on the curve $xy^2 = 2$ nearest the origin.
+
+\subsection{Maximizing a product} Find the largest product the positive numbers $x$, $y$, and $z$ can have if $x^2 + y^2 + z^2 = 16$.
+
+\section{Constrained Variables}
+If $f = x^2 + y - z + \sin t$ and $x + y = t$, find:
+\begin{enumerate}[label=(\alph*)]
+\item $\left( \frac{\partial f}{\partial y}\right)_{x,z}$
+
+\item $\left( \frac{\partial f}{\partial y}\right)_{z,t}$
+
+\item $\left( \frac{\partial f}{\partial z}\right)_{x,y}$
+
+\end{enumerate}
+
+\section{Multi-dimensional Integrals}
+\subsection{} Compute the following iterated integrals. 
+\begin{enumerate}[label=(\alph*)]
+\item $\int_0^1 \int_1^2 x y e^x dy dx $
+
+\item $\int_\pi^{2 \pi} \int_0^\pi (\sin x + \cos y) dx dy$
+
+\item $\int_0^4 \int_1^2 \frac{\sqrt{x}}{y^2} dy dx$
+
+\end{enumerate}
+
+\subsection{} Find the volume of the region bounded above by the ellipitical paraboloid $z = 16 - x^2 - y^2$ and below by the square $R: 0 \leq x \leq 2,\; 0 \leq y \leq 2$.
+
+\subsection{} Evaluate by reversing the order of integration: $\int_0^2 \int_{-\sqrt{4 - x^2}}^{\sqrt{4 - x^2}} 6x dy dx$
+
+\subsection{} Find the average height of the paraboloid $z =x^2 +y^2$ over the square $0 \leq x \leq 2,\; 0 \leq y \leq 2$.
+
+
+
+\end{document}
+

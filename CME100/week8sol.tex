@@ -1,0 +1,196 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 8\ Solutions} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill May\ 22,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{Cylindrical Coordinates}
+% TC 15.7 #14
+Evaluate the following integral:
+\[ \int_{-1}^1 \int_0^{\sqrt{1 - y^2}} \int_0^x (x^2 + y^2) dz dx dy \]
+\par \textbf{Solution:} It is possible to evaluate this integral directly, although doing so is exceedingly difficult, and as engineers, we like to do things the easy way. 
+\par Besides the fact it is stated in the section title, we want to use cylindrical coordinates here (as opposed to spherical) because $z$ is very much linear/cylindrical as opposed to polar/spherical. Recall that for cylindrical coordinates we have $dxdydz = r dr d\theta dz$, so we will need to make this substitution when evaluating. The one difficulty in evaluating this integral is determining the region over which $(x,y)$ will be mapped to $(r, \theta)$. It is usually easiest to do this by drawing a picture of the domain of interest, although here we can observe that it is a semi-circle centered at the origin with radius 1. 
+\par Using these, we can evaluate the integral:
+\begin{align*}
+\int_{-1}^1 \int_0^{\sqrt{1 - y^2}} \int_0^x (x^2 + y^2) dz dx dy &= \int_{-\pi/2}^{\pi/2} \int_0^1 \int_0^{r \cos \theta} r^2 r dz dr d\theta \\
+&= \int_{-\pi/2}^{\pi/2} \int_0^1 r^4 \cos \theta dr d\theta \\
+&= \int_{-\pi/2}^{\pi/2} \frac{1}{5} \cos \theta d \theta \\
+&= \frac{2}{5} \quad\blacksquare 
+\end{align*}
+
+
+\section{Spherical Coordinates}
+% TC 15.7 #22
+\subsection{} Evaluate the following integral:
+\[ \int_0^{2\pi} \int_0^{\pi/4} \int_0^2 (\rho \cos \phi) \rho^2 \sin \phi d \rho d \phi d \theta \]
+\par \textbf{Solution:} Evaluating multiple integrals in spherical coordinates (or polar or cylindrical for that matter) is done exactly the same way as for Cartesian coordinates. The hardest part is converting between the coordinate systems---the integration is usually the easy the final step---so you should focus your attention on studying how to convert integrals between coordinate systems.
+\begin{align*}
+\int_0^{2\pi} \int_0^{\pi/4} \int_0^2 (\rho \cos \phi) \rho^2 \sin \phi d \rho d \phi d \theta &= \int_0^{2\pi} \int_0^{\pi/4} \int_0^2 \rho^3 \sin \phi\cos \phi d \rho d \phi d \theta \\
+&=\frac{1}{2} \int_0^{2\pi} \int_0^{\pi/4} \int_0^2 \rho^3 \sin (2 \phi) d \rho d \phi d \theta \\
+&=\frac{1}{8} \int_0^{2\pi} \int_0^{\pi/4} (2^4 - 0^4) \sin (2 \phi)d \phi d \theta \\
+&=2 \int_0^{2\pi} \int_0^{\pi/4} \sin (2 \phi) d \phi d \theta \\
+&= \int_0^{2\pi} (-\cos(2 (\pi/4)) + \cos(2(0))) d\theta\\
+&= \int_0^{2\pi} d\theta \\
+&= 2 \pi \quad\blacksquare
+\end{align*}
+
+
+\par \textit{Extra practice:} convert this integral back to Cartesian coordinates. 
+% TC 15.7 #64
+\subsection{} Find the average value of the function $f(r, \theta, z) = r$ over the solid ball bounded by the sphere $r^2 + z^2 = 1$ (that is, the ball bound by $x^2 + y^2 + z^2 = 1$). 
+\par \textbf{Solution:} When solving for the average value of a function, recall that we integrate the value of that function over all points in the volume, then divide by the total volume. (This is where thinking of an integral as the sum over progressively smaller cubes comes is useful.) This is a sphere of radius 1, so the volume is trivially $V = \frac{4}{3} \pi$. (It is good practice to derive this directly from the formula for spherical coordinates.) 
+\par Before we integrate, recall that in spherical coordinates we have:
+\[ dV = \rho^2 \sin \phi d\rho d\phi d\theta\]
+and also note that $r \neq \rho$. ($\rho$ is the spherical radius, and $r$ is the polar radius on the 2D plane.) 
+\par Finally, to integrate the function:
+\begin{align*}
+\int_0^{2\pi} \int_0^\pi \int_0^1 r \rho^2 \sin \phi d \phi d\phi d\theta &= \int_0^{2\pi} \int_0^\pi \int_0^1 (\rho \sin \phi) \rho^2 \sin \phi d \rho d\phi d\theta \\
+&=  \int_0^{2\pi} \int_0^\pi \int_0^1 \rho^3 \sin^2 \phi d\rho d\phi d\theta \\
+&= \frac{1}{4} \int_0^{2\pi} \int_0^\pi \sin^2 \phi d\phi d\theta \\
+\intertext{Using the identity $\sin^2\theta = \frac{1}{2}(1 - \cos(2\theta))$:}
+&= \frac{1}{4} \int_0^{2\pi} \int_0^\pi  \frac{1}{2}(1 - \cos(2\phi)) d\phi d\theta \\
+&= \frac{1}{8} \int_0^{2 \pi} \left[ \phi - \frac{1}{2} \sin(2 \phi) \right]_0^\pi d \theta \\
+&=  \frac{\pi}{8} \int_0^{2 \pi} d \theta \\
+&= \frac{\pi^2}{4} 
+\end{align*}
+Dividing by the volume we arrive at:
+\[ \frac{ \int_R f dV}{V} = \frac{ \frac{\pi^2}{4}}{\frac{4}{3} \pi} = \frac{3 \pi}{16} \quad\blacksquare \]
+
+
+\section{Generalized Coordinate Transforms}
+% TC 13.8 #13
+Evaluate the integral:
+\[ \int_0^{2/3} \int_y^{2 - 2y} (x + 2y)e^{y-x}dx dy \]
+\par \textbf{Solution:} Finding a good coordinate transformation is more of an art than a science, and is something you need to train yourself to spot quickly in a problem. When searching for a transform, you want to pick terms that pop up throughout the problem. Here, we will pick:
+\[ u = x + 2y, \qquad v = y-x\]
+We need to invert this map to find $x$ and $y$ in terms of $u$ and $v$. \textit{Note:} this is a linear transformation, so we can actually do this quite easily through matrix inversion. Solving for $x$ and $y$ yields:
+\[x = \frac{1}{3}(u - 2v), \qquad y = \frac{1}{3}(u + v) \]
+We can write this transform as
+\[ \left[ \begin{array}{c} x \\ y \end{array}\right] = \left[ \begin{array}{cc} \frac{1}{3} & -\frac{2}{3} \\ \frac{1}{3} & \frac{1}{3} \end{array} \right] \left[ \begin{array}{c} u \\ v \end{array}\right] \]
+Notice that since this is a linear transformation, the Jacobian determinant will just be the determinant of the matrix involved in the transformation.
+\[ \det J = \frac{1}{3} \]
+Next, we need to determine the boundaries of integration. To do this, write out a table of the boundaries in Cartesian, transformed, and simplified transformed coordinates:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline Cartesian & Transformed & Simplified transformed\\  \hline
+$y = 0$ &  $ \frac{1}{3}(u + v) = 0$ & $v = -u$ \\ \hline
+$y = 2/3$ & $\frac{1}{3}(u + v) = 2/3$ & $ v = 2 - u$ \\ \hline
+$x = y$ & $\frac{1}{3}(u - 2v) = \frac{1}{3}(u + v)$  & $ v = 0$ \\ \hline
+$x = 2 - 2y$ & $\frac{1}{3} (u - 2v) = 2 - 2 \frac{1}{3}(u + v)$ & $u = 2$ \\ \hline
+\end{tabular}
+\end{center}
+
+Now, we have everything we need to evaluate the integral:
+\begin{align*}
+\int_0^{2/3} \int_y^{2 - 2y} (x + 2y)e^{y-x}dx dy &= \frac{1}{3} \int_0^2 \int_{-u}^0  u e^v dv du \\
+&=  \frac{1}{3} \int_0^2 \left(1 - e^{-u} \right)u du \\
+&= \frac{1}{3} \left[ e^{-x}(x+1) + \frac{1}{2}x^2 \right]_0^2 \\
+&=  \frac{1}{3} \left( 3e^{-2} + 1\right) \quad\blacksquare
+\end{align*}
+
+\section{Line Integrals}
+% TC 16.1 #12	
+\subsection{} Evaluate the following integral along the given curve:
+\[ \int_C \sqrt{x^2 + y^2}ds, \quad \bm{r}(t) = (4 \cos t) \bm{i} + (4 \sin t) \bm{j} + 3t \bm{k},\; - 2\pi\leq t \leq 2 \pi\]
+\par \textbf{Solution:} Line integrals will usually start out as difficult-looking integrals, and it is up to you to apply trig identities, substitutions, etc. to make the integral workable. The one important thing to remember though is that we are \textit{always} integrating with respect to time. We first need to solve for the speed:
+\begin{gather*}
+\frac{dr}{dt} = -4 \sin t \bm{i} + 4 \cos t \bm{j} + 3 \bm{k} \\
+\frac{ds}{dt} = |\bm{r}'(t)| = \sqrt{(-4 \sin t)^2 + (4 \cos t)^2 + 3^2} = \sqrt{ 16 + 9} = 5 
+\end{gather*}
+From here, we simply substitute the expressions for $x(t)$, $y(t)$, etc. into the integral and evaluate:
+\begin{align*}
+\int_C \sqrt{x^2 + y^2}ds &= \int_{-2\pi}^{2\pi} \sqrt{(4\cos t)^2 + (4 \sin t)^2}(5)dt \\
+&=  \int_{-2\pi}^{2\pi} 20 dt \\
+&= 80 \pi \quad\blacksquare
+\end{align*}
+
+% TC 16.1 #14
+\subsection{} Find the line integral of 
+\[ f(x,y, z) = \frac{\sqrt{3}}{x^2 + y^2 + z^2}\] 
+over the curve $\bm{r}(t) = t \bm{i} + t\bm{j} + t\bm{k}$ and interval $1 \leq t \leq \infty$.
+\par \textbf{Solution:} First calculate speed:
+\[ \frac{ds}{dt} = \sqrt{1^2 + 1^2 + 1^2} = \sqrt{3} \]
+Then evaluate the integral (substituting the parametric form of $x(t)$, $y(t)$, and $z(t)$):
+\begin{align*}
+\int_C \frac{\sqrt{3}}{x^2 + y^2 + z^2}ds &= \int_1^\infty  \frac{\sqrt{3}}{t^2 + t^2 + t^2}(\sqrt{3})dt \\
+&= \int_1^\infty \frac{1}{t^2} dt\\
+&= \left. \frac{-1}{t} \right|_1^\infty \\
+&= 1 \quad\blacksquare 
+\end{align*}
+
+
+
+\end{document}
+

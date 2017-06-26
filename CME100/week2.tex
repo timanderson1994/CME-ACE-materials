@@ -1,0 +1,186 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 2\ Worksheet} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\proj}{proj}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill April\ 10,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+
+\section{Unit Vectors}
+\subsection{} Describe conceptually what a unit vector is. 
+
+\subsection{} Compute the unit vectors for the following vectors.
+\begin{enumerate}[label=(\alph*)]
+\item $\vec v = \langle 1,1,1 \rangle$
+
+\item $\vec w = \langle 0,-1,-1 \rangle$
+
+\item $\vec u = \langle 10,8,-7 \rangle$
+
+\end{enumerate}
+
+\subsection{} The unit vector from point $A = (0,2,3)$ to $B = (1,6,-2)$.
+
+\subsection{} If $\vec v$ and $\vec w$ are orthogonal, will their unit vectors also be orthogonal? Why? 
+
+\section{Vector Operations}
+Compute the following.
+\begin{enumerate}[label=(\alph*)]
+\item[] \[ \vec v = \langle 1,2,5 \rangle, \quad \vec w = \langle 3, -4, 2 \rangle \]
+
+\item $2 \vec v  - \vec w$
+
+\item $(2\vec v) \cdot \vec w$
+
+\item The unit vector of $\vec v \times \vec w$
+
+\item[] \[ \vec v = \langle 1,0,0 \rangle, \quad \vec w = \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle \]
+
+\item $\vec v \cdot \left( \frac{1}{\sqrt{3}} \vec w \right)$
+
+\item $\vec w \cdot \vec w$
+
+\item The angle between $\vec v$ and $\vec w$. 
+
+
+\end{enumerate}
+
+\section{Projections}
+Compute the following.
+\begin{enumerate}[label=(\alph*)]
+\item[] \[ \vec v = \langle 1,2,5 \rangle, \quad \vec w = \langle 3, -4, 2 \rangle \]
+
+\item $\proj_{\vec v} \vec w$
+
+\item $\proj_{\vec w} \vec v$
+
+\item[] \[ \vec v = \langle 1,0,0 \rangle, \quad \vec w = \langle \sqrt{3}, \sqrt{3},\sqrt{3} \rangle \]
+
+\item $\proj_{\vec v} \vec w$
+
+\item $\proj_{\vec w} \vec v$
+
+\end{enumerate}
+
+\section{Lines and Planes}
+\subsection{} Compute the area enclosed by the parallelogram defined by:
+\[ A(0,0) \quad B(7,3) \quad C(9,8) \quad D(2,5) \]
+
+\subsection{} Compute the area enclosed by the triangle defined by:
+\[ A(0, 0)\quad B(-2,3)\quad C(3, 1) \]
+
+\subsection{} Find the equation for the line through $(1,2,1)$ in the direction of $\vec v = \langle 0, 1, 0 \rangle$
+
+\subsection{} Find the equation for the plane through $(1,2,1)$ with normal $\vec n = \langle -1, 0, 1 \rangle$
+
+
+\section{Vector-valued functions}
+Compute the velocity and acceleration vectors of the following. In (c), also compute the tangent vector at the given point.
+\begin{enumerate}[label = (\alph*)]
+\item $\vec r (t) = (1 + t) \vec i + \frac{t^2}{\sqrt{2}} \vec j + \frac{t^3}{3} \vec k$
+
+\item $\vec r(t) = \sec(t) \vec i + \tan (t) \vec j + t\vec k$
+
+\item $\vec r(t) =  \ln(t) \vec i+\frac{t - 1}{t + 2} \vec j +t\ln(t) \vec k$, and $t_0 = 1$
+
+\end{enumerate}
+
+
+%\section{Partial Derivatives}
+%\subsection{} Compute the following partial derivatives.
+%\begin{enumerate}[label=(\alph*)]
+%\item
+%
+%
+%\item
+%
+%
+%\item
+%
+%
+%\item
+%
+%
+%\end{enumerate}
+%
+%
+%\subsection{Application} Suppose we have a vector $\vec \Delta$ such that 
+%\[ \vec \Delta = \left[ \begin{array}{c} \frac{\partial}{\partial x} \\ \frac{\partial}{\partial y} \\ \frac{\partial}{\partial z} \end{array} \right] \]
+%That is, $\vec \Delta $ when multiplied by a function will produce a vector of the infinitesimal change in that function in each direction at a given point $(x,y,z)$. We call this the \textit{gradient vector}, which you will learn about later in this course. (Why would something like this be useful?)
+
+
+\end{document}

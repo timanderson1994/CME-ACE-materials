@@ -1,0 +1,131 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Week\ 4\ Worksheet} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{Timothy Anderson} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill April\ 24,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{Matrix Operations and Linear Systems}
+\subsection{} Compute the following using basic matrix operations.
+\[
+\left[\begin{array}{ccc} 2 & 1 &-1 \end{array} \right]  \left[ \begin{array}{ccc} 1 & 0 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 1 \end{array}   \right]\left[\begin{array}{c} 2\\ 1 \\-1 \end{array} \right] \qquad \qquad 
+\left[\begin{array}{ccc} 0 & 3 & 2 \end{array} \right]  \left[ \begin{array}{ccc} 2 & 1 &0  \\ 4 & 0 & -6 \\ -6 & 0 & 9 \end{array}   \right] \left[\begin{array}{c} 1 \\ 1 \\ -1 \end{array} \right]  
+\]
+
+\subsection{} Prove the following:
+\begin{enumerate}[label=(\alph*)]
+\item Assuming $\bm{A}$ and $\bm{B}$ are invertible, show that $(\bm{A}\bm{B})^{-1} = \bm{B}^{-1} \bm{A}^{-1}$. 
+
+\item Let $ \bm{A} \in \mathbb{R}^{n \times n}$ and $\vec v \in \mathbb{R}^n$. Show that 
+\[ (\bm{A} + \vec v \vec v^T )^{-1} = \bm{A} - \frac{1}{1 + \vec v^T \bm{A}^{-1} \vec v} \bm{A}^{-1} \vec v \vec v^T \bm{A}^{-1} \]
+\textit{Note:} this is the famous Sherman-Morrison-Woodbury formula, which is an important result in numerical linear algebra. 
+
+\item In linear algebra, we often like to work with what are known as \textit{canonical basis vectors}, which are vectors $\vec e_i$ such that the $i^{th}$ element is 1 and all other elements are 0. Suppose we are given a matrix $\bm{A} \in \mathbb{R}^{n \times n}$ such that for any vector $\vec v \in \mathbb{R}^n$, we have $\vec v ^T \bm{A} \vec v >0$ when $\vec v \neq \bm{0}$. Prove that all of the diagonal entries of $\bm{A}$ are positive and non-zero. 
+\par \textit{Note:} these types of matrices are referred to as \textit{positive definite}, and are extremely important in numerical linear algebra and optimization theory. 
+
+\item Suppose I can decompose matrix $\bm{A}$ as $\bm{A} = \bm{Q} \bm{R}$ such that $\bm{Q}^T\bm{Q} = \bm{Q}\bm{Q}^T = \bm{I}$. Show that $(\bm{A}^T\bm{A})^{-1} \bm{A}^T = (\bm{R}^T \bm{R})^{-1} \bm{R}^T \bm{Q}^T$. 
+
+\end{enumerate}
+
+\subsection{Least-squares problems} Suppose I have a set of data points $(x_1,y_2),(x_2,y_2),...,(x_n,y_n)$ and I would like to find the $n^{th}$-degree polynomial
+\[y(x) = c_0 + c_1 x + c_2 x^2 + ... + c_n x^n\] 
+which exactly passes through these points. Set up a system of equations that you could solve for the $c_i$. 
+
+%\section{Rotation Matrices}
+
+
+\section{Matrix Inverse \& Gaussian Elimination}
+Compute the inverse of the following matrices. If it is not invertible, state why. What is the rank of each matrix? Which matrices will have a unique solution for $\bm{A}x = b$?
+\[  \left[ \begin{array}{ccc} 1 & 0 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 1 \end{array}   \right] \qquad \qquad 
+ \left[ \begin{array}{ccc} 1 & 1 & 1 \\ 3 & 2 & 3 \\ 0 & 5 & 5 \end{array}   \right] \qquad \qquad 
+  \left[ \begin{array}{ccc} 2 & 4 & -6 \\ 1 & 0 & 0 \\ 0 & -6 & 9 \end{array}   \right] \]
+
+\section{Linear Systems \& Gauss-Jordan Elimination}
+Solve the following linear systems using Gauss-Jordan elimination. If there is no solution, state why. 
+\[ \left[ \begin{array}{ccc} 1 & 0 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 1 \end{array}   \right] \mathbf{x} = \left[ \begin{array}{c} 0 \\ 1 \\ 1 \end{array} \right], \qquad \qquad  
+\left[ \begin{array}{ccc} 1 & 1 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 3 \end{array}   \right] \mathbf{x} = \left[ \begin{array}{c} 0 \\ 1 \\ 1 \end{array} \right]\]
+
+\section{Determinants}
+\subsection{} Compute the determinant of:
+\[  \left[ \begin{array}{ccc} 1 & 0 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 1 \end{array}   \right] \]
+\subsection{} Solve the following system using Cramer's rule. 
+\[ \left[ \begin{array}{ccc} 1 & 0 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 1 \end{array}   \right] \mathbf{x} = \left[ \begin{array}{c} 0 \\ 1 \\ 1 \end{array} \right] \]
+
+\subsection{} If the determinant of $\bm{A} \in \mathbb{R}^{5 \times 5} $ is 3, what is the determinant of $2 \mathbf{A}$?
+
+\subsection{} Does the following system have a unique solution? Why or why not? (Use an answer based on determinants; do not simply restate the result form the previous problem.)
+\[ \left[ \begin{array}{ccc} 1 & 1 & 2 \\ 0 & 3 & 3 \\ 1 & 2 & 3 \end{array}   \right] \mathbf{x} = \left[ \begin{array}{c} 0 \\ 1 \\ 1 \end{array} \right] \]
+
+
+
+\end{document}

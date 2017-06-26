@@ -1,0 +1,297 @@
+	\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+\usepackage{listings}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Midterm\ 2\ Review\ Problems} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{T Anderson, S Messingher, A Kusimo} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill May\ 14,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{Gaussian \& Gauss-Jordan Elimination}
+Solve the following systems using Gaussian elimination. 
+\begin{enumerate}
+\item
+\begin{gather*}
+x + y + z = 5\\
+2x + 3y + 5z = 8 \\
+4x + 5z = 2 
+\end{gather*}
+
+\item
+\begin{gather*}
+x + 2y - 3z = 2\\
+6x + 3y - 9 z = 6 \\
+7x  + 14y - 21z = 13 
+\end{gather*}
+
+\item
+\begin{gather*}
+A + B + 2C = 1\\
+2A - B + D = -2\\
+A - B - C - 2D = 4\\
+2A - B + 2C - D = 0 
+\end{gather*}
+
+\end{enumerate}
+
+
+\section{Partial Derivatives}
+\begin{enumerate}
+% TC 14.3 #51 and 54
+\item For exercises 1(a) and (b), verify that $w_{xy} = w_{yx}$.
+\begin{enumerate}[label=(\alph*)]
+\item $w = \ln(2x + 3y)$
+
+\item $w = x \sin y + y \sin x + xy$
+
+\end{enumerate}
+
+% Problems 82 and 86 of Section 14.3 of book
+\item Now let's talk about something with meaning. If we stand on an ocean shore and take a snapshot of the waves, the picture shows a regular pattern of peaks and valleys in an instant of time. We see periodic vertical motion in space, with respect to distance. If we stand in the water, we can feel the rise and fall of the water as the waves go by. We see periodic vertical motion in time. In physics, this beautiful symmetry is expressed by the one-dimensional wave equation:
+\[ \frac{\partial^2 w}{\partial t^2} = c^2 \frac{ \partial^2 w}{\partial x^2} \]
+Show that the functions below satisfy the wave equation. 
+
+\begin{enumerate}[label = (\alph*)]
+\item $w = \cos (2x + 2ct)$
+
+\item $w = 5 \cos( 3x + 3ct) + e^{x + ct}$
+
+
+\end{enumerate}
+
+\end{enumerate}
+
+% \section{Linearization}
+
+\section{Chain Rule}
+\begin{enumerate}
+% Problems 26 and 28 of Section 14.4 of book
+\item Assuming that in the following equations y is a differentiable function of x, find $dy/dx$ at the given point. 
+\begin{enumerate}[label=(\alph*)]
+\item $xe^y + \sin(xy) + y - \ln 2 = 0, \quad (0, \ln 2)$
+
+\item $xy + y^2 - 3x - 3 = 0, \quad (-1,1)$
+
+\end{enumerate}
+
+% Problem 32 of Section 14.4 of book
+\item For the following function, find the values of $dz/dx$ and $dz/dy$ at the point specified.
+\[ xe^y + y e^z  + 2 \ln x - 2 - 3 \ln2 = 0, \quad (1, \ln 2, \ln3) \]
+
+\end{enumerate}
+
+
+\section{Directional Derivatives}
+\begin{enumerate}
+\item \begin{enumerate}[label = (\alph*)]
+\item Find the derivative of $f(x,y,z) = x^3 - xy^2 - z$ at $(1,1,0)$ in the direction of $\bm{v} = 2 \bm{i} -3 \bm{j} + 6 \bm{k}$.
+\item In what directions does $f$ change most rapidly at $(1,1,0)$? What are the rates of change in these directions?
+
+
+\end{enumerate}
+
+
+\item Find the direction in which $h(x,y,z) = \ln(x^2 + y^2 -1) + y + 6z$ increases and decreases most rapidly at $(1,1,0)$, then find the derivative in this direction. 
+
+
+\item In what directions is the derivative of $f(x,y) = \frac{ x^2 - y^2}{x^2 + y^2}$ at $(1,1)$ equal to zero? 
+
+
+\end{enumerate}
+
+\section{Gradients}
+Compute the gradient of the following functions at the given point. 
+\begin{enumerate}
+\item $f(x,y,z) = 2z^3 - 2(x^2 + y^2)z + \tan^{-1}(xz),\quad (1,1,1)$
+
+\item $f(x,y,z) = (x^2 + y^2 + z^2)^{-1/2} + \ln(xyz),\quad (-1,2,-1)$
+
+\item $f(x,y,z) = e^{x + y}\cos(z) + (y + 1)\sin^{-1}(x), \quad (0,0,\pi/6)$
+
+\end{enumerate}
+
+\section{Double Integrals}
+
+\begin{enumerate}
+\item Sketch the region of integration and reverse the order of integration. Then, evaluate the integral.  
+\begin{enumerate}[label=(\alph*)]
+\item $\int_0^{\pi/6} \int_{\sin(x)}^{1/2} xy^2 dy dx$
+
+\item $\int_0^8 \int_{x^{1/3}}^2 \frac{ 1}{y^4 + 1}dydx$
+
+\end{enumerate}
+
+\item Convert to polar coordinates, then evaluate the integral. 
+\begin{enumerate}[label=(\alph*)]
+\item $\int_0^4 \int_{-\sqrt{16-y^2}}^{\sqrt{16-y^2}} \sqrt{ 25 - x^2 - y^2} dx dy$
+
+\item $\int_{-1}^1 \int_{-\sqrt{1 - y^2}}^{\sqrt{1 - y^2}} \ln(x^2 + y^2 + 1)dx dy$
+
+\end{enumerate}
+
+\end{enumerate}
+
+\section{Unconstrained Optimization}
+\begin{enumerate}
+% TC 14.7 #46
+\item Consider the function $f(x,y) = x^2 + kxy + y^2$. for what values of $k$ will $f(x,y)$ have a saddle? A minimum? A maximum? Mathematically justify your answers. 
+
+
+\item Find the maxima and minima of $f(x,y) = 48xy - 32x^3 - 24y^2$ on $0 \leq x \leq 1$ and $ 0 \leq y \leq 1$.
+
+
+\item Find local max, min, and saddle points of $f(x,y) = e^x(x^2 - y^2)$. 
+
+
+
+\end{enumerate}
+
+\section{Constrained Optimization}
+\begin{enumerate}
+% TC 14.8 #8
+\item Find the points on the curve $x^2 +xy + y^2 = 1$ in the $xy$-plane that are nearest to and farthest from the origin. 
+
+% TC 14.8 #36
+\item Minimize the function $f(x,y,z) = x^2 + y^2 + z^2$ subject to the constraints $x+2y+3z = 6$ and $ x+3y+9z =9$.
+
+% TC 14.8 #44
+\item Let $a_1,a_2, ...,a_n$ be positive numbers. Find the maximum of $\sum_{i=1}^n a_i x_i$ subject to $ \sum_{i=1}^n x_i^2 = 1$.
+
+
+\end{enumerate}
+
+%\section{Level Sets}
+
+
+\section{Linear Regression}
+\begin{enumerate}
+\item A herpetologist has been tasked with studying the local salamander population. To do so, they have been collecting data on the average winter temperature (in $^\circ C$) in a region and how many salamanders per square kilometer they find on a given patch of land the following spring. The data points are $(8, 2)$, $(6, 1)$, $(11, 3)$, and $(3, 1)$ (with salamander population give in hundreds of salamanders). They would like to model the relationship between the average temperature and salamander population, and believe a linear model may work well. 
+
+\par Solve for the least-squares best fit line for these four data points. What are the squared errors for each data point? Do you think a linear fit is appropriate? 
+
+\item In some cases, the linear fit may not be very good. An alternative to fitting a line through data is to fit a higher-order polynomial such as a quadratic. That is, we fit a quadratic of the form:
+\[ y(x) = m_1 x^2 + m_2 x + b\]
+to our data, which requires us to solve out for $m_1$, $m_2$, and $b$. 
+\par Reformulate the least-squares problem to fit a quadratic, and write out the system we should solve for $m_1$, $m_2$, and $b$.
+
+\item Sometimes an outlier can have a huge effect on our solution, or if we are fitting a high-degree polynomial, the coefficients may become very large and our model will \textit{overfit} the data. (Indeed, this is one of the biggest problems that machine learning researchers face when formulating models.) 
+\par To combat this, we \textit{regularize} the regression coefficients. Regularization involves adding a penalty term to our squared error to penalize large coefficients:
+\[ E = \sum_{i=1}^n(mx_i + b - y_i)^2 + \lambda(m^2 + b^2) \]
+Rewrite the linear regression equations and include the regularization terms. 
+
+\end{enumerate}
+
+\section{MATLAB}
+\begin{enumerate}
+\item For the function $f(x,y) = \tan^{-1}(x) + y^2$, write MATLAB to compute $\int_1^{10} \int_2^4 f(x,y)dydx$ using a right Riemann sum. Use 1001 grid points in each dimension. 
+
+%\item The Fredholm equation often appears in many areas of engineering, including optics, imaging, geophysics, and other areas of signal processing and inverse modeling. The equation is given as follows: 
+%\[ g(t) = \int_a^b K(t,s) f(s) ds \]
+%where $g(t)$ is the \textit{response}, $K(t,s)$ is the \textit{kernel}, which is a function of two variables, and the input $f(t)$. 
+%
+%\par We would like to find the value of $g(t)$ for $t_0 \leq t \leq t_f$. 
+%\begin{enumerate}[label=(\alph*)]
+%\item Reformulate this as a matrix problem. \textit{Hint:} it may be easiest to figure out how to vectorize this for a fixed value of $t$, then expand for all values of $t$. 
+%
+%
+%\item Write code that implements this numerical integral in MATLAB.
+%
+%
+%\end{enumerate}
+%
+%
+%\item The trapezoidal method for computing numerically computing $\int_a^b f(t)dt$ is given by:
+%\[ \int_a^b f(t)dt \approx \sum_{i=1}^n \frac{f(t_i + \Delta t) + f(t_i)}{2} \Delta t \]
+%
+%Redo the previous problem using the trapezoidal rule.
+
+
+\item The steepest descent method is one of the cornerstones of optimization theory. In fact, steepest descent is the main workhorse for most machine learning algorithms in industry, and forms the backbone of most systems used in other fields. The steepest descent algorithm is given as follows:
+\[ x_{k+1} = x_k - \gamma_k \nabla f(x_k)\]
+where $x_k$ is your current point, $\gamma_k$ is your step size at step $k$, and $\nabla f(x_k)$ is the gradient calculated at your current point.
+\begin{enumerate}[label=(\alph*)]
+\item Based on your knowledge of gradient vectors, what is the intuition behind this algorithm? Will it always converge to a local minimum? A global minimum? No need to mathematically justify your answers here---we are just looking for a qualitative explanation. 
+
+\item Consider the function 
+\[ f(x,y) = 2e^{-y}(x - 2)^2 + e^{-x}(y - 4)^4 \]
+Write the gradient descent update equations. 
+
+\item For the function in the previous part, write MATLAB code that implements gradient descent with an initial guess of $(0,0)$ and runs for 5,000 iterations. Use an initial step size of $10^{-2}$ and reduce the step size by $1/2$ ever 1000 iterations. 
+
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\end{document}

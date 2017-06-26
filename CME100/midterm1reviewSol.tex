@@ -1,0 +1,345 @@
+	\documentclass[letterpaper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb,bm}
+\usepackage{verbatim,eufrak,hyperref,bbm}
+\usepackage{titlesec}
+\usepackage{listings}
+
+%%%%% TEMPLATE-SPECIFIC FORMATTING %%%%%
+%\usepackage{fourier}
+\usepackage[adobe-utopia]{mathdesign}
+\titleformat{\section}
+  {\normalfont\fontsize{12}{15}\bfseries}{\thesection.}{1em}{}
+  \titleformat{\subsection}[runin]{\normalfont}{\thesubsection}{3pt}{}
+%\usepackage[T1]{fontenc}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Midterm\ 1\ Review\ Solutions} % Assignment title
+\newcommand{\hmwkClass}{CME\ 100\ ACE} % Course/class
+\newcommand{\hmwkAuthorName}{T Anderson, S Messingher, A Kusimo} % Your name
+\newcommand{\hmwkAuthorEmail}{timmya@stanford.edu} % Your email
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{} % Top left header
+\chead{} % Top center header
+\rhead{} % Top right header
+\lfoot{\hmwkClass\ : \hmwkTitle} % Bottom left footer
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\hmwkAuthorName} % Bottom right footer
+\renewcommand\headrulewidth{0pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+
+% Math commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\allowdisplaybreaks
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\setlength{\parindent}{0pt} % Set indent to zero
+
+\begin{document}
+
+%\thispagestyle{empty}
+\noindent
+\normalsize 
+%\hmwkAuthorName 
+\hmwkClass \hfill April\ 23,\ 2017\\
+%\hmwkAuthorEmail \\
+
+\begin{center} \Large \textbf{\hmwkTitle} \end{center}
+
+\section{The Algebra of Vectors}
+
+\section{Dot Products}
+
+\section{Cross Products}
+
+\section{Lines and Planes}
+
+\section{Vector-Valued Functions}
+
+\section{Velocity and Acceleration Vectors}
+
+\begin{enumerate}
+\item Given
+\begin{align*}
+\vec{\bm{r}}(t)= (4\cos t)\vec{\bm{i}}+(4\sin t)\vec{\bm{j}}+3t\vec{\bm{k}}
+\label{eq:traj1}
+\end{align*}
+
+find the arc length from $(4,0,0)$ to $(0,4,\frac{3}{2}\pi)$ (Problem 11 from Section 13.3 of textbook)
+
+\par \textbf{Solution:} To get arc length, we need to integrate $\vec{\bm{|v|}}$ with respect to time. 
+
+But what are the boundaries of integration? Note that the given boundaries are in terms of spatial coordiantes, not time values. We need to convert these limits to time. 
+
+What does the starting point (4,0,0) correspond to in time? Well, we know that the component of the trajectory along $\vec{\bm{k}}$ can only be zero at $t=0$. The $\vec{\bm{i}}$ and $\vec{\bm{j}}$ coordinates at $t=0$ are 4 and 0, respectively. This complies with the initial point given. Using same logic, second boundary point $(0,4,\frac{3}{2}\pi)$ corresponds to $t=\pi/2$.
+
+We can then find
+\begin{gather*}
+\vec{\bm{r'}}(t)= (-4\sin t)\vec{\bm{i}} + (4\cos t)\vec{\bm{j}} + 3\vec{\bm{k}}\\
+\vec{\bm{|v|}}= \sqrt{4^2(\sin ^2 t\vec{\bm{i}}+\cos ^2 t)+3^2}=5\\
+L =  5 \int_{0}^{\pi/2}dt=2.5\pi\quad\blacksquare
+\end{gather*}
+\item Given the parameterized trajectory 
+\[ \vec{\bm{r}}(t)= (\cos t)\vec{\bm{i}}+(\sin t)\vec{\bm{j}}+(1-\cos t)\vec{\bm{k}}\]
+
+determine whether the acceleration of the trajectory is always parallel to the plane described by $x+z=1$ (similar Problem 17.c from Section 13.3 of textbook) 
+
+\par \textbf{Solution:} Think of this problem as the trajectory of a particle. Let's first find the acceleration vector
+\begin{gather*}
+\vec{\bm{r'}}(t)= -\sin t\vec{\bm{i}}+\cos t\vec{\bm{j}}+\sin t\vec{\bm{k}} \\
+\vec{\bm{a}}=\vec{\bm{r''}}(t)= \cos t\vec{\bm{i}}-\sin t\vec{\bm{j}}+\cos t\vec{\bm{k}}
+\end{gather*}
+
+If $\vec{\bm{a}}$ always is parallel to the given plane, we know $\vec{\bm{a}}$ must be orthogonal (perpendicular) to a normal vector $\vec{\bm{n}}$ of that plane. In other words, if we find $\vec{\bm{n}}$, dot it with $\vec{\bm{a}}$, and get 0 as a result, we know $\vec{\bm{a}}$ is always parallel to the plane. \textit{Make sure you understand this logic up to this point before proceeding.}
+
+Now, let's find a vector normal to the plane. To do this, let's define $\vec{\bm{P_0}}=(x_0,y_0,z_0)$ to be a point on the plane. Let's also define $\vec{\bm{P}}=(x,y,z)$ any point on the plane. Then $\vec{\bm{P}}-\vec{\bm{P_0}}$ must be a vector that lines on the plane. 
+
+We want $\vec{\bm{n}}=(n_x,n_y,n_z)$ such that 
+\begin{gather*}
+(\vec{\bm{P}}-\vec{\bm{P_0}})\cdot \vec{\bm{n}}=0 \\ 
+\Rightarrow (x-x_0)n_x+(y-y_0)n_y+(z-z_0)n_z=0 \\
+\Rightarrow xn_x+yn_y+zn_z = (x_0n_x+y_0n_y+z_0n_Z)
+\end{gather*}
+
+but from the plane equation, we know $x + 0 + z = 1$. From these two equations, we can find $n_x = 1$, $n_z = 1$, and $n_y = 0$. 
+\par So, $\vec{\bm{n}}=(1,0,1)$ \textit{this vector is not normalized, and there is no need for it to be normalized for our case.}
+\par Finally, $\vec{\bm{a}}\cdot\vec{\bm{n}}=-\cos t + \cos t = 0$, meaning  $\vec{\bm{a}}$ is always parallel to the plane.$\quad\blacksquare$ 
+
+\end{enumerate}
+
+\section{$\vec T$, $\vec N$, and $\vec B$ Vectors, Curvature, and Torsion}
+
+\begin{enumerate}
+
+\item Find $\vec{\bm{T}}$, $\vec{\bm{N}}$, and $\bm{\kappa}$ (curvature) for the space curve
+$$\vec{\bm{r}}(t)= (e^t\cos t)\vec{\bm{i}}+(e^t \sin t)\vec{\bm{j}}+2\vec{\bm{k}}$$ 
+(Problem 11 from Section 13.4 of textbook)
+
+\par \textbf{Solution:} 
+\par It is given that
+\[ \vec r(t) = e^t \cos t \bm{i} + e^t \sin t \bm{j} + 2 \bm{k}\]
+so we can differentiate once with respect to $t$ to find the velocity:
+\begin{align*}
+\vec v &= \left( e^t \cos t - e^t \sin t\right) \bm{i} + \left(e^t \sin t + e^t \cos t \right) \bm{j} + 0 \bm{k} \\
+|\vec v | &= \sqrt{\left( e^t \cos t - e^t \sin t\right)^t + \left(e^t \sin t + e^t \cos t \right)^t } \\
+&= \sqrt{e^{2t}\left( \cos^2 t + \sin^2 t - 2 \sin t \cos t + \sin^2 t + \cos^2 t + 2 \sin t\cos t\right)}\\
+&= e^t \sqrt{2} 
+\end{align*}
+Using this, we can calculate the unit tangent vector $vec T$:
+\begin{align*}
+\vec T  &= \frac{ \vec v}{|\vec v|}\\
+&= \frac{1}{e^t \sqrt{2}} \left( \left( e^t \cos t - e^t \sin t\right) \bm{i} + \left(e^t \sin t + e^t \cos t \right) \bm{j}\right) \\
+&= \frac{1}{\sqrt{2}}\left( \cos t - \sin t\right) \bm{i} +  \frac{1}{\sqrt{2}}\left(\sin t + \cos t \right) \bm{j} \quad\blacksquare
+\end{align*}
+From here, we can differentiate with respect to $t$ to find the unit normal vector $\vec N$:
+\begin{align*}
+\frac{d\vec T}{dt} &= \frac{1}{\sqrt{2}}\left( -\sin t - \cos t\right) \bm{i} +  \frac{1}{\sqrt{2}}\left(\cos t -\sin t \right) \bm{j} \\
+\left| \frac{d \vec T}{dt} \right| &= \sqrt{\left( \frac{1}{\sqrt{2}}\left( -\sin t - \cos t\right)\right)^2 + \left(\frac{1}{\sqrt{2}}\left(\cos t -\sin t \right)\right)^2 } \\
+&= \frac{1}{\sqrt{2}} \sqrt{2} = 1\\
+\vec N &= \frac{1}{|d \vec T/dt|} \frac{d\vec T}{dt} \\
+&= -\frac{1}{\sqrt{2}}\left( \sin t  \cos t\right) \bm{i} +  \frac{1}{\sqrt{2}}\left(\cos t -\sin t \right) \bm{j} \quad\blacksquare
+\end{align*}
+Finally, we can calculate curvature:
+\begin{align*}
+\kappa &= \frac{1}{|\vec v|} \left | \frac{d\vec T}{dt} \right| \\
+&= \frac{1}{e^t \sqrt{2}} \quad\blacksquare
+\end{align*}
+\textit{Note:} for a problem such as this, to find the curvature, you effectively need to compute all of the information you would need to find the TNB frame vectors \textit{except} for the binormal vector. This is different from torsion, where we only need to compute the first three derivatives of the path then plug into the determinant formula. 
+
+% \clearpage
+% \begin{figure}[H]
+% \includegraphics[width=0.6\textwidth]{curvature_sols.jpg}
+% \centering
+% \end{figure}
+
+\item For the same trajectory, find $\vec{\bm{B}}$,  and $\bm{\tau}$ (torsion)  
+
+(Problem 11 from Section 13.4 of textbook) 
+
+Hint: thinking of torsion intuitively might save you a bunch of time on this one...
+
+\par \textbf{Solution:} To find the binormal vector, recall the formula
+\[ \vec B = \vec T \times \vec N \]
+which we find as:
+\begin{align*} 
+\vec T \times \vec N &= \left| \begin{array}{ccc} \vec i & \vec j & \vec k \\
+\frac{1}{\sqrt{2}}(\cos t - \sin t) & \frac{1}{\sqrt{2}}(\cos t - \sin t ) & 0 \\
+\frac{1}{\sqrt{2}}(-\cos t- \sin t) & \frac{1}{\sqrt{2}}(\cos t - \sin t) & 0 \end{array} \right| \\
+&= 0 \vec i + 0 \vec j + \left( \frac{1}{2}(\cos t - \sin )^2 + \frac{1}{2} ( \cos t + \sin t )^2 \right) \vec k \\
+&= \vec k \quad\blacksquare
+\end{align*}
+
+% \begin{figure}[H]
+% \includegraphics[width=0.6\textwidth]{finding_binormal.jpg}
+% \centering
+% \end{figure}
+
+To find torsion, we need to find the first three derivatives of the path:
+\begin{align*}
+\vec r(t) &= e^t \cos t \vec i + e^t \sin t \vec j + 2 \vec k \\
+\vec v(t) &= r'(t) = \left( e^t \cos t - e^t \sin t\right) \vec i + \left(e^t \sin t + e^t \cos t \right) \vec j + 0 \vec k \\
+\vec a(t) &= r''(t) = -2e^t \sin t \vec i + 2 e^t \cos t \vec j + 0 \vec k \\
+r'''(t) &= -2e^t ( \sin t + \cos t) \vec i + 2 e^t ( \cos t - \sin t) \vec j + 0 \vec k 
+\end{align*}
+
+% \begin{figure}[H]
+% \includegraphics[width=0.6\textwidth]{finding_torsion.jpg}
+% \centering
+% \end{figure}
+From here, we can compute $|\vec v \times \vec a|$:
+\begin{align*}
+\vec v \times \vec a &= \left| \begin{array}{ccc} \vec i & \vec j & \vec k \\
+e^t(\cos t - \sin t) & e^t (\cos t + \sin t) & 0 \\
+-2e^t \sin t & 2e^t \cos t & 0 \end{array} \right|\\
+&= 2e^{2t} \vec k \\
+|\vec v \times \vec a | &= 2 e^{2t}
+\end{align*}
+Recall the expression for torsion. \textit{Note:} there exist multiple expressions for torsion, but this is the expression you will almost always use to actually compute a specific value.
+\[ \tau = \frac{ \left| \begin{array}{ccc} \dot x & \dot y & \dot z \\
+\ddot x & \ddot y & \ddot z  \\ \dddot x &\dddot y &\dddot z \end{array} \right| }{ |\vec v \times \vec a|^2} = 
+\frac{ \left| \begin{array}{ccc} e^t(\cos t - \sin t) & e^t(\cos t + \sin t) & 0 \\
+-2e^t \sin t & 2e^t \sin t & 0  \\ -2e^t(\sin t + \cos t) &2e^t(\cos t - \sin t) & 0  \end{array} \right| }{ 4e^{4t}}
+= 0 \quad\blacksquare\]
+(The determinant here we immediately know is 0 since the entire third column is 0.) 
+\par Note that just by looking at the curve, we can see that it lies on a plane parallel to the xy plane that cuts the z axis at 2. This means that the trajectory lives in a plane and it never leaves. This implies that it's torsion \textit{must} be zero, since torsion is an inherently three dimensional phenomenon.
+
+\end{enumerate}
+
+\section{Matrix Operations}
+\begin{enumerate}
+\item Assuming that $\bm{A}$ and $\bm{A}^T$ is invertible, prove that 
+\[ (\bm{A}^T)^{-1} = (\bm{A}^{-1})^T \]
+\par \textbf{Solution:} Remember that by definition, the inverse of matrix $\bm{M}$ will satisfy:
+\[ \bm{M}\bm{M}^{-1} = \bm{M}^{-1} \bm{M} = \bm{I} \]
+Using that $\bm{A}$ is invertible:
+\begin{align*}
+\bm{I} &= \bm{A} \bm{A}^{-1} \\
+&= \left( \bm{A}^{-1}\right)^T \bm{A}^T \\
+\intertext{Multiply from the right by $\left(\bm{A}^T\right)^{-1}$:}
+\left( \bm{A}^T\right)^{-1} &= \left( \bm{A}^{-1}\right)^T \quad\blacksquare
+\end{align*}
+
+
+\item Compute the inverse of the following matrix:
+\[ \bm{A} = \left[ \begin{array}{cc} 3 & 10 \\ 3 & 3 \end{array} \right] \]
+\par \textbf{Solution:} Recall the formula for the inverse of a $2 \times 2$ matrix:
+\[ \bm{A} = \left[ \begin{array}{cc} a & b \\ c & d \end{array} \right] \qquad \bm{A}^{-1} =\frac{1}{\det\bm{A}} \left[\begin{array}{cc} d & -c \\ -b & a \end{array} \right] \]
+Using this, we can easily compute the inverse of the given matrix:
+\[ \bm{A}^{-1} = \frac{1}{3(3) - 3(10)} \left[ \begin{array}{cc} 3 & -10 \\ -3 & 3 \end{array} \right] = \left[ \begin{array}{cc} - \frac{1}{7} & \frac{10}{21} \\ \frac{1}{7} & -\frac{1}{7}\end{array} \right] \]
+
+\item Compute the determinant of the following matrix:
+\[ \bm{A}  = \left[ \begin{array}{cccc} 4 & 3 & 2 & 1 \\ 3 & 4 & 3 & 2 \\ 2 & 3 & 4 & 3 \\ 1 & 2 & 3 &4 \end{array} \right] \]
+\par \textbf{Solution:} The shortcut methods we have previously discussed in section will not work for anything larger than a $3\times 3$ matrix, so we instead will need to use the definition based on principle minors to compute the determinant:
+\begin{align*} 
+\det \bm{A} &= 4 \det \left| \begin{array}{ccc} 4 & 3 & 2 \\ 3 & 4 &3 \\ 2 &3 &4 \end{array} \right| - 3\det \left| \begin{array}{ccc} 3 & 3 & 2 \\ 2 & 4 &3 \\ 1 & 3 & 4 \end{array} \right| + 2 \det \left| \begin{array}{ccc} 3 & 4 & 2 \\ 2 & 3 & 3 \\ 1 & 2 & 4 \end{array} \right| - \det \left| \begin{array}{ccc} 3 & 4 & 3 \\ 2 & 3 & 4 \\ 1 & 2 & 3 \end{array} \right|
+\intertext{From here, compute the determinant of the $3 \times 3$ matrices using the shortcut method.}
+%&= 4 (4^3 + 3^2(2) + 3^2(3) - 2^2(4) - 3^2(4) - 3^2(4) ) - 3((3)4^2 + 3^2(1) + 2^2(3) - 4(1)(2) - 3^3 - 4(2)(3)) + \\
+%&\qquad 2 ( 3^2(4) + 4(3)(1) + 2^3 - 1(3)(2) - (2)3^2 - (2)4^2 ) - (3^3 + 4^2(1) + (3)2^2 - (1)3^2 - 2(4)(3) - 3(2)(4) ) \\
+&= 4 (64 + 18 + 18 - 16 -36 - 36 ) - 3(48 + 9 + 12 - 8 - 27 - 24) + \\
+&\qquad 2 ( 36 +12 + 8 - 6 - 18 - 32 ) - (27 + 16 + 12 - 9 - 24 - 24 ) \\
+&= 4(12) - 3(10) + 2(0) - (-2) \\
+&= 20 \quad\blacksquare
+\end{align*}
+\end{enumerate}
+
+
+\section{MATLAB}
+\begin{enumerate}
+\item The \texttt{A = diag(v)} function in MATLAB takes a vector \texttt{v} and outputs a matrix \texttt{A} such that \texttt{v} is on the diagonal. In MATLAB, we often want to \textit{vectorize} our computations such that we avoid loops and write our code as matrix multiplications, so a function such as \texttt{diag()} is extremely useful. 
+\par Suppose we have a column vector $v$, and we want to build a matrix $B$ with $n$ rows such that $v^T$ is every row of the matrix. Write a piece of MATLAB code that does this using
+\begin{enumerate}[label=(\alph*)]
+\item Two loops
+\par \textbf{Solution:}
+\begin{lstlisting}[language=Octave]
+B = zeros(n,numel(v));
+for i = 1:numel(v)
+	for j = 1:n
+		B(j,i) = v(i);
+	end
+end
+\end{lstlisting}
+
+\item One loop
+\par \textbf{Solution:}
+\begin{lstlisting}[language=Octave]
+for j = 1:n
+	B(j,:) = v';
+end
+\end{lstlisting}
+
+\item No loops
+\par \textbf{Solution:}
+\begin{lstlisting}[language=Octave]
+B = ones(n,numel(v))*diag(v);
+\end{lstlisting}
+
+\end{enumerate}
+Assume that \texttt{v} and \texttt{n} have already been declared and are stored in MATLAB's memory.
+ 
+\item Recall the interpolation problem discussed in the week 4 ACE worksheet. In this problem, we are given data points $(x_1,y_1), \; (x_2, y_2),\; ... \;,\; (x_n, y_n)$, and want to fit an $n^{th}$ degree polynomial such that:
+\[c_0 + c_1x_i + c_2x_i^2 +\cdots + c_nx_i^n = y_i \]
+for all $i = 1, ..., n$. 
+\begin{enumerate}[label = (\alph*)]
+\item Write this as a matrix equation. (This was the same question as in the linear algebra review sheet.)
+\par \textbf{Solution:} We know that at every $x_k$, we need to satisfy
+\[ y_k = c_0 + c_1 x_k + c_2 x_k^2 + ... + c_n x_k^n \]
+So, we can set up this equation for all $i$, which will give us a system of equations we can solve for the $c_i$:
+\[
+\left[ \begin{array}{ccccc} 1 & x_1 & x_1^2 & \cdots & x_1^n \\
+1 & x_2 & x_2^2 & \cdots & x_2^n \\
+ && \vdots && \\
+ 1 & x_n & x_n^2 & \cdots & x_n^n 
+ \end{array} \right] \left[ \begin{array}{c} c_0 \\ c_1 \\ c_2 \\ \vdots \\c_n \end{array} \right] = \left[ \begin{array}{c} y_1 \\ y_2 \\ \vdots \\ y_n \end{array} \right]
+\]
+
+\item For a given system $\bm{A} \bm{x} = \bm{b}$, the \textit{backslash operator} will solve a system as \texttt{x = A\textbackslash b}. 
+\par Given \texttt{x} and \texttt{y} vectors (assume these are already the MATLAB virtual machine's memory), write code to generate the \texttt{A} matrix for the interpolation problem stated above.
+\par\textbf{Solution:} 
+\begin{lstlisting}[language=Octave]
+A = [];
+for i = 1:numel(x)
+	A = [A x.^i]
+end
+\end{lstlisting}
+
+%\item \textit{Related linear algebra question:} When measuring physical systems, sometimes the same input may yield slightly different outputs. In this system, $x$ is the input and $y$ is the output, and you can think of the interpolation as trying to determine the response of the system for all $x$. 
+%\par Suppose we measure the same $x$ twice and it produces two different $y$ values. (This could be due to measurement error, system noise, or many other causes.) Will we still be able to find a unique interpolating polynomial by setting up this matrix equation? 
+%\par \textbf{Solution:} 
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+\end{document}
