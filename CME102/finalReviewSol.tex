@@ -49,7 +49,7 @@
 
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
-\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[L]{\textit{CME 102 Winter '17-'18}} % Empty left footer
 \fancyfoot[C]{} % Empty center footer
 \fancyfoot[R]{Tim Anderson} % Page numbering for right footer
 \renewcommand{\headrulewidth}{0pt} % Remove header underlines
@@ -473,24 +473,27 @@ y(t) &= c_1(t+1) + c_2e^t + \frac{(t+1)e^{2t}}{2}  \quad\blacksquare
 \end{enumerate}
 
 
-% \item \textbf{Mass-spring system:} Derive the ODE for the following mass-spring system.
+\item \textbf{Mass-spring system:} Consider the equation of motion for a mass-spring system:
+\[ mx'' + \beta x' + k x = f(t) \]
+For the following values of $m$, $\beta$, and $k$ and form of $f(t)$, state if the homogeneous solution is over-damped, critically damped, If the motion is forced, state whether we will have beats, resonance, or neither, and why.
+\begin{enumerate}
 
+\item $m = 1$, $\beta = 5$, $k = 2$, $f(x) = 0$
+\par \textbf{Solution:} over-damped--two real roots to homogeneous solution.
 
-%\item \textbf{Resonance:} For the following, state whether we will have beats, resonance, or neither and why
-%\begin{enumerate}
-%
-%\item
-%
-%\item
-%
-%\item
-%
-%\item
-%
-%\item
-%
-%\end{enumerate}
+\item $m = 2$, $\beta = 0$, $k = \frac{1}{2}$, $f(t) = \sin(0.49t)$
+\par \textbf{Solution:} underdamped (undamped motion, actually)--two complex conjugate roots. Motion experiences beats since frequency of forcing function and natural frequency are close (but not equal). 
 
+\item $m = 2$, $\beta = 8$, $k = 8$, $f(x) = 0$
+\par \textbf{Solution:} critically damped--one repeated real root. Motion is unforced so no damping or beats.
+
+\item $m = 3$, $\beta = 0$, $k = \frac{1}{3}$, $f(t) = \sin(t/3)$
+\par \textbf{Solution:} underdamped (undamped) motion--two pure-imaginary roots. Motion experiences resonance since natural frequency and forcing function frequency are the same.
+
+\item $m = 5$, $\beta = 2$, $k = 1$, $f(t) = \sin(2t/5)$
+\par \textbf{Solution:} underdamped motion (two complex conjugate roots), does not experience resonance or beats since motion is damped.
+
+\end{enumerate}
 
 \item \textbf{Laplace transform:} Solve the following using a Laplace transform
 \begin{enumerate}
@@ -512,13 +515,13 @@ Y(s) &=  \frac{s}{(s^2 + 1)(s^2+2s + 2)} + \frac{e^{-\pi s/2}}{s^2+2s + 2}\\
 \frac{s}{(s^2 + 1)((s+ 1)^2 + 1)} &= \frac{As + B}{s^2 + 1} + \frac{Cs + D}{(s+1)^2 + 1} \\
 &= \frac{s + 2}{5(s^2 + 1)} - \frac{(s + 4)}{5((s+1)^2 + 1)} \\
 Y(s) &= \frac{s + 2}{5(s^2 + 1)} - \frac{(s + 4)}{5((s+1)^2 + 1)} + \frac{e^{-\pi s/2}}{(s+ 1)^2 +1}\\
-&= \frac{s}{5(s^2 + 1)} + \frac{2}{5(s^2 + 1)} - \frac{s}{5((s+1)^2 + 1)} - \frac{4}{5((s+1)^2 + 1)} + \frac{e^{-\pi s/2}}{(s+ 1)^2 +1}
+&= \frac{s}{5(s^2 + 1)} + \frac{2}{5(s^2 + 1)} - \frac{s+1}{5((s+1)^2 + 1)} - \frac{3}{5((s+1)^2 + 1)} + \frac{e^{-\pi s/2}}{(s+ 1)^2 +1}
 \intertext{Taking the inverse transform \textit{without} applying any shifts:}
-y(t) &= \frac{1}{5}\cos(t) + \frac{2}{5}\sin(t) - \frac{1}{5}\cos(t) - \frac{4}{5}\sin(t) + \sin(t)
+y(t) &= \frac{1}{5}\cos(t) + \frac{2}{5}\sin(t) - \frac{1}{5}\cos(t) - \frac{3}{5}\sin(t) + \sin(t)
 \intertext{...then applying $s$-shifts since we are coming from the $s$-domain}
-y(t) &= \frac{1}{5}\cos(t) + \frac{2}{5}\sin(t) - \frac{1}{5}e^{-t}\cos(t) - \frac{4}{5}e^{-t}\sin(t) + e^{-t}\sin(t)
+y(t) &= \frac{1}{5}\cos(t) + \frac{2}{5}\sin(t) - \frac{1}{5}e^{-t}\cos(t) - \frac{3}{5}e^{-t}\sin(t) + e^{-t}\sin(t)
 \intertext{and finally applying $t$-shifts since we are going to the $t$-domain}
-y(t) &= \frac{1}{5}\cos(t) + \frac{2}{5}\sin(t) - \frac{1}{5}e^{-t}\cos(t) - \frac{4}{5}e^{-t}\sin(t) + u(t-\pi/2)e^{-(t-\pi/2)}\sin(t-\pi/2) \quad\blacksquare
+y(t) &= \frac{1}{5}\cos(t) + \frac{2}{5}\sin(t) - \frac{1}{5}e^{-t}\cos(t) - \frac{3}{5}e^{-t}\sin(t) + u(t-\pi/2)e^{-(t-\pi/2)}\sin(t-\pi/2) \quad\blacksquare
 \end{align*}
 
 \item $y'' + 4y' + 4y = te^{-2t},\quad y(0) = 0, \quad y'(0) = 1$
@@ -567,72 +570,72 @@ R_1I_1  + LI_1' + \frac{\int I_1(\tau)d\tau - \int I_2(\tau)d\tau}{C} = 0\\
 LI_1'' +R_1I_1'  +  \frac{1}{C} I_1 - \frac{1}{C}I_2 = 0 \quad\blacksquare
 \end{gather*}
 
-\item \textbf{Power series:} Solve the following using a power series and give the recurrence relation. Write out your solution up to fifth order. Clearly state why you cannot use another method to solve the system.
-\begin{enumerate}
-
-% B&P 5.3 #16
-\item $(2+x^2)y'' -xy' +4y=0, \quad y(0) = -1, \quad y'(0) = 3$
-\par \textbf{Solution:} 
-\begin{gather*}
-(2+x^2)y'' -xy' +4y=0\\
-2y'' + x^2y'' - xy' + 4y = 0\\
-2\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n + x^2\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n  - x\sum_{n=0}^\infty (n+1) a_{n+1} x^n + 4\sum_{n=0}^\infty a_n x^n = 0\\
-\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \sum_{n=0}^\infty \left[ 2(n+2)(n+1)a_{n+2} + 4a_n\right]  x^n - \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0
-\intertext{Reindexing the middle sum:}
-m +2 = n\\
-\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \sum_{m=-2}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0
-\intertext{Reindexing the right sum:}
-m+2 = n+1\\
-\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \sum_{m=-2}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - \sum_{m=-1}^\infty (m+2) a_{m+2} x^{m+2} = 0 \\
-\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \left[ 2(2)(1)a_{2} + 4a_{0}\right] + \left[ 2(3)(2)a_{3} + 4a_{1}\right]  x + \\
-\qquad\qquad \qquad \sum_{m=0}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - (1) a_{1} x - \sum_{m=0}^\infty (m+2) a_{m+2} x^{m+2} = 0 \\
-\left[ 4a_{2} + 4a_{0}\right] + \left[ 12a_{3} + 3a_{1}\right]  x + \sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \\
-\qquad\qquad\qquad\qquad \sum_{m=0}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - \sum_{m=0}^\infty (m+2) a_{m+2} x^{m+2} = 0 \\
-\left[ 4a_{2} + 4a_{0}\right] + \left[ 12a_{3} + 2a_{1}\right]  x +\\  
-\sum_{n=0}^\infty\left[ (n+2)(n+1)a_{n+2}  + 2(n+4)(n+3)a_{n+4} + 4a_{n+2} - (n+2) a_{n+2} \right]x^{n+2} = 0 \\
-\intertext{Matching coefficients to solve for the coefficients and recurrence relation:}
-4a_2 + 4a_0 = 0 \implies a_2 = -a_0 \implies a_2 = 1\\
-12a_3 + 3a_1 = 0 \implies a_3 = -\frac{1}{4}a_1\implies a_3 = -\frac{3}{4}\\
-(n+2)(n+1)a_{n+2}  + 2(n+4)(n+3)a_{n+4} + 4a_{n+2} - (n+2) a_{n+2} = 0\\
-n(n+2)a_{n+2}  + 2(n+4)(n+3)a_{n+4} + 4a_{n+2} = 0\\
-a_{n+4} = \frac{-n(n+2)-4}{2(n+4)(n+3)}a_{n+2} \quad n \geq0
-\intertext{Reindexing this:}
-a_{n+2} =  \frac{-n(n-2)-4}{2(n+2)(n+1)}a_n \quad n \geq 2
-\intertext{Solving for the higher coefficients:}
-a_4 =  \frac{-4}{2(4)(3)}a_2  = -\frac{ 1}{6}\\
-a_5 = \frac{-3(1)-4}{2(5)(4)}a_3 = \frac{21}{160}\\
-\intertext{and writing out the solution up to fifth order:}
-y(x) = -1 + 3x + x^2 - \frac{3}{4}x^3 - \frac{1}{6}x^4  + \frac{21}{160}x^5 + \cdots \quad\blacksquare
-\end{gather*}
-
-% B&P 5.3 17
-\item $y'' + xy' + 2y = 0$
-\par \textbf{Solution:} 
-\begin{gather*}
-y'' + xy' + 2y = 0 \\
-\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n + x\sum_{n=0}^\infty (n+1) a_{n+1} x^n + 2\sum_{n=0}^\infty a_n x^n = 0 \\
-\sum_{n=0}^\infty \left[(n+2)(n+1)a_{n+2} +2a_n\right]x^n + \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0 \\
-\intertext{Reindex the first sum:}
-m +1 = n\\
-\sum_{m=-1}^\infty \left[(m+3)(m+2)a_{m+3} +2a_{m+1}\right]x^{m+1} + \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0 \\
-\left[(2)(1)a_{2} +2a_{0}\right] + \sum_{m=0}^\infty \left[(m+3)(m+2)a_{m+3} +2a_{m+1}\right]x^{m+1} + \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0 \\
-\left[2a_{2} +2a_{0}\right] + \sum_{n=0}^\infty \left[(n+3)(n+2)a_{n+3} +2a_{n+1}+ (n+1) a_{n+1} \right]x^{n+1} = 0 \\
-\left[2a_{2} +2a_{0}\right] + \sum_{n=0}^\infty \left[(n+3)(n+2)a_{n+3} + (n+3) a_{n+1} \right]x^{n+1} = 0 \\
-\intertext{Matching coefficients and finding the recurrence relation:}
-2a_2 + 2a_0 = 0 \implies a_2 = -a_0\\
-(n+3)(n+2)a_{n+3} + (n+3) a_{n+1}  = 0\implies a_{n+3} = \frac{-a_{n+1}}{n+2} \quad n \geq 0\\
-\intertext{Reindexing the recurrence relation:}
-a_{n+2} = \frac{-a_{n}}{n+1}\quad n \geq 1
-\intertext{Solving for the higher coefficients:}
-a_3 = -\frac{a_1}{2} \\
-a_4 = \frac{-a_2}{3} = \frac{a_0}{3}\\
-a_5 = \frac{-a_3}{4} = \frac{a_1}{4}\\
-\intertext{and writing out the solution up to fifth order:}
-y(x) = a_0 + a_1x - a_0x^2 - a_1x^3 + \frac{a_0}{2}x^4 + \frac{a_1}{3}x^5 + \cdots\\
-y(x) = a_0\left(1  - x^2  + \frac{1}{3}x^4 + \cdots \right) + a_1\left(x - \frac{1}{2}x^3+\frac{1}{4}x^5 + \cdots\right) \quad\blacksquare
-\end{gather*}
-
-\end{enumerate}
+%\item \textbf{Power series:} Solve the following using a power series and give the recurrence relation. Write out your solution up to fifth order. Clearly state why you cannot use another method to solve the system.
+%\begin{enumerate}
+%
+%% B&P 5.3 #16
+%\item $(2+x^2)y'' -xy' +4y=0, \quad y(0) = -1, \quad y'(0) = 3$
+%\par \textbf{Solution:} 
+%\begin{gather*}
+%(2+x^2)y'' -xy' +4y=0\\
+%2y'' + x^2y'' - xy' + 4y = 0\\
+%2\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n + x^2\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n  - x\sum_{n=0}^\infty (n+1) a_{n+1} x^n + 4\sum_{n=0}^\infty a_n x^n = 0\\
+%\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \sum_{n=0}^\infty \left[ 2(n+2)(n+1)a_{n+2} + 4a_n\right]  x^n - \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0
+%\intertext{Reindexing the middle sum:}
+%m +2 = n\\
+%\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \sum_{m=-2}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0
+%\intertext{Reindexing the right sum:}
+%m+2 = n+1\\
+%\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \sum_{m=-2}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - \sum_{m=-1}^\infty (m+2) a_{m+2} x^{m+2} = 0 \\
+%\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \left[ 2(2)(1)a_{2} + 4a_{0}\right] + \left[ 2(3)(2)a_{3} + 4a_{1}\right]  x + \\
+%\qquad\qquad \qquad \sum_{m=0}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - (1) a_{1} x - \sum_{m=0}^\infty (m+2) a_{m+2} x^{m+2} = 0 \\
+%\left[ 4a_{2} + 4a_{0}\right] + \left[ 12a_{3} + 3a_{1}\right]  x + \sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^{n+2}  + \\
+%\qquad\qquad\qquad\qquad \sum_{m=0}^\infty \left[ 2(m+4)(m+3)a_{m+4} + 4a_{m+2}\right]  x^{m+2} - \sum_{m=0}^\infty (m+2) a_{m+2} x^{m+2} = 0 \\
+%\left[ 4a_{2} + 4a_{0}\right] + \left[ 12a_{3} + 2a_{1}\right]  x +\\  
+%\sum_{n=0}^\infty\left[ (n+2)(n+1)a_{n+2}  + 2(n+4)(n+3)a_{n+4} + 4a_{n+2} - (n+2) a_{n+2} \right]x^{n+2} = 0 \\
+%\intertext{Matching coefficients to solve for the coefficients and recurrence relation:}
+%4a_2 + 4a_0 = 0 \implies a_2 = -a_0 \implies a_2 = 1\\
+%12a_3 + 3a_1 = 0 \implies a_3 = -\frac{1}{4}a_1\implies a_3 = -\frac{3}{4}\\
+%(n+2)(n+1)a_{n+2}  + 2(n+4)(n+3)a_{n+4} + 4a_{n+2} - (n+2) a_{n+2} = 0\\
+%n(n+2)a_{n+2}  + 2(n+4)(n+3)a_{n+4} + 4a_{n+2} = 0\\
+%a_{n+4} = \frac{-n(n+2)-4}{2(n+4)(n+3)}a_{n+2} \quad n \geq0
+%\intertext{Reindexing this:}
+%a_{n+2} =  \frac{-n(n-2)-4}{2(n+2)(n+1)}a_n \quad n \geq 2
+%\intertext{Solving for the higher coefficients:}
+%a_4 =  \frac{-4}{2(4)(3)}a_2  = -\frac{ 1}{6}\\
+%a_5 = \frac{-3(1)-4}{2(5)(4)}a_3 = \frac{21}{160}\\
+%\intertext{and writing out the solution up to fifth order:}
+%y(x) = -1 + 3x + x^2 - \frac{3}{4}x^3 - \frac{1}{6}x^4  + \frac{21}{160}x^5 + \cdots \quad\blacksquare
+%\end{gather*}
+%
+%% B&P 5.3 17
+%\item $y'' + xy' + 2y = 0$
+%\par \textbf{Solution:} 
+%\begin{gather*}
+%y'' + xy' + 2y = 0 \\
+%\sum_{n=0}^\infty (n+2)(n+1)a_{n+2} x^n + x\sum_{n=0}^\infty (n+1) a_{n+1} x^n + 2\sum_{n=0}^\infty a_n x^n = 0 \\
+%\sum_{n=0}^\infty \left[(n+2)(n+1)a_{n+2} +2a_n\right]x^n + \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0 \\
+%\intertext{Reindex the first sum:}
+%m +1 = n\\
+%\sum_{m=-1}^\infty \left[(m+3)(m+2)a_{m+3} +2a_{m+1}\right]x^{m+1} + \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0 \\
+%\left[(2)(1)a_{2} +2a_{0}\right] + \sum_{m=0}^\infty \left[(m+3)(m+2)a_{m+3} +2a_{m+1}\right]x^{m+1} + \sum_{n=0}^\infty (n+1) a_{n+1} x^{n+1} = 0 \\
+%\left[2a_{2} +2a_{0}\right] + \sum_{n=0}^\infty \left[(n+3)(n+2)a_{n+3} +2a_{n+1}+ (n+1) a_{n+1} \right]x^{n+1} = 0 \\
+%\left[2a_{2} +2a_{0}\right] + \sum_{n=0}^\infty \left[(n+3)(n+2)a_{n+3} + (n+3) a_{n+1} \right]x^{n+1} = 0 \\
+%\intertext{Matching coefficients and finding the recurrence relation:}
+%2a_2 + 2a_0 = 0 \implies a_2 = -a_0\\
+%(n+3)(n+2)a_{n+3} + (n+3) a_{n+1}  = 0\implies a_{n+3} = \frac{-a_{n+1}}{n+2} \quad n \geq 0\\
+%\intertext{Reindexing the recurrence relation:}
+%a_{n+2} = \frac{-a_{n}}{n+1}\quad n \geq 1
+%\intertext{Solving for the higher coefficients:}
+%a_3 = -\frac{a_1}{2} \\
+%a_4 = \frac{-a_2}{3} = \frac{a_0}{3}\\
+%a_5 = \frac{-a_3}{4} = \frac{a_1}{4}\\
+%\intertext{and writing out the solution up to fifth order:}
+%y(x) = a_0 + a_1x - a_0x^2 - a_1x^3 + \frac{a_0}{2}x^4 + \frac{a_1}{3}x^5 + \cdots\\
+%y(x) = a_0\left(1  - x^2  + \frac{1}{3}x^4 + \cdots \right) + a_1\left(x - \frac{1}{2}x^3+\frac{1}{4}x^5 + \cdots\right) \quad\blacksquare
+%\end{gather*}
+%
+%\end{enumerate}
 
 \item \textbf{Direct method:} Consider the ODE
 \[ y'' + x^2y = e^{-x}\]
@@ -645,23 +648,23 @@ Write out the direct method system of equations for the following boundary condi
 \begin{gather*}
 y'' + x^2y = e^{-x}\\
 \frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} + x_i^2y_i = e^{-x_i}\\
-y_{i+1}+ (hx_i^2- 2)y_i + y_{i-1}= h^2e^{-x_i}
+y_{i+1}+ (h^2x_i^2- 2)y_i + y_{i-1}= h^2e^{-x_i}
 \end{gather*}
 After this, we can apply the boundary conditions: 
 \begin{gather*}
-y_{3}+ (hx_2^2- 2)y_2 + y_{1}= h^2e^{-x_2} \\
-y_{3}+ (hx_2^2- 2)y_2 + (0)= h^2e^{-x_2} \\
-y_{3}+ (hx_2^2- 2)y_2= h^2e^{-x_2} \\
-y_{5}+ (hx_4^2- 2)y_4 + y_{3}= h^2e^{-x_4} \\
-5+ (hx_4^2- 2)y_4 + y_{3}= h^2e^{-x_4} \\
-(hx_4^2- 2)y_4 + y_{3}= h^2e^{-x_4} - 5
+y_{3}+ (h^2x_2^2- 2)y_2 + y_{1}= h^2e^{-x_2} \\
+y_{3}+ (h^2x_2^2- 2)y_2 + (0)= h^2e^{-x_2} \\
+y_{3}+ (h^2x_2^2- 2)y_2= h^2e^{-x_2} \\
+y_{5}+ (h^2x_4^2- 2)y_4 + y_{3}= h^2e^{-x_4} \\
+5+ (h^2x_4^2- 2)y_4 + y_{3}= h^2e^{-x_4} \\
+(h^2x_4^2- 2)y_4 + y_{3}= h^2e^{-x_4} - 5
 \end{gather*}
 Finally, we can set up the equations. (\textit{Note:} we will have three degrees of freedom.)
 \[
 \left[\begin{array}{ccc} 
-(hx_2^2- 2) & 1 & 0\\
-1 &  (hx_3^2- 2) & 1 \\
-0 & 1 &  (hx_4^2- 2)\end{array} \right]
+(h^2x_2^2- 2) & 1 & 0\\
+1 &  (h^2x_3^2- 2) & 1 \\
+0 & 1 &  (h^2x_4^2- 2)\end{array} \right]
 \left[ \begin{array}{c} y_2 \\ y_3 \\ y_4\end{array} \right] 
 = \left[ \begin{array}{c} h^2e^{-x_2} \\ h^2e^{-x_3} \\ h^2e^{-x_4} - 5\end{array} \right] \quad\blacksquare
 \]
@@ -693,32 +696,31 @@ Finally, we set up the equations. (\textit{Note:} here we will have four degrees
 
 \end{enumerate}
 
-\item \textbf{Numerical methods:} Write a short piece of MATLAB code to solve the following using backward Euler.
-\[ y' + 5y^2 = \sin(x), \quad y(0) = 10\]
+\item \textbf{Numerical methods:} Write a short piece of MATLAB code to solve the following using backward Euler for $1 \leq t \leq 10$ with $h = 0.01$.
+
+\[ y' + 5ty = \sin(t), \quad y(1) = 10\]
+
 \par \textbf{Solution:} To use backward Euler, we need to write out the definition of backward Euler then resolve for $y_{i+1}$:
 
 \begin{align*}
 y_{i+1} &= y_i + hy'(x_{i+1},y_{i+1})\\
-y' &= \sin(x) - 5y^2\\
-y_{i+1} &= y_i + h\left[ \sin(x_{i+1}) - 5y_{i+1}^2\right] \\
-y_{i+1} &= y_i + h \sin(x_{i+1}) - 5hy_{i+1}^2 \\
+y' &= \sin(x) - 5ty\\
+y_{i+1} &= y_i + h\left[ \sin(x_{i+1}) - 5t_{i+1}y_{i+1}\right] \\
+y_{i+1} &= y_i + h \sin(x_{i+1}) - 5ht_{i+1}y_{i+1} \\
+y_{i+1} + 5ht_{i+1}y_{i+1}  &= y_i + h \sin(x_{i+1}) \\
+y_{i+1} &= \frac{1}{1 + 5ht_{i+1}}\left(y_i + h \sin(x_{i+1}) \right)
 \end{align*}
-Note that this is a quadratic equation for $y_{i+1}$, so we can solve this to find a closed-form solution for $y_{i+1}$:
-\begin{gather*}
-y_{i+1} = y_i + h \sin(x_{i+1}) - 5hy_{i+1}^2 \\
-5hy_{i+1}^2 + y_{i+1} - (y_i + h \sin(x_{i+1})) = 0\\
-y_{i+1} = \frac{-1 \pm\sqrt{1 - 4(5h)(y_i+h\sin(x_{i+1}))}}{10h}
-\end{gather*}
 
 From here we can write out the MATLAB function to solve this ODE:
 
 \begin{lstlisting} 
 y(1) = 10; 
-x(1) = 0;
-i = 1;
-while x < xmax
-	x(i+1) = x(i) + h;
-	y(i+1) = (-1 + sqrt(1 - 4*5*h*(y(i) + h*sin(x(i+1)))))/10/h;
+t(1) = 1;
+h = 1e-2;
+i = 1; tmax = 10;
+while t(i) < tmax
+	t(i+1) = t(i) + h;
+	y(i+1) = (y(i) + h * sin(t(i+1))) / (1 + 5*h*t(i+1));
 	i = i+1;
 end
 

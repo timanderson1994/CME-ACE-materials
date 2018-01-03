@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  4 JUN 2016 19:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 JAN 2018 22:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -876,28 +876,28 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Review1.png>] <finalReview2.png, id=40, 191.71625pt x 139.52126pt>
 File: finalReview2.png Graphic file (type png)
  <use finalReview2.png>
-Package pdftex.def Info: finalReview2.png used on input line 212.
+Package pdftex.def Info: finalReview2.png used on input line 211.
 (pdftex.def)             Requested size: 187.89914pt x 136.75117pt.
 
 [2 <./finalReview2.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 245.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 245.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
  (./finalReview.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 245.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 245.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `finalReview.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 245.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 10404 strings out of 493089
- 155563 string characters out of 6134842
+ 10407 strings out of 493089
+ 155584 string characters out of 6134842
  411166 words of memory out of 5000000
  13646 multiletter control sequences out of 15000+600000
  68877 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,12n,47p,252b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,47p,247b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-ml.pfb></usr/local/te
@@ -906,10 +906,10 @@ exlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on finalReview.pdf (3 pages, 159071 bytes).
+Output written on finalReview.pdf (3 pages, 160534 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
- 45 named destinations out of 1000 (max. 500000)
+ 109 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
+ 48 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

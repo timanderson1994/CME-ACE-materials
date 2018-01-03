@@ -46,7 +46,7 @@
 
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
-\fancyfoot[L]{\textit{CME 102 Spring '15-'16}} % Empty left footer
+\fancyfoot[L]{\textit{CME 102 Winter '17-'18}} % Empty left footer
 \fancyfoot[C]{} % Empty center footer
 \fancyfoot[R]{Tim Anderson} % Page numbering for right footer
 \renewcommand{\headrulewidth}{0pt} % Remove header underlines
@@ -178,23 +178,22 @@
 \end{enumerate}
 
 
-% \item \textbf{Mass-spring system:} Derive the ODE for the following mass-spring system.
+\item \textbf{Mass-spring system:} Consider the equation of motion for a mass-spring system:
+\[ mx'' + \beta x' + k x = f(t) \]
+For the following values of $m$, $\beta$, and $k$ and form of $f(t)$, state if the homogeneous solution is over-damped, critically damped, If the motion is forced, state whether we will have beats, resonance, or neither, and why.
+\begin{enumerate}
 
+\item $m = 1$, $\beta = 5$, $k = 2$, $f(x) = 0$
 
-%\item \textbf{Resonance:} For the following, state whether we will have beats, resonance, or neither and why
-%\begin{enumerate}
-%
-%\item
-%
-%\item
-%
-%\item
-%
-%\item
-%
-%\item
-%
-%\end{enumerate}
+\item $m = 2$, $\beta = 0$, $k = \frac{1}{2}$, $f(t) = \sin(0.49t)$
+
+\item $m = 2$, $\beta = 8$, $k = 8$, $f(x) = 0$
+
+\item $m = 3$, $\beta = 0$, $k = \frac{1}{3}$, $f(t) = \sin(t/3)$
+
+\item $m = 5$, $\beta = 2$, $k = 1$, $f(t) = \sin(2t/5)$
+
+\end{enumerate}
 
 
 \item \textbf{Laplace transform:} Solve the following using a Laplace transform
@@ -213,16 +212,16 @@
 \end{figure}
 How would you solve the system for this circuit? 
 
-\item \textbf{Power series:} Solve the following using a power series and give the recurrence relation. Write out your solution up to fifth order. Clearly state why you cannot use another method to solve the system.
-\begin{enumerate}
-
-% B&P 5.3 #16
-\item $(2+x^2)y'' -xy' +4y=0, \quad y(0) = -1, \quad y'(0) = 3$
-
-% B&P 5.3 17
-\item $y'' + xy' + 2y = 0$
-
-\end{enumerate}
+%\item \textbf{Power series:} Solve the following using a power series and give the recurrence relation. Write out your solution up to fifth order. Clearly state why you cannot use another method to solve the system.
+%\begin{enumerate}
+%
+%% B&P 5.3 #16
+%\item $(2+x^2)y'' -xy' +4y=0, \quad y(0) = -1, \quad y'(0) = 3$
+%
+%% B&P 5.3 17
+%\item $y'' + xy' + 2y = 0$
+%
+%\end{enumerate}
 
 \item \textbf{Direct method:} Consider the ODE
 \[ y'' + x^2y = e^{-x}\]
@@ -235,8 +234,8 @@ Write out the direct method system of equations for the following boundary condi
 
 \end{enumerate}
 
-\item \textbf{Numerical methods:} Write a short piece of MATLAB code to solve the following using backward Euler.
-\[ y' + 5y^2 = \sin(x), \quad y(0) = 10\]
+\item \textbf{Numerical methods:} Write a short piece of MATLAB code to solve the following using backward Euler for $1 \leq t \leq 10$ with $h = 0.01$.
+\[ y' + 5ty = \sin(t), \quad y(1) = 10\]
 
 \end{enumerate}
 

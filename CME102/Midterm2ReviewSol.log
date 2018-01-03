@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 FEB 2017 02:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 JAN 2018 22:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -696,7 +696,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 142.
 )
-(/Users/timanderson/Library/texmf/tex/mcode.sty
+(./mcode.sty
 -- Package: `mcode' 2.5 <2014/03/06> --
 Package: mcode 2014/03/06 2.5
  - settings optimized for display (colour formating)
@@ -934,8 +934,8 @@ Package rerunfilecheck Info: File `Midterm2ReviewSol.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 424.
  ) 
 Here is how much of TeX's memory you used:
- 11772 strings out of 493089
- 176196 string characters out of 6134842
+ 11771 strings out of 493089
+ 176087 string characters out of 6134842
  439715 words of memory out of 5000000
  14981 multiletter control sequences out of 15000+600000
  70131 words of font info for 86 fonts, out of 8000000 for 9000
@@ -954,7 +954,7 @@ texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive
 exmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2015/texmf-dis
 t/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Midterm2ReviewSol.pdf (9 pages, 146949 bytes).
+Output written on Midterm2ReviewSol.pdf (9 pages, 147013 bytes).
 PDF statistics:
  145 PDF objects out of 1000 (max. 8388607)
  120 compressed objects within 2 object streams

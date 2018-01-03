@@ -49,7 +49,7 @@
 
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
-\fancyfoot[L]{\textit{CME 102 Fall '17-'18}} % Empty left footer
+\fancyfoot[L]{\textit{CME 102 Winter '17-'18}} % Empty left footer
 \fancyfoot[C]{\thepage} % Empty center footer
 \fancyfoot[R]{Tim Anderson} % Page numbering for right footer
 \renewcommand{\headrulewidth}{0pt} % Remove header underlines
@@ -104,9 +104,9 @@ v' &= y' + 4 \\
 v' - 4 &= v^2 \\
 v' &= v^2 + 4 \\
 \frac{dv}{v^2 + 4} &= dx \\
-\frac{1}{2} \tan \left( \frac{v}{2}\right) &= x + C \\
-v &= 2\tan^{-1}(2x + C) \\
-y &= 2\tan^{-1}(2x + C) - 4x \quad\blacksquare 
+\frac{1}{2} \tan^{-1} \left( \frac{v}{2}\right) &= x + C \\
+v &= 2\tan(2x + C) \\
+y &= 2\tan(2x + C) - 4x \quad\blacksquare 
 \end{align*}
 
 % Kreyszig 1.3 #10
@@ -251,7 +251,7 @@ So, we have conjugate pairs of eigenvalues and eigenvectors. This means that we 
 \end{gather*}
 
 So for the real and imaginary parts:
-\[ \vec{v}_R = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad \vec{v}_I = \begin{bmatrix} 0 \\ i \end{bmatrix} \]
+\[ \vec{v}_R = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad \vec{v}_I = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \]
 
 Recall the equation for the solution when we have conjugate pairs of imaginary eigenvalues/eigenvectors (i.e. $\lambda = a \pm bi$):
 
@@ -259,7 +259,7 @@ Recall the equation for the solution when we have conjugate pairs of imaginary e
 
 So the final solution to our system of ODEs is:
 
-\[ \begin{bmatrix} x(t) \\ y(t) \end{bmatrix} = C_1 e^{3t} \left( \begin{bmatrix} 1 \\ 0 \end{bmatrix} \cos(t) - \begin{bmatrix} 0 \\ i \end{bmatrix}\sin(t)\right) + C_2 e^{3t} \left( \begin{bmatrix} 1 \\ 0 \end{bmatrix} \cos(t) + \begin{bmatrix} 0 \\ i \end{bmatrix} \sin(t)\right)  \]
+\[ \begin{bmatrix} x(t) \\ y(t) \end{bmatrix} = C_1 e^{3t} \left( \begin{bmatrix} 1 \\ 0 \end{bmatrix} \cos(t) - \begin{bmatrix} 0 \\ 1 \end{bmatrix}\sin(t)\right) + C_2 e^{3t} \left( \begin{bmatrix} 1 \\ 0 \end{bmatrix} \cos(t) + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \sin(t)\right)  \]
 
 %\item
 %
@@ -270,27 +270,27 @@ So the final solution to our system of ODEs is:
 
 \item \textbf{Numerical solutions}
 \begin{enumerate}[label = (\alph*)]
-\item Solve $y' = xy^2 - 10y, \; y(0) = 2$ using forward Euler for 2 steps using $ h = 0.5$. 
+\item Solve $y' = xy - 10y, \; y(0) = 2$ using forward Euler for 2 steps using $ h = 0.5$. 
 \par \textbf{Solution:} To solve this numerically by hand, we just step through the solution in the same way we'd program a computer to do:
 \begin{align*}
 y(0) &= 2 \\
-y(0.5) &= 2 + 0.5\left[(0.5)y(0)^2 - 10y(0) \right] \\
-&= 2 + 0.5 [2 - 20]\\
-&= -7 \\
-y(1) &= -2 + 0.5\left[y(0.5)^2 - 10y(0.5) \right] \\
-&= -2 + 0.5(4 +70) \\
-&= 35
+y(0.5) &= 2 + 0.5\left[(0.5)y(0) - 10y(0) \right] \\
+&= 2 + 0.5 [1 - 20]\\
+&= -7.5 \\
+y(1) &= -2 + 0.5\left[y(0.5) - 10y(0.5) \right] \\
+&= -2 + 0.5(-7.5 +70) \\
+&= 29.25
 \end{align*}
 
 \item Repeat (a) using backward Euler. What do you notice about the two solutions?
 \par \textbf{Solution:} We follow the same procedure to find the solution:
 \begin{align*}
 y(0) &= 2 \\
-y(0.5) &= 2 + 0.5\left[ (0.5)y(0.5)^2 - 10y(0.5) \right] \\
+y(0.5) &= 2 + 0.5\left[ (0.5)y(0.5) - 10y(0.5) \right] \\
 \intertext{Solving the algebraic equation for $y(0.5)$:}
-\implies y(0.5) &= 0.41 \\
-y(1) &= 0.41 + 0.5\left[ (1)y(1)^2 - 10y(1) \right] \\
-&= 0.082
+y(0.5) &= 0.35 \\
+y(1) &= 0.35 + 0.5\left[ (1)y(1) - 10y(1) \right] \\
+&= 0.064
 \end{align*}
 
 We notice that the solution doesn't start to diverge like with forward Euler (since backward Euler is unconditionally stable). If you check this against the analytical solution you'd see that our numerical solution is wildly inaccurate, so this illustrates that stability doesn't equate with accuracy.
