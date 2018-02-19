@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 FEB 2018 13:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 JAN 2018 22:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**Midterm2Review.tex
-(./Midterm2Review.tex
+**Midterm1ReviewSol.tex
+(./Midterm1ReviewSol.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/koma-script/scrartcl.cls
@@ -725,8 +725,8 @@ File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
 Package: listings 2014/09/06 1.5e (Carsten Heinz)
 )
-(./Midterm2Review.aux)
-\openout1 = `Midterm2Review.aux'.
+(./Midterm1ReviewSol.aux)
+\openout1 = `Midterm1ReviewSol.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
@@ -855,9 +855,9 @@ LaTeX Info: Redefining \ref on input line 65.
 LaTeX Info: Redefining \pageref on input line 65.
 LaTeX Info: Redefining \nameref on input line 65.
 
-(./Midterm2Review.out) (./Midterm2Review.out)
+(./Midterm1ReviewSol.out) (./Midterm1ReviewSol.out)
 \@outlinefile=\write3
-\openout3 = `Midterm2Review.out'.
+\openout3 = `Midterm1ReviewSol.out'.
 
 \c@lstlisting=\count142
 LaTeX Font Info:    Try loading font information for T1+cmss on input line 77.
@@ -866,7 +866,7 @@ LaTeX Font Info:    Try loading font information for T1+cmss on input line 77.
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 82.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 83.
 LaTeX Font Info:    Try loading font information for FML+futmi on input line 86
 .
 
@@ -896,47 +896,69 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 86.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 455.
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<midterm1review_circuit.png, id=29, 543.02875pt x 427.5975pt>
+File: midterm1review_circuit.png Graphic file (type png)
 
+<use midterm1review_circuit.png>
+Package pdftex.def Info: midterm1review_circuit.png used on input line 185.
+(pdftex.def)             Requested size: 234.8775pt x 184.95294pt.
+ [3 <./midterm1review_circuit.png>] [4]
+[5]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 298.
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 542.
- [2
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 308.
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 542.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 309.
 
-(./Midterm2Review.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 542.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 542.
-Package rerunfilecheck Info: File `Midterm2Review.out' has not changed.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 325.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 325.
+
+(./Midterm1ReviewSol.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 325.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 325.
+Package rerunfilecheck Info: File `Midterm1ReviewSol.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 542.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 325.
  ) 
 Here is how much of TeX's memory you used:
- 11622 strings out of 493089
- 174160 string characters out of 6134842
- 428757 words of memory out of 5000000
- 14872 multiletter control sequences out of 15000+600000
- 67371 words of font info for 76 fonts, out of 8000000 for 9000
+ 12311 strings out of 493089
+ 182443 string characters out of 6134842
+ 461800 words of memory out of 5000000
+ 15540 multiletter control sequences out of 15000+600000
+ 68607 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,47p,598b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+ 41i,14n,47p,381b,2037s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
+exlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on Midterm2Review.pdf (2 pages, 82459 bytes).
+live/2015/texmf-dist/fonts/type1/public/fourier/fourier-ml.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on Midterm1ReviewSol.pdf (6 pages, 137441 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 27 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 109 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 32 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

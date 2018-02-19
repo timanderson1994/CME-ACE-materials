@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=12pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage[]{mcode} %MATLAB code
+
+\allowdisplaybreaks
+
+
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Winter '17-'18}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{0pt} % Customize the height of the header
+\setlength{\footheight}{0pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%---------------------------------------------------------------------------------------a-
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Midterm \#1 Review -- Extra Problems}
+
+
+\begin{enumerate}
+
+\item (Kreyszig 1.1 \#2) $y' = xe^{-x^2/2}$
+
+\item (Kreyszig 1.1 \#12) $yy' = 4x$, $y(1) = 4$
+
+\item (Kreyszig 1.1 \#14) $y' \tan(x) =  2y - 8$, $y(\pi/2) = 0$
+
+\item (Tennenbaum \& Pollard Ex. 8 \#8) $(x + 2y)dx + (3x + 6h + 3)dy = 0$
+
+\item (Tennenbaum \& Pollard Ex. 8 \#8) $(x + y)dx + (3x + 3y - 4)dy = 0$, $y(1) = 0$
+
+\item (Kreyszig 1.3 \#8) $y' = (y + 4x)^2$
+
+\item (Kreyszig 1.3 \#3) $y' = \sec^2(y)$
+
+\item (Kreyszig 1.3 \#14) $y' = (x + y - 2)^2$, $y(0) = 2$
+
+\item (Kreyszig 1.3 \#17) $xy' = y + 3x^4 \cos^2(y/x)$, $y(1) =0$
+
+\item (Rice \& Strange 2-3 \#14) $y' = (x-y)/(x + y)$
+
+\item (Rice \& Strange 2-5 \#18) $(y \cot(x) - x) dx + dy = 0$
+
+\item (Rice \& Strange 2-5 \#31) Solve $xe^{-y}y' + e^{-y} = x$. \textit{Hint:} use the substitution $z = e^{-y}$
+
+\item (Kreyszig 1.5 \#6) $y' + 2y = 4 \cos(2x)$, $y(\pi/4)= 3$
+
+\item (Kreyszig 1.5 \#8) $y' + y \tan(x) = e^{-0.01x}\cos(x)$, $y(0) = 0$
+
+\item (Kreyszig 1.5 \#13) $y' = 6(y - 2.5) \tanh(1.5x)$
+
+\item (Kreyszig 1.5 \#24) $y'  + y = -x/y$
+
+\item (Kreyszig 1.5 \#25) $y' = 3.2y - 10y^2$
+
+\item (Kreyszig 1.5 \#28) $2xyy' + (x-1)y^2 = x^2e^x$
+
+\item (Tennenbaum \& Pollard Ex. 7 \#12) $(x^2 + y^2)dx = 2xydy$, $y(-1) = 0$
+
+\item (Tennenbaum \& Pollard Ex. 7 \#14) $y' - y/x + \csc(y/x) = 0$, $y(1) = 0$
+
+\item (Tennenbaum \& Pollard Ex. 11 \#3) $xy' + y = y^2 \log(x)$
+
+\item (Rice \& Strange 1-4 \#5) 
+\begin{enumerate}[label=(\alph*)]
+\item Solve the ODE $y' = y^2 / \sqrt{x-1}$ with the initial condition $y(1) = 2$
+\item Show that $y(x) = 0$ is also a solution of this ODE
+\item Explain this contradiction in terms of the existence and uniqueness theorems.
+\end{enumerate}
+
+\item (Rice \& Strange 1-4 \#4) Give the regions for existence and uniqueness for the ODE $(x-2)y' - y = 0$, $y(0) = 2$. If possible, state the interval of validity. 
+
+\item (Rice \& Strange 1-4 \#6) Give the regions for existence and uniqueness for the ODE $y' = y^2 /\sqrt{x^2 + 1}$, $y(0) = 0$. If possible, state the interval of validity. 
+
+\item (Kreyszig 21.1 \#1) Solve the ODE $y' + 0.2y = 0$, $y(0)=5$ using backward Euler with $h=0.2$. 
+
+\item (Kreyszig 1.2 \#19) Solve the ODE $y' = (y- x)^2$, $y(0) = 0$ for 3 steps using forward Euler with $h = 0.1$. 
+
+\item Supposed you solve an ODE using backward Euler and find a local error of $\epsilon_{local} = 0.5$ using $h = 0.1$. What step size should be used to reduce global error to be $\epsilon_{global} = 1$?
+
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

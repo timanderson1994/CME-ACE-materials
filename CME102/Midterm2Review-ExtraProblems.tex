@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, fontsize=12pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[margin=1in]{geometry} %set margins -TA
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{graphicx} % Required to insert images
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage[]{mcode} %MATLAB code
+
+\allowdisplaybreaks
+
+
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{\textit{CME 102 Fall '17-'18}} % Empty left footer
+\fancyfoot[C]{\thepage} % Empty center footer
+\fancyfoot[R]{Tim Anderson} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{0pt} % Customize the height of the header
+\setlength{\footheight}{0pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+%---------------------------------------------------------------------------------------a-
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Midterm \#2 Review -- Extra Problems}
+
+
+\begin{enumerate}
+
+\item (Kreyszig 2.1 \#4) $2xy'' = 2y'$
+
+\item (Kreyszig 2.1 \#6) $xy'' + 2y' + xy = 0, \quad y_1 = \cos(x)/x$
+
+\item (Kreyszig 2.1 \#7) $y'' + y'^3 \sin(y) = 0$
+
+\item (Kreyszig 2.1 \#10) $y'' + (1 + 1/y)y'^2 = 0$
+
+\item (Kreyszig 2.2 \#11) $4y'' - 4y' - 3y = 0$
+
+\item (Kreyszig 2.2 \#14) $y'' + 2k^2y' +  k^4y = 0$ 
+
+\item For an ODE of the form $y'' + ay' + by = 0$, find $a$ and $b$ that gives a solution of the form:
+\begin{enumerate}
+\item (Kreyszig 2.2 \#16) $e^{2x}, \; e^{-4x}$
+
+\item (Kreyszig 2.2 \#17) $e^{-\sqrt{5}x}, \; xe^{-\sqrt{5}x}$
+
+\end{enumerate}
+
+\item (Kreyszig 2.5 \#4) $xy'' + 2y' = 0$
+
+\item (Kreyszig 2.5 \#14) $x^2 y'' +  xy'  + 9y = 0, \; y(1) = 0, \; y'(1) = 2.5$
+
+\item (Kreyszig 2.7 \#3) $y'' + 3y' + 2y = 12x^2$
+
+\item (Kreyszig 2.7 \#6) $y'' + y' + (\pi^2 + 1/4)y = e^{-x/2} \sin(\pi x)$
+
+\item (Kreyszig 2.10 \#2) $y'' + 9y = \csc(3x)$
+
+\item (Kreyszig 2.10 \#3) $x^2y'' - 2xy' + 2y = x^3 \sin(x)$
+
+\item For the following, compute the numerical solution for 3 steps using improved Euler and Runge-Kutta 4. Solve for the analytical solution and calculate the global error over the domain for which we have computed a numerical solution. 
+\begin{enumerate}
+\item (Kreyszig 21.1 \#6) $y'  = 2(1 + y^2), \quad y(0) =0,\;  h= 0.05$
+
+\item (Kreyszig 21.1 \#7) $y' - xy^2 = 0, \quad y(0) =1,\;  h= 0.1$
+
+\end{enumerate}
+
+\item Suppose I solve an ODE numerically using RK3 and find a global error of $\epsilon_1$ with a step size of $h_1 = 0.5$. What step size $h_2$ should I pick so that the error $\epsilon_2$ is $10^3\times$ smaller? (i.e. $\epsilon_2 = 10^{-3} \epsilon_1$)
+
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

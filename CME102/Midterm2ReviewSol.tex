@@ -79,8 +79,94 @@
 
 \begin{enumerate}
 
+\item \textbf{Eigenvalue solutions of ODEs}
+Solve the following system of ODEs.
+\begin{enumerate}[label=(\alph*)]
+\item 
+\[ \begin{bmatrix} x' \\ y'  \end{bmatrix} = \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} \]
+\par \textbf{Solution:} Compute the determinant $\bm{A} - \lambda \bm{I}$:
+\[ \det\left|   \begin{matrix} 1 - \lambda & 2 \\ 0 & 1 - \lambda \end{matrix} \right| = (1 - \lambda)^2 = 0  \]
+So we have one eigenvalue $\lambda = 1$. We first compute the eigenvector associated with this eigenvalue:
+\begin{gather*}
+(\bm{A} - (1)\bm{I})\vec{\eta} = \begin{bmatrix} 0 & 2 \\ 0 & 0 \end{bmatrix} \vec{\eta} = 0 \\
+\vec{\eta} = \begin{bmatrix} 1 \\ 0 \end{bmatrix} 
+\end{gather*}
+From here, recall that we need to solve for the vector $\vec{\rho}$ in the equation:
+\[ (\bm{A} - \lambda \bm{I})\vec{\rho} = \vec{\eta} \]
+So:
+\begin{gather*}
+\begin{bmatrix} 0 & 2 \\ 0 & 0 \end{bmatrix} \vec{\rho} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}  \\
+\vec{\rho} = \begin{bmatrix} 0 \\ 1/2 \end{bmatrix}
+\end{gather*}
+Plugging this into the final solution for a repeated real eigenvalue:
+\[ \begin{bmatrix} x \\ y \end{bmatrix} = C_1 \begin{bmatrix} 1 \\ 0 \end{bmatrix} e^{t} + C_2 \begin{bmatrix} 1 \\ 0 \end{bmatrix} t e^{t} + C_2 \begin{bmatrix} 0 \\ 1/2 \end{bmatrix} e^{t} \quad\blacksquare \]
 
-\item \textbf{Second Order Linear ODEs:}  \begin{enumerate}[label=(\alph*)]
+\item 
+
+\[ \begin{bmatrix} x' \\ y'  \end{bmatrix} = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} \]
+\par \textbf{Solution:} Compute the determinant $\bm{A} - \lambda \bm{I}$:
+\[ \det\left|   \begin{matrix} 1 - \lambda & 2 \\ 2 & 4 - \lambda \end{matrix} \right| = (1 - \lambda)(4 - \lambda) - 4 = \lambda(\lambda - 5) = 0  \]
+So we have $\lambda_1 = 5$ and $\lambda_2 = 0$. To find the first eigenvector:
+\begin{gather*}
+(\bm{A} - (5)\bm{I}) \vec{\eta}_1 = \begin{bmatrix} -4 & 2 \\ 2 & -1 \end{bmatrix} \vec{\eta}_1 = 0 \\
+\vec{\eta}_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix} 
+\end{gather*}
+
+For the second eigenvector:
+\begin{gather*}
+(\bm{A} - (0)\bm{I}) \vec{\eta}_2 = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix} \vec{\eta}_2 = 0 \\
+\vec{\eta}_2 = \begin{bmatrix} 2 \\ -1 \end{bmatrix} 
+\end{gather*}
+
+So, the solution to the ODE is:
+\[ \begin{bmatrix} x \\ y \end{bmatrix} = C_1 \begin{bmatrix} 1 \\ 2 \end{bmatrix} e^{5t} + C_2 \begin{bmatrix} 2 \\ -1 \end{bmatrix}  \quad\blacksquare \]
+
+
+\end{enumerate}
+
+\item \textbf{Nonlinear Second Order ODEs}
+\begin{enumerate}[label=(\alph*)]
+\item $y''+y'^3\sin(y)=0$
+\par \textbf{Solution:} We use ``missing-x'' method here:
+\begin{gather*}
+u(y) = y' \\
+u u' = y'' \\
+u u' + u^3 \sin(y) = 0 \\
+u' + u^2 \sin (y) = 0\\
+\frac{1}{u^2} = - \sin (y) \\
+-\frac{1}{u} = \cos(y) + C_1 \\
+-1 = \cos(y) u = (\cos(y) +C_1)y' \\
+-x +C_2 = \sin(y) + C_1y \quad\blacksquare \\
+\end{gather*}
+
+\item $yy'' = 3y'^2$
+\par \textbf{Solution:} We using missing-x method again:
+\begin{gather*}
+yuu' = 3u^2 \\
+yu' = 3u \\
+\frac{u'}{u} = \frac{3}{y} \\
+u = y' = C_1 y^3 \\
+\frac{y'}{y^3} = C_1 \\
+-\frac{2}{y^2} = C_1 x + C_2 \\
+y = \pm \frac{1}{ \sqrt{C_2 - C_1 x}} \quad\blacksquare
+\end{gather*}
+
+\item $y'' =  1 + y'^2$
+\par \textbf{Solution:} This is a missing-x and missing-y ODE, so we have to choose which method to use first. Missing-y method is much easier to use than missing-x, so unless we're given in a hint that we should use missing-x or the ODE really looks like missing-x would be better (which is pretty hard to tell), we should try missing-y first:
+\begin{gather*}
+y' = u \\
+y'' = u' \\
+u' = 1 + u^2 \\
+\frac{u' }{1 + u^2} = 1 \\
+\tan^{-1}(u) = x + C_1 \\
+u = y' = \tan(x + C_1) \\
+y(x) = -\ln| \cos(x + C_1)| + C_2 \quad \blacksquare
+\end{gather*}
+So missing-y method worked after all. 
+\end{enumerate}
+
+
+\item \textbf{Second Order Linear ODEs}  \begin{enumerate}[label=(\alph*)]
 % Reduction of order + variation of parameters
 \item \[ t^2y'' - t(t+2)y' +(t+2)y= 2t^4, \quad y_1 = t\]
 \par \textbf{Solution:} For second order ODEs, the most important part is pinning down which is the correct method to solve the given equation. There are only a few different methods we learn in this class, so be sure you are familiar with all of them, know the rules for using each, which are for the homogeneous vs. the particular solution, etc. (\textit{Hint:} this would be a good thing to include on your cheat sheet, as well as commit to memory before the exam.) For all of these problems, we first identify the method, and from there the solution follows quite easily. 
@@ -116,8 +202,9 @@ So, the final solution is given by:
 % Reduction of order + undetermined coefficients
 \item 
 \[ (x-1)y'' -xy' +y=(x-1)^2, \; x> 1; \quad y_1 = e^x \]
-\textit{Hint:} the solution of \[y'' = \frac{2-x}{x-1}y'\]
-is $y = c_1 e^{-x} x + c_2$. 
+%\textit{Hint:} the solution of \[y'' = \frac{2-x}{x-1}y'\]
+%is $y = c_1 e^{-x} x + c_2$. 
+
 \par \textbf{Solution:} We are given one of homogeneous basis solutions, so we know right away that we solve the homogeneous problem with reduction of order. The ODE does not have constant coefficients, so we should use variation of parameters for the particular solution.
 \begin{align*}
 y_2 &= u(x) y_1\\
@@ -131,10 +218,23 @@ Plugging this into the ODE, we can solve for $y_2$:
 (x-1)(u'' + 2u' + u) - x(u' + u) + u = 0\\
 xu'' + 2xu' + xu - u'' - 2u' - u -xu' - xu + u = 0\\
 xu'' + xu' - u'' - 2u'  = 0\\
-u'' = \frac{2-x}{x-1}u' \\
+u'' = \frac{2-x}{x-1}u' 
+\end{gather*}
+
+Notice that this is essentially a ``missing-y'' ODE, so we can make a substitution and solve:
+\begin{gather*}
 u(x) = e^{-x}x\\
+u'' = \frac{2-x}{x-1}u' \\
+\intertext{Define $v\equiv u'$:}
+v' = \frac{2-x}{x-1}v = \frac{1 + 1 - x}{x-1}v = \frac{1}{x -1}v - \frac{x-1}{x-1}v = \left(\frac{1}{x-1} - 1\right) v\\
+\ln|v| = \ln|x-1| - x + C\\
+v = u' = Ce^{-x}(x-1)\\
+u(x) = C_1e^{-x}x + C_2
+\intertext{and since we're only interested in the part dependent on $x$, we discard the constants to find:}
+u(x) = e^{-x}x \\
 y_2 = x
 \end{gather*}
+
 We then use variation of parameters to find the particular solution. The Wronskian is $W = e^x - xe^x$, so we can find the particular solution:
 \begin{align*}
 y_p(t) &= -y_1 \int \frac{y_2 g(x)}{W}dx + y_2 \int \frac{y_1 g(x)}{W}dx  \\
@@ -285,51 +385,50 @@ Transforming back to $x$, we have the final solution:
 \end{enumerate}
 
 
+%\item \textbf{Spring-mass systems:} For the system described by the image below, derive the system of ODEs governing the mass-spring system. Treat the masses as point masses and assume no damping or friction.
+%\begin{figure}[H]
+%\centering \includegraphics[width=0.8\columnwidth]{mass-spring.jpg}
+%\end{figure}
+%
+%\par \textbf{Solution} We can use Newton's second law and Hooke's law to derive the following equations. Note that when deriving the spring force on a mass when the ends of the spring are each attached to a mass, we calculate $\Delta x$ as 
+%\[ \Delta x = (\text{mass being acted on}) - (\text{mass on other end})\]
+%This is how we derive the equation for the second term in the first equation, and the entirety of the second equation. 
+%\begin{align*}
+%m_1x_1'' &= -k_1x_1 -k_2(x_1 - x_2) \\
+%m_2x_2'' &= -k_2 (x_2 - x_1) 
+%\end{align*}
+%\par A much craftier (and ultimately easier) way to derive the system is through the \textit{principle of least action}. This is one of the most important methods in all of physics and engineering, but is also rarely taught at the undergraduate level. To begin, we first calculate the Lagrangian of the system 
+%\[ \mathcal{L} = T - U \]
+%where $T$ represents the total kinetic energy of the system, and $U$ represents the potential energy. Note that for physical systems, this will always be negative, which is a consequence of conservation of energy. You can think of the Lagrangian as the ``leftover'' energy in the system. Indeed, this is very closely related to the Lagrangian we encountered in constrained optimization in CME 100 --- in optimization, the optimal solution is the one which requires the least energy. 
+%\par After calculating the Lagrangian, we can form the \textit{Euler-Lagrange equations} for $i$ variables in our system through the relation:
+%\[ \frac{\partial \mathcal{L}(t,x,x') }{\partial x_i} - \frac{d}{dt} \left( \frac{\partial  \mathcal{L}(t,x,x') }{\partial x'_i}\right) = 0\]
+%This equation is a bit ungainly since we are taking derivatives with respect to both the state variables $x$ and $x'$ \textit{treating them as separate variables} (i.e. chain rule does not apply), as well as our independent variable $t$. However, as we will see in this example, doing this is actually quite straight-forward. We can take these derivatives for all $i$ variables, which will give us the differential equations for the system.
+%
+%\par Lets now derive the differential equations for this system using the Euler-Lagrange equations. First derive the Lagrangian. Here, we will have kinetic energy from the masses, as well as potential energy stored in the springs. So, the Lagrangian is:
+%\[ \mathcal{L} = \underbrace{\frac{1}{2} m_1 x_1'^2}_{\text{K.E. from mass 1}} + \underbrace{\frac{1}{2} m_2 x_2'^2}_{\text{K.E. from mass 2}} - \underbrace{\frac{1}{2} k_1 x_1^2}_{\text{P.E. from spring 1}} - \underbrace{\frac{1}{2} k_2 (x_2 - x_1)^2}_{\text{P.E. from spring 2}} \]
+%
+%Now, form the Euler-Lagrange equations:
+%\begin{align*}
+%0 &= \frac{\partial \mathcal{L}(t,x,x') }{\partial x_1} - \frac{d}{dt} \left( \frac{\partial  \mathcal{L}(t,x,x') }{\partial x'_1}\right) \\
+%&= -k_1x_1 + k_1(x_2 - x_1) - \frac{d}{dt}\left( m_1 x_1' \right) \\
+%m_1 x_1'' &= -k_1x_1 - k_1(x_1 - x_2) \\
+%0 &= \frac{\partial \mathcal{L}(t,x,x') }{\partial x_2} - \frac{d}{dt} \left( \frac{\partial  \mathcal{L}(t,x,x') }{\partial x'_2}\right) \\
+%&= -k_1(x_2 - x_1) - \frac{d}{dt} \left( m_2 x_2' \right)\\
+%m_2 x_2'' &= -k_1(x_2 - x_1)
+%\end{align*}
+%Do these look familiar?
+%\par \textbf{Remark:} Even if you do not plan to use this on the exam, please take some time to read up on the Principle of Least Action. Richard Feynman gives an excellent exposition in his lectures on physics, and there are plenty of other resources online as well. This is one of the most important ideas in all of science and engineering---indeed, it is one of the only physical laws (if not the only law) that holds at all scales---and allows us to link the otherwise disparate realms of optimization theory and physical systems. 
 
-
-\item \textbf{Spring-mass systems:} For the system described by the image below, derive the system of ODEs governing the mass-spring system. Treat the masses as point masses and assume no damping or friction.
-\begin{figure}[H]
-\centering \includegraphics[width=0.8\columnwidth]{mass-spring.jpg}
-\end{figure}
-
-\par \textbf{Solution} We can use Newton's second law and Hooke's law to derive the following equations. Note that when deriving the spring force on a mass when the ends of the spring are each attached to a mass, we calculate $\Delta x$ as 
-\[ \Delta x = (\text{mass being acted on}) - (\text{mass on other end})\]
-This is how we derive the equation for the second term in the first equation, and the entirety of the second equation. 
-\begin{align*}
-m_1x_1'' &= -k_1x_1 -k_2(x_1 - x_2) \\
-m_2x_2'' &= -k_2 (x_2 - x_1) 
-\end{align*}
-\par A much craftier (and ultimately easier) way to derive the system is through the \textit{principle of least action}. This is one of the most important methods in all of physics and engineering, but is also rarely taught at the undergraduate level. To begin, we first calculate the Lagrangian of the system 
-\[ \mathcal{L} = T - U \]
-where $T$ represents the total kinetic energy of the system, and $U$ represents the potential energy. Note that for physical systems, this will always be negative, which is a consequence of conservation of energy. You can think of the Lagrangian as the ``leftover'' energy in the system. Indeed, this is very closely related to the Lagrangian we encountered in constrained optimization in CME 100 --- in optimization, the optimal solution is the one which requires the least energy. 
-\par After calculating the Lagrangian, we can form the \textit{Euler-Lagrange equations} for $i$ variables in our system through the relation:
-\[ \frac{\partial \mathcal{L}(t,x,x') }{\partial x_i} - \frac{d}{dt} \left( \frac{\partial  \mathcal{L}(t,x,x') }{\partial x'_i}\right) = 0\]
-This equation is a bit ungainly since we are taking derivatives with respect to both the state variables $x$ and $x'$ \textit{treating them as separate variables} (i.e. chain rule does not apply), as well as our independent variable $t$. However, as we will see in this example, doing this is actually quite straight-forward. We can take these derivatives for all $i$ variables, which will give us the differential equations for the system.
-
-\par Lets now derive the differential equations for this system using the Euler-Lagrange equations. First derive the Lagrangian. Here, we will have kinetic energy from the masses, as well as potential energy stored in the springs. So, the Lagrangian is:
-\[ \mathcal{L} = \underbrace{\frac{1}{2} m_1 x_1'^2}_{\text{K.E. from mass 1}} + \underbrace{\frac{1}{2} m_2 x_2'^2}_{\text{K.E. from mass 2}} - \underbrace{\frac{1}{2} k_1 x_1^2}_{\text{P.E. from spring 1}} - \underbrace{\frac{1}{2} k_2 (x_2 - x_1)^2}_{\text{P.E. from spring 2}} \]
-
-Now, form the Euler-Lagrange equations:
-\begin{align*}
-0 &= \frac{\partial \mathcal{L}(t,x,x') }{\partial x_1} - \frac{d}{dt} \left( \frac{\partial  \mathcal{L}(t,x,x') }{\partial x'_1}\right) \\
-&= -k_1x_1 + k_1(x_2 - x_1) - \frac{d}{dt}\left( m_1 x_1' \right) \\
-m_1 x_1'' &= -k_1x_1 - k_1(x_1 - x_2) \\
-0 &= \frac{\partial \mathcal{L}(t,x,x') }{\partial x_2} - \frac{d}{dt} \left( \frac{\partial  \mathcal{L}(t,x,x') }{\partial x'_2}\right) \\
-&= -k_1(x_2 - x_1) - \frac{d}{dt} \left( m_2 x_2' \right)\\
-m_2 x_2'' &= -k_1(x_2 - x_1)
-\end{align*}
-Do these look familiar?
-\par \textbf{Remark:} Even if you do not plan to use this on the exam, please take some time to read up on the Principle of Least Action. Richard Feynman gives an excellent exposition in his lectures on physics, and there are plenty of other resources online as well. This is one of the most important ideas in all of science and engineering---indeed, it is one of the only physical laws (if not the only law) that holds at all scales---and allows us to link the otherwise disparate realms of optimization theory and physical systems. 
-
-\item \textbf{Higher Order ODEs and MATLAB I:}
-A system of couple pendulums could be modeled by the following system of equations: 
+\item \textbf{Higher Order ODEs and MATLAB}
+\begin{enumerate}
+\item A system of couple pendulums could be modeled by the following system of equations: 
 \begin{gather*}
 \theta_a'' + \theta_b'' + \frac{g}{\ell}\theta_a + \frac{K}{M}(\theta_a - \theta_b) = 0 \tag{1}\\
 \theta_a'' + 2 \theta_b'' + \frac{g}{\ell}\theta_b + \frac{K}{M}(\theta_b - \theta_a) = 0 \tag{2}
 \end{gather*}
 
 
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[label=(\roman*)]
 \item Rewrite this as a coupled system of first-order ODEs.
 \par \textbf{Solution:} We first need to introduce our ``dummy variables'' and define our state vector for the system. When converting a higher order system into a first order system, this is the most important and often trickiest part. 
 \par Every variable in the system (in this case, $\theta_a$ and $\theta_b$) has \textit{as many states as its highest derivative}. That is, if the second derivative exists in the system, we need to put that variable and its first derivative in the state vector. (You can think of this as each derivative creating a degree of freedom in the system, so we need to solve for both the function and its lower derivatives when finding a solution to the ODE in order to eliminate these extra degrees of freedom and have a unique solution.)
@@ -352,24 +451,41 @@ v_2'&= v_4
 \end{align*}
 
 
-\item Write a MATLAB function to evaluate the derivative such that the system could be solved with \texttt{ode45()}. Assume $g = \ell = K = M = 1$.  
+\item Write a MATLAB function to evaluate the derivative such that the system could be solved with \texttt{ode45()}. Pass in $g$, $\ell$, $K$, and $M$ as parameters.
 \par \textbf{Solution:} Since the ODE is linear and we've already put it into matrix form, this function is very easy to write. The only thing we must keep in mind is that \texttt{ode45()} requires that the derivative be output as a column vector. However, because we have formulated this as a matrix mapping a column vector to another column vector, this requirement is already satisfied. The code below will be compatible with \texttt{ode45()}:
 
 \begin{lstlisting}
-function yp = derivative(x,y)
-	A = [0, 0, 1, 0; 0, 0, 0, 1; -5, 4, 0, 0; 3, -3, 0, 0];
+function yp = derivative(x,y, g, l, K, M)
+	A = [0, 0, 1, 0; ...
+		0, 0, 0, 1; ...
+		-2*g / l - 3*K / M, g / l + 3 * K / M, 0, 0;...
+	 	g / l + 2*K / M, -g / l - 2 * K / M, 0, 0];
 	yp = A*y;
 end
 
 \end{lstlisting}
 
+Note that there are many correct ways to write this function, this is just one example. 
+
+\item Write a script to call \texttt{ode45()} to solve this ODE over the domain $0 \leq t \leq 10$ with initial conditions:
+\[ \theta_a = \pi, \; \theta_b = 0, \; \theta_a'(0) = 0, \; \theta_b'(0) = 0 \]
+Include code to plot the solution for $\theta_b$ as a function of $t$. Use the values $g = \ell = K = M = 1$ and pass these in as parameters to your \texttt{yp()} function. 
+\par \textbf{Solution:}
+One example of a script that would do this:
+\begin{lstlisting}
+clear all; close all
+
+g = 1; l = 1; K = 1; M = 1;
+[t, y] = ode45(@(t,y) yp(t,y, g, l, K M), [0, 10], [pi, 0, 0, 0])
+plot(t, y(:,2))
+\end{lstlisting}
+
 \end{enumerate}
 
 
-\item \textbf{Higher Order ODEs and MATLAB II:}
-For the following initial value problem
+\item For the following initial value problem
 \[ y'' + x^2y' + y = 1,\quad y(0) = 1, \quad y'(0) = 1 \]
-write a piece of MATLAB code to numerically solve the system using backward Euler method. Use step size $h = 0.1$, solve over interval $x \in [0,1]$, and include a line to plot your solution. 
+write a piece of MATLAB code to numerically solve the system using Backward Euler method. Use step size $h = 0.1$, solve over interval $x \in [0,1]$, and include code to plot your solution. 
 
 \par\textbf{Solution:}
 We first must rewrite this as a system of first-order ODEs. Introduce ``dummy variables'' $v_1 = y$ and $v_2 = y'$. The ODE then becomes:
@@ -416,6 +532,7 @@ end
 plot(x,v(1,:))
 
 \end{lstlisting}
+\end{enumerate}
 
 \end{enumerate}
 
