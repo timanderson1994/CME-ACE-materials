@@ -1,0 +1,464 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% writeLaTeX Example: A quick guide to LaTeX
+%
+% Source: Dave Richeson (divisbyzero.com), Dickinson College
+% 
+% A one-size-fits-all LaTeX cheat sheet. Kept to two pages, so it 
+% can be printed (double-sided) on one piece of paper
+% 
+% Feel free to distribute this example, but please keep the referral
+% to divisbyzero.com
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,landscape]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow, graphicx}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{parskip, bm}
+
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.25in,left=.25in,right=.25in,bottom=.25in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex}% plus -.5ex minus -.2ex}%
+                                {0.5ex}% plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1ex}% plus -.5ex minus -.2ex}%
+                                {0.5ex}% plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex}% plus -.5ex minus -.2ex}%
+                                {1ex}% plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+
+
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin= 0.5cm}
+\setlist[enumerate]{noitemsep, topsep=0pt, leftmargin= 0.5cm}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\def\mystrut(#1,#2){\vrule height #1pt depth #2pt width 0pt}
+
+\allowdisplaybreaks[4]
+\let \ds \displaystyle
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+
+\begin{center}
+     \Large{\textbf{CME 102 ACE -- Final Exam Reference Sheet}} \\
+\end{center}
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+\section{First-Order ODE}
+\subsection{Separation of Variables}
+For any nonlinear first order ODE, manipulate to be in form $f(y)dy = g(x)dx$ then integrate.
+
+\par Two special cases:
+\begin{itemize}
+\item ODE of form $y' = f(y/x)$, use $u = y/x$
+\item ODE of form $y' = f(ay + bx + c)$, use $u = ay + bx + c$
+\end{itemize}
+
+\subsection{Linear Inhomogeneous}
+ODEs of form $y' + p(x)y = r(x)$
+\par Closed form solution:
+\[ y(x) = e^{-\int p(x) dx} \left[ \int e^{\int p(x) dx} r(x)dx + C\right]\]
+\textbf{Bernoulli Equation:} $y' + p(x) y = q(x)y^n$
+\par Substitute $u = y^{1-n}$, solve $u' + (1-n)p(x) u = (1-n)q(x)$
+
+\subsection{Eigenvalues/Eigenvectors}
+For \textit{system} of ODEs of the form $\vec{x}' = \mathbf{A}\vec{x}$:
+\begin{enumerate}
+\item Assume solution $\vec{x}(t) = C\vec{v} e^{\lambda t}$ and plug in to find $\mathbf{A}\vec{v} = \lambda \vec{v}$
+
+\item Solve for eigenvalues $\lambda$ of $\mathbf{A}$. For a 2x2 matrix $\mathbf{A} = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$:
+\[ \lambda = \frac{(a+d) \pm \sqrt{(a+d)^2 - 4(ad-bc)} }{2} \]
+
+\item Solve for eigenvectors of $\mathbf{A}$. Special cases for 2x2 matrix:
+\par \textbf{Case 1:} $c \neq 0$:
+\[ \vec{v}_1 = \begin{bmatrix} \lambda_1 - d \\ c \end{bmatrix}, \; \vec{v}_2 = \begin{bmatrix} \lambda_2 -d \\ c \end{bmatrix} \]
+\par \textbf{Case 2:} $b \neq 0$:
+\[ \vec{v}_1 = \begin{bmatrix} b \\  \lambda_1 - a \end{bmatrix}, \; \vec{v}_2 = \begin{bmatrix} b \\ \lambda_2 - a \end{bmatrix} \]
+\par \textbf{Case 3:} $b$ and $c$ are zero:
+\[ \vec{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \; \vec{v}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \]
+
+\end{enumerate}
+
+\section{Second-Order Nonlinear}
+\subsection{``Missing y'' method}
+\par Second order nonlinear ODE that does not contain $y$:
+\[ F(y'', y', x) = 0\]
+\begin{enumerate}
+\item Make substitution $y' = u$ and $y'' = u'$ and rewrite ODE in terms of $u$ and $x$
+\item Solve new ODE for $u(x)$
+\item Find $y$ as $y = \int u(x) dx$
+\end{enumerate}
+
+\subsection{``Missing x'' method}
+\par Second order nonlinear ODE that does not contain $x$:
+\[ F(y'', y', y) = 0\]
+\begin{enumerate}
+\item Make substitution $y' = u$ and $y'' = u u'$ and rewrite ODE in terms of $u$ and $y$
+\item Solve new ODE for $u(y)$
+\item Substitute back $u = y'$ and solve for $y(x)$
+\end{enumerate}
+
+\section{Second-Order Linear Homogeneous}
+Homogeneous solution has two \textbf{basis functions} $y_1$ and $y_2$. Write homogeneous solution as linear combination of these:
+\[ y_h = C_1 y_1 + C_2 y_2 \]
+
+\subsection{Variable Coefficients}
+ODE has form:
+\[ y'' + p(x) y' + q(x) y = 0\]
+Solving using \textbf{reduction of order}. Given $y_1$, find $y_2$ as:
+\[ y_2 = y_1 \int \frac{e^{-\int p dx}}{y_1^2} dx \]
+
+\subsection{Constant Coefficients}
+ODE has form:
+\[ ay'' + by' + cy = 0 \]
+with $a,\; b, \; c$ constant. Solve using \textbf{characteristic equation} $y = e^{\lambda x}$. Three cases:
+\begin{description}
+\item[Case 1] $b^2 - 4ac > 0$ (two distinct real roots):
+\begin{gather*}
+\lambda_1 = -\frac{b}{2a} + \frac{\sqrt{b^2 - 4ac}}{2a}, \quad \lambda_2 = -\frac{b}{2a} - \frac{\sqrt{b^2 - 4ac}}{2a} \\
+y_h = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}
+\end{gather*}
+\item[Case 2] $b^2 - 4ac = 0$ (double real root):
+\[ \lambda = -\frac{b}{2a}, \quad y_h = (C_1 + C_2x) e^{\lambda x} \]
+\item[Case 3] $b^2 - 4ac < 0$ (complex conjugate roots):
+\begin{gather*}
+\alpha = -\frac{b}{2a}, \quad \beta = \frac{\sqrt{4ac - b^2}}{2a}, \quad \lambda_{1,2} = \alpha \pm i\beta \\
+y_h = e^{\alpha x}\left( C_1 \cos(\beta x) + C_2 \sin (\beta x)\right) 
+\end{gather*}
+\end{description}
+
+\subsection{Euler-Cauchy equation}
+ODE has form:
+\[ ax^2y'' + bxy' + cy = 0 \]
+with $a,\; b, \; c$ constant. Solve using \textbf{characteristic equation} $y = x^m$. Three cases:
+\begin{description}
+\item[Case 1] $(b-a)^2 - 4ac > 0$:
+\begin{gather*}
+m_{1,2} = -\frac{b-a}{2a} \pm \frac{\sqrt{(b-a)^2 - 4ac}}{2a} \\
+y_h = C_1 x^{m_1} + C_2 x^{m_2}
+\end{gather*}
+\item[Case 2] $(b-a)^2 - 4ac = 0$:
+\[ m = -\frac{b-a}{2a}, \quad y_h = (C_1 + C_2\ln|x|) x^m \]
+\item[Case 3] $(b-a)^2 - 4ac < 0$:
+\begin{gather*}
+\alpha = -\frac{b-a}{2a}, \quad \beta = \frac{\sqrt{4ac - (b-a)^2}}{2a}, \quad m_{1,2} = \alpha \pm i\beta \\
+y_h = x^\alpha \left( C_1 \cos(\beta \ln|x|) + C_2 \sin(\beta \ln|x|) \right) 
+\end{gather*}
+\end{description}
+
+
+\section{Second-Order Linear Inhomogeneous}
+\begin{itemize}
+\item You \textbf{must} always solve for the homogeneous solution first
+\item The final solution is $y = y_h + y_p$
+\item Apply initial conditions \textbf{after} finding the particular solution
+\end{itemize}
+
+\subsection{Variation of Parameters}
+\begin{itemize}
+\item Must use for variable coefficient second order linear ODE
+\item Integrals are hard, so only use if undetermined coefficients does not apply
+\end{itemize}
+
+\begin{enumerate}
+\item Find homogeneous basis solutions $y_1$ and $y_2$
+\item Calculate Wronskian:
+\[ W = y_1 y_2' - y_2 y_1' \]
+\item Put ODE into standard form:
+\[ y'' + p(x)y' + q(x)y = r(x) \]
+\item Calculate the particular solution:
+\[ y_p = -y_1 \int \frac{y_2 r}{W} dx + y_2 \int \frac{y_1 r}{W} dx \]
+\end{enumerate}
+
+
+\subsection{Undetermined Coefficients}
+\begin{itemize}
+\item Only applicable to constant coefficient equations
+\item If you need to solve for more than $\sim4$ constants, variation of parameters probably faster
+\end{itemize}
+
+\begin{enumerate}
+\item Find homogeneous basis solutions $y_1$ and $y_2$
+\item Put ODE into standard form:
+\[ y'' + by' + cy = r(x) \]
+\item Guess particular solution $y_p(x)$ based on table:
+\begin{flalign*}
+&\text{Form for $r(x)$:} & \text{Pick $y_p(x)$:} \\
+& C \quad &A \\
+& x^n & A_n x^n + A_{n-1} x^{n-1} + \cdots + A_1 x + A_0 \\
+&e^{\gamma x} & Ae^{\gamma x} \\
+& \cos(\omega x) \text{ or } \sin(\omega x) & A\cos(\omega x) + B\sin(\omega x) \\
+\end{flalign*}
+\begin{itemize}
+\item Can have products of these functions (but only these functions) for $r(x)$ and the assumed solution
+\item If any part of assumed solution also part of homogeneous basis, apply \textbf{modification rule} by multiplying assumed solution by $x$
+\item Sometimes need to use trig identities to make $r(x)$ match something in the table
+\end{itemize}
+\item Take derivatives of assumed $y_p(x)$ and plug into ODE
+\item Algebraically solve for the constants in assumed solution
+\end{enumerate}
+
+\section{Circuits}
+Kirchoff's voltage law: $\sum_i V_i = 0$ i.e. sum of all voltage drops across elements is zero (conservation of energy)
+\par To form circuit equations:
+\begin{enumerate}
+\item Apply Kirchoff's voltage law around loop (or loops)
+\begin{itemize}
+\item If there are multiple voltage loops i.e. you are forming a system of ODEs, make sure loops do not overlap
+\end{itemize}
+\item If there is a capacitor (and therefore $\int_0^t i(\tau)d\tau$ appears in the equation), take derivation through equation to form second order ODE
+\item Solve second order linear ODE using Laplace transform or other method
+\end{enumerate}
+
+Voltage drops for elements:
+\begin{itemize}
+\item Inductor: $v = Li'$
+\item Resistor: $v = Ri$ (Ohm's law)
+\item Capactor: $v = \frac{Q}{C} = \frac{\int_0^t i(\tau)d\tau}{C}$ (charge over capacitance)
+\end{itemize}
+
+%\section{Spring-mass Systems}
+%All equations start with force balance (Newton's second law):
+%\[ \sum_i F_i = mx''\]
+%Equation will look like:
+%\[ mx''  + \beta x' + kx = 0\]
+%\begin{itemize}
+%\item $\beta$ is damping coefficient ($\beta = 0$ means undamped motion)
+%\item $k$ is spring constant 
+%\item $x(t)$ is the \textit{displacement} from the equilibrium position $x_0$
+%\end{itemize}
+%Rewrite ODE as: $x'' + 2 \mu + \omega^2 x = 0 $. 
+%\par \textbf{Undamped motion:} $x(t) = A \sin (\omega t) + B \cos(\omega t)$
+%\par \textbf{Damped motion:} when $\beta \neq 0$:
+%\begin{description}
+%\item[Over Damped:] $\mu > \omega$, 
+%\[ x(t) = C_1 e^{(-\mu + \sqrt{\mu^2 - \omega^2})t} + C_2 e^{(-\mu - \sqrt{\mu^2 - \omega^2})t} \]
+%\item[Critically Damped:] $\mu = \omega$, shortest decay time
+%\[ x(t) = e^{-\mu t}(C_1 + C_2 t) \]
+%\item[Underdamped:] $\mu < \omega$, 
+%\[ x(t) = e^{-\mu t} \left[ C_1 \cos(\sqrt{\omega^2 - \mu^2} t) + C_2 \sin (\sqrt{\omega^2 - \mu^2}t) \right] \]
+%\end{description}
+
+
+\section{Numerical Methods for IVP's}
+
+\subsection{Accuracy}
+\begin{itemize}
+\item Local error: error incurred over one step
+\item Global error: total error over the domain, one order of $h$ less than local error, calculated as $\epsilon_{global} = N \times \epsilon_{local}$
+\end{itemize}
+
+\subsection{Stability}
+\begin{itemize}
+\item Derive amplification factor $\sigma(h)$ by starting with the model equation $y' = \lambda y$ and ``stepping-through'' the numerical method to derive relationship:
+\[ y_{n+1} = \sigma(h) y_n\]
+\item Stability condition is $|\sigma(h)| < 1$
+\item To find stable $h$, solve $\sigma(h) < 1$ and $\sigma(h) > -1$
+\end{itemize}
+
+\subsection{Euler}
+\textbf{Forward Euler:} explicit, $\mathcal{O}(h)$ global accuracy:
+\[ y_{n+1} = y_n + h f(x_n, y_n) \]
+\textbf{Backward Euler:} implicit, $\mathcal{O}(h)$ global accuracy:
+\[ y_{n+1} = y_n + h f(x_{n+1}, y_{n+1}) \]
+
+\subsection{Runge-Kutta Methods}
+\textbf{Trapezoidal:} implicit, $\mathcal{O}(h^2)$ global accuracy, related to RK2, average of backward and forward Euler:
+\[ y_{n+1} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_{n+1})\right] \]
+\textbf{Improved Euler/RK2:} explicit, $\mathcal{O}(h^2)$ global accuracy:
+\[ y_{n+1} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_n + h f(x_n,y_n))\right] \]
+\textbf{RK4:} explicit, $\mathcal{O}(h^4)$ global accuracy, basis of \texttt{ode45()}:
+\begin{gather*}
+k_1 = f(t_n, y_n) \\
+k_2 = f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2} k_1\right) \\
+k_3 = f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2} k_2\right) \\
+k_4 = f\left(t_n + h, y_n + hk_3\right) \\
+y_{n+1} = y_n + h\left( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3} k_3 + \frac{1}{6} k_4 \right) 
+\end{gather*}
+
+
+\subsection{Higher-Order Systems of ODEs}
+\begin{itemize}
+\item ODEs (or systems of ODEs) that contain higher than first derivatives
+\item Need to convert to first order to apply numerical methods
+\end{itemize}
+Create table:
+\[ [\text{Old}]\quad |\quad [\text{New}]\quad | \quad [\text{Derivative}] \quad | \quad [\text{New ODE}] \]
+
+\subsection{Multi-Step Methods}
+\begin{itemize}
+\item Uses information from multiple time steps to find next step. 
+\item Methods are \textbf{not self-starting}
+\end{itemize}
+
+\par \textbf{Adams-Bashforth:} $y_{n+1} = y_n  + \frac{h}{2} [3f_n - f_{n-1}]$, second order accurate
+
+
+%\par \textbf{Adams-Moulton:} ``predictor-corrector''. Second order: 
+%\begin{gather*}
+%\tilde{y}_{n+1} = y_n  + \frac{h}{2} [3f_n - f_{n-1}] \quad \text{predictor} \\
+%y_{n+1} = y_n + \frac{h}{2} [ f(t_n,y_n) + f(t_{n+1}, \tilde{y}_{n+1})]
+%\end{gather*}
+
+\section{Numerical Methods for BVP's}
+\subsection{Finite differences}
+First derivatives
+\begin{itemize}
+\item Forward difference: $y'_i = \frac{y_{i+1} - y_i}{h}$, $\mathcal{O}(h)$ error
+\item Backward difference: $y'_i = \frac{y_{i} - y_{i-1}}{h}$, $\mathcal{O}(h)$ error
+\item Central difference: $y'_i = \frac{y_{i+1} - y_{i-1}}{2h}$, $\mathcal{O}(h^2)$ error
+\end{itemize}
+Second derivative: use second order central difference:
+\[ y_i'' = \frac{y_{i+1} - 2y_i + y_{i-1}}{h^2}, \; \mathcal{O}(h^2) \text{ error} \]
+
+\subsection{Boundary Conditions}
+\begin{itemize}
+\item Dirichlet: value given (e.g. $y(x_L) = C$)
+\item Neuman: derivative given (e.g. $y'(x_L) = C$)
+\item Robin: combination of value and derivative (e.g. $y'(x_L) + \alpha y(x_L) = C$)
+\end{itemize}
+
+\subsection{Setting Up Direct Method Equations}
+\begin{enumerate}
+\item Replace derivatives in ODE with finite difference approximations, and group coefficients of $y_{i-1}$, $y_i$, and $y_{i+1}$ to find \textit{recursive equation}
+
+\item Treat boundary conditions
+\begin{enumerate}
+\item \textbf{Dirichlet (value given):} plug boundary value (at $y_1$ or $y_N$) into recursive equation at node next to boundary (either $i=2$ or $i=N-1$)
+\item \textbf{Robin or Neuman (includes derivative):} plug finite difference approximation for $y'$ into the boundary condition, solve out for the ghost point, plug into recursive equation at the boundary node (either $i=1$ or $i=N$)
+\end{enumerate}
+
+\item Assemble system of equations in form $\mathbf{A} \vec{y} = \vec{f}$
+
+\end{enumerate}
+
+\subsection{Shooting Method}
+Main idea: treat BVP like IVP
+\begin{enumerate}
+\item Guessing the initial condition we don't know at left boundary
+\item Solve ODE using method for IVP
+\item Update guess for initial condition based on error at right boundary
+\item Iterate until error is zero
+\end{enumerate}
+
+\section{MATLAB}
+\par \texttt{[t,y] = ode45(@(t,y) myODE(t,y), tspan, y0)}
+\par If \texttt{myODE} has two arguments: \texttt{[t,y] = ode45(@myODE, tspan, y0)}
+\par Anonymous function: \texttt{f = @(x) [expression]}
+
+\section{Trigonometric Identities}
+\par \textbf{Regular trigonometric identities:}
+\begin{gather*}
+\sin^2 x + \cos^2 x = 1, \; \tan^2 x + 1 = \sec^2 x, 1 + \cot^2 x = \csc^2 x \\
+\sin (2x) = 2 \sin x \cos x, \; \tan(2x) = \frac{ 2 \tan x}{1 - \tan^2 x}\\
+\cos (2x) = \cos^2 x - \sin^2 x = 2 \cos^2 x - 1 = 1 - 2 \sin^2 x
+\end{gather*}
+
+\par \textbf{Hyperbolic trigonometric functions:}
+\begin{gather*}
+\sinh x = \frac{ e^x - e^{-x}}{2}, \; \cosh x = \frac{ e^x + e^{-x}}{2}, \quad \tanh x  = \frac{e^x - e^{-x}}{e^x + e^{-x}} \\
+\cosh^2 x - \sinh^2 x = 1, \; \tanh^2 x + \text{sech}^2 x = 1, \; \coth^2 x - \text{csch}^2 x = 1 \\
+\sinh(2x) = 2 \sinh x \cosh x, \quad \cosh(2x) = 2 \cosh^2 x - 1\\
+\tanh(2x) = \frac{ 2 \tanh x}{1 + \tanh^2 x}
+\end{gather*}
+
+\section{Useful Integrals/Derivatives}
+\par \textbf{Trigonometric function derivatives:}
+\begin{gather*}
+\frac{d}{dx} \sin x = \cos x, \; \frac{d}{dx} \cot x = - \csc^2 x , \; \frac{d}{dx}\arcsin x = \frac{1}{\sqrt{1 - x^2}}\\
+\frac{d}{dx}\cot x = - \sin x , \;\frac{d}{dx}\sec x = \sec x \tan x, \; \frac{d}{dx}\arccos x = \frac{ -1}{\sqrt{1 - x^2}}\\
+\frac{d}{dx} \tan x = \sec^2 x , \; \frac{d}{dx} \csc x = - \csc x \cot x, \; \frac{d}{dx}\arctan x = \frac{1}{x^2 +1}
+\end{gather*}
+
+\par \textbf{Trigonometric and other integrals:}
+\begin{gather*}
+\int \tan x dx = - \log|\cos x| + C, \quad \int \cot x dx = \log | \sin x | + C \\
+\int \csc x dx = - \log |\csc x + \cot x| + C \\
+\int \sec x = \log |\sec x + \tan x| + C\\
+\int \sin^2(x) dx = \frac{1}{2}x - \frac{1}{4} \sin(2x) + C \\
+\int \cos^2(x)dx = \frac{1}{2} x + \frac{1}{4} \sin(2x) + C, \; \int \ln x dx = x \ln x - x + C \\
+\int e^{ax} \sin (bx)dx = \frac{e^{ax}}{a^2 + b^2}(a \sin bx - b \cos bx) + C \\
+\int e^{ax} \cos (bx)dx = \frac{e^{ax}}{a^2 + b^2}(a \cos bx + b \sin bx) + C 
+\end{gather*}
+
+\par \textbf{Inverse trigonometric function integrals:}
+\begin{gather*}
+\int \frac{dx}{x^2 + a^2} = \frac{1}{a} \arctan \frac{x}{a} + C, \; \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}{a} + C 
+\end{gather*}
+
+\par \textbf{Hyperbolic trig function derivatives:}
+\begin{gather*}
+\frac{d}{dx} \sinh (x) = \cosh (x), \quad \frac{d}{dx}\cosh (x) = \sinh (x)\\
+\frac{d}{dx}\tanh x = 1 - \tanh^2 (x), \quad \frac{d}{dx}\text{csch} (x) = - \text{coth}(x) \; \text{csch}(x) \\
+\frac{d}{dx}\text{sech} (x) = - \tanh x \; \text{sech} (x), \quad
+\frac{d}{dx}\coth x = 1 - \coth^2 (x)
+\end{gather*}
+
+
+
+
+
+
+
+%\section{Delimiters}
+%\begin{tabular}{lll}
+%\emph{description} & \emph{command} & \emph{output}\\
+%parentheses &\verb!(x)! & (x)\\
+%brackets &\verb![x]! & [x]\\
+%curly braces& \verb!\{x\}! & \{x\}\\
+%\end{tabular}
+
+
+\end{multicols}
+
+\end{document}
